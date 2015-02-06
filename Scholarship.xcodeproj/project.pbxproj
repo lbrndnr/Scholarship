@@ -11,6 +11,9 @@
 		492D91BB1A850A62009730D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D91BA1A850A62009730D7 /* ViewController.swift */; };
 		492D91C01A850A62009730D7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 492D91BF1A850A62009730D7 /* Images.xcassets */; };
 		492D91CF1A850A62009730D7 /* ScholarshipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D91CE1A850A62009730D7 /* ScholarshipTests.swift */; };
+		492D91DB1A8515B5009730D7 /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492D91D81A8515B5009730D7 /* Cartography.framework */; };
+		492D91DC1A8515B5009730D7 /* LlamaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492D91D91A8515B5009730D7 /* LlamaKit.framework */; };
+		492D91DD1A8515B5009730D7 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492D91DA1A8515B5009730D7 /* ReactiveCocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +35,9 @@
 		492D91C81A850A62009730D7 /* ScholarshipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScholarshipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		492D91CD1A850A62009730D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		492D91CE1A850A62009730D7 /* ScholarshipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScholarshipTests.swift; sourceTree = "<group>"; };
+		492D91D81A8515B5009730D7 /* Cartography.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cartography.framework; path = ../Carthage/Build/iOS/Cartography.framework; sourceTree = "<group>"; };
+		492D91D91A8515B5009730D7 /* LlamaKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LlamaKit.framework; path = ../Carthage/Build/iOS/LlamaKit.framework; sourceTree = "<group>"; };
+		492D91DA1A8515B5009730D7 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = ../Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +45,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				492D91DB1A8515B5009730D7 /* Cartography.framework in Frameworks */,
+				492D91DC1A8515B5009730D7 /* LlamaKit.framework in Frameworks */,
+				492D91DD1A8515B5009730D7 /* ReactiveCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +85,7 @@
 				492D91B81A850A62009730D7 /* AppDelegate.swift */,
 				492D91BA1A850A62009730D7 /* ViewController.swift */,
 				492D91BF1A850A62009730D7 /* Images.xcassets */,
+				492D91DF1A85180E009730D7 /* Externals */,
 				492D91B61A850A62009730D7 /* Supporting Files */,
 			);
 			path = Scholarship;
@@ -106,6 +116,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		492D91DF1A85180E009730D7 /* Externals */ = {
+			isa = PBXGroup;
+			children = (
+				492D91D81A8515B5009730D7 /* Cartography.framework */,
+				492D91D91A8515B5009730D7 /* LlamaKit.framework */,
+				492D91DA1A8515B5009730D7 /* ReactiveCocoa.framework */,
+			);
+			name = Externals;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -116,6 +136,7 @@
 				492D91AF1A850A62009730D7 /* Sources */,
 				492D91B01A850A62009730D7 /* Frameworks */,
 				492D91B11A850A62009730D7 /* Resources */,
+				492D91DE1A8517C4009730D7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -198,6 +219,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		492D91DE1A8517C4009730D7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/LlamaKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Carthography.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		492D91AF1A850A62009730D7 /* Sources */ = {
@@ -309,6 +349,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Scholarship/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -319,6 +363,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Scholarship/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
