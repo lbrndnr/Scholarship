@@ -37,6 +37,20 @@ class WelcomeViewController: UIViewController {
         return label
     }()
     
+    private lazy var projectsLabel: ImageLabel = {
+        let image = UIImage(named: "crimson-banner")
+        let imageLabel = ImageLabel(text: NSLocalizedString("Projects", comment: "Projects"), image: image)
+        
+        return imageLabel
+    }()
+    
+    private lazy var hobbiesLabel: ImageLabel = {
+        let image = UIImage(named: "crimson-banner")
+        let imageLabel = ImageLabel(text: NSLocalizedString("Hobbies", comment: "Hobbies"), image: image)
+        
+        return imageLabel
+    }()
+    
     // MARK: - View Lifecycle
     
     override func loadView() {
@@ -55,6 +69,19 @@ class WelcomeViewController: UIViewController {
             textLabel.height == 300
             textLabel.top == avatarButton.bottom+50
             textLabel.centerX == view.centerX
+        }
+        
+        self.view.addSubview(self.projectsLabel)
+        self.view.addSubview(self.hobbiesLabel)
+        
+        constrain(self.view, self.projectsLabel, self.hobbiesLabel) { view, projectsLabel, hobbiesLabel in
+            hobbiesLabel.width == view.width
+            hobbiesLabel.height == 50
+            hobbiesLabel.bottom == view.bottom
+            
+            projectsLabel.width == view.width
+            projectsLabel.height == 50
+            projectsLabel.bottom == hobbiesLabel.top
         }
     }
     

@@ -13,6 +13,7 @@ class ImageLabel: UIView {
     
     private let textLabel: UILabel = {
         let label = UILabel()
+        label.textAlignment = .Center
         
         return label
     }()
@@ -33,8 +34,8 @@ class ImageLabel: UIView {
 
     // MARK: - Initialization
     
-    init(text: String, image: UIImage) {
-        super.init()
+    init(text: String, image: UIImage?) {
+        super.init(frame: CGRect())
         
         self.textLabel.text = text
         self.imageView.image = image
@@ -47,7 +48,10 @@ class ImageLabel: UIView {
             textLabel.edges == view.edges
             blurView.edges == view.edges
         }
-
+        
+//        constrain(self.imageView) { imageView in
+//            imageView.edges == imageView.superview!.edges
+//        }
     }
 
     required init(coder aDecoder: NSCoder) {
