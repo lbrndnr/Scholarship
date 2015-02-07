@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		492D91B91A850A62009730D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D91B81A850A62009730D7 /* AppDelegate.swift */; };
-		492D91BB1A850A62009730D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D91BA1A850A62009730D7 /* ViewController.swift */; };
+		492D91BB1A850A62009730D7 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D91BA1A850A62009730D7 /* WelcomeViewController.swift */; };
 		492D91C01A850A62009730D7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 492D91BF1A850A62009730D7 /* Images.xcassets */; };
 		492D91CF1A850A62009730D7 /* ScholarshipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D91CE1A850A62009730D7 /* ScholarshipTests.swift */; };
 		492D91DB1A8515B5009730D7 /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492D91D81A8515B5009730D7 /* Cartography.framework */; };
@@ -30,7 +30,7 @@
 		492D91B31A850A62009730D7 /* Scholarship.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scholarship.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		492D91B71A850A62009730D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		492D91B81A850A62009730D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		492D91BA1A850A62009730D7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		492D91BA1A850A62009730D7 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		492D91BF1A850A62009730D7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		492D91C81A850A62009730D7 /* ScholarshipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScholarshipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		492D91CD1A850A62009730D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				492D91B81A850A62009730D7 /* AppDelegate.swift */,
-				492D91BA1A850A62009730D7 /* ViewController.swift */,
+				492D91BA1A850A62009730D7 /* WelcomeViewController.swift */,
 				492D91BF1A850A62009730D7 /* Images.xcassets */,
 				492D91DF1A85180E009730D7 /* Externals */,
 				492D91B61A850A62009730D7 /* Supporting Files */,
@@ -244,7 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				492D91BB1A850A62009730D7 /* ViewController.swift in Sources */,
+				492D91BB1A850A62009730D7 /* WelcomeViewController.swift in Sources */,
 				492D91B91A850A62009730D7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,6 +426,7 @@
 				492D91D41A850A62009730D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		492D91D51A850A62009730D7 /* Build configuration list for PBXNativeTarget "ScholarshipTests" */ = {
 			isa = XCConfigurationList;
@@ -434,6 +435,7 @@
 				492D91D71A850A62009730D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
