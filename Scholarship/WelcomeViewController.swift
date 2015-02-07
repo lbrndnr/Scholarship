@@ -12,7 +12,7 @@ import ReactiveCocoa
 
 class WelcomeViewController: UIViewController {
 
-    lazy var avatarButton: UIButton = {
+    private lazy var avatarButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor.redColor()
         
@@ -26,7 +26,7 @@ class WelcomeViewController: UIViewController {
         return button
     }()
     
-    lazy var textLabel: UILabel = {
+    private lazy var textLabel: UILabel = {
         let label = UILabel()
         label.text = "Hi There! \n My name is Laurin. I'm from Switzerland. I code. A lot."
         label.font = UIFont.systemFontOfSize(24.0)

@@ -12,7 +12,7 @@ import UIKit
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow = {
+    private lazy var window: UIWindow = {
         let window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window.backgroundColor = UIColor.whiteColor()
         
