@@ -12,17 +12,19 @@ import UIKit
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window = UIWindow()
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        self.window.frame = UIScreen.mainScreen().bounds
-        self.window.backgroundColor = UIColor.whiteColor()
+    var window: UIWindow = {
+        let window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window.backgroundColor = UIColor.whiteColor()
         
         let controller = WelcomeViewController()
         let navigationController = UINavigationController(rootViewController: controller)
         navigationController.navigationBarHidden = true
-        self.window.rootViewController = navigationController
+        window.rootViewController = navigationController
         
+        return window
+    }()
+
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.window.makeKeyAndVisible()
         
         return true
