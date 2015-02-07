@@ -36,7 +36,7 @@ class WelcomeViewController: UIViewController {
             avatarButton.width  == 100
             avatarButton.height == 100
             avatarButton.centerX == view.centerX
-            avatarButton.top == view.centerY
+            avatarButton.top == view.top+50
         }
     }
     
