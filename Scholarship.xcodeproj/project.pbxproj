@@ -142,7 +142,7 @@
 				492D91AF1A850A62009730D7 /* Sources */,
 				492D91B01A850A62009730D7 /* Frameworks */,
 				492D91B11A850A62009730D7 /* Resources */,
-				492D91DE1A8517C4009730D7 /* ShellScript */,
+				4995DAAE1A87E2F8004975E5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -228,14 +228,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		492D91DE1A8517C4009730D7 /* ShellScript */ = {
+		4995DAAE1A87E2F8004975E5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/LlamaKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Cartography.framework",
 			);
 			outputPaths = (

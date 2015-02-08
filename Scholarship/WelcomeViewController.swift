@@ -72,8 +72,8 @@ class WelcomeViewController: UIViewController {
         self.view.addSubview(self.textLabel)
         
         constrain(self.view, self.avatarButton, self.textLabel) { view, avatarButton, textLabel in
-            avatarButton.width  == 100
-            avatarButton.height == 100
+            avatarButton.width  == 150
+            avatarButton.height == 150
             avatarButton.centerX == view.centerX
             avatarButton.top == view.top+50
             
