@@ -31,7 +31,7 @@
 /* Begin PBXFileReference section */
 		49186E751A8655E5006A602A /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		49186E771A866D0F006A602A /* ImageLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLabel.swift; sourceTree = "<group>"; };
-		492D91B31A850A62009730D7 /* Laurin B..app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Laurin B..app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		492D91B31A850A62009730D7 /* Scholarship.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scholarship.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		492D91B71A850A62009730D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		492D91B81A850A62009730D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		492D91BA1A850A62009730D7 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -77,7 +77,7 @@
 		492D91B41A850A62009730D7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				492D91B31A850A62009730D7 /* Laurin B..app */,
+				492D91B31A850A62009730D7 /* Scholarship.app */,
 				492D91C81A850A62009730D7 /* ScholarshipTests.xctest */,
 			);
 			name = Products;
@@ -150,7 +150,7 @@
 			);
 			name = Scholarship;
 			productName = Scholarship;
-			productReference = 492D91B31A850A62009730D7 /* Laurin B..app */;
+			productReference = 492D91B31A850A62009730D7 /* Scholarship.app */;
 			productType = "com.apple.product-type.application";
 		};
 		492D91C71A850A62009730D7 /* ScholarshipTests */ = {
@@ -363,7 +363,7 @@
 				);
 				INFOPLIST_FILE = Scholarship/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "Laurin B.";
+				PRODUCT_NAME = Scholarship;
 			};
 			name = Debug;
 		};
@@ -377,7 +377,7 @@
 				);
 				INFOPLIST_FILE = Scholarship/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "Laurin B.";
+				PRODUCT_NAME = Scholarship;
 			};
 			name = Release;
 		};
