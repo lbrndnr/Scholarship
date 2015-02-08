@@ -15,12 +15,24 @@ class WelcomeViewController: UIViewController {
     private lazy var avatarButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor.redColor()
+        button.layer.masksToBounds = true
+        button.setImage(UIImage(named: "Laurin"), forState: .Normal)
         
-        button.rac_signalForControlEvents(.TouchDown).subscribeNext { _ in
-            button.backgroundColor = UIColor.greenColor()
+        let images = [UIImage(named: "Laurin-wink"), UIImage(named: "Laurin-sarcastic")]
+        
+        let setImageAtIndex: (Int) -> () = { index in
+            let image = images[index]
+            button.setImage(image, forState: .Highlighted)
         }
+        
+        setImageAtIndex(0)
         button.rac_signalForControlEvents(.TouchUpInside).subscribeNext { _ in
-            button.backgroundColor = UIColor.redColor()
+            let index = Int(arc4random_uniform(UInt32(images.count)))
+            setImageAtIndex(index)
+        }
+        
+        button.rac_valuesForKeyPath("bounds", observer: self).subscribeNext { _ in
+            button.layer.cornerRadius = button.bounds.height/2.0
         }
         
         return button
