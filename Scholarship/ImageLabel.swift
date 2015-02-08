@@ -21,12 +21,13 @@ class ImageLabel: UIView {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .ScaleAspectFill
+        imageView.clipsToBounds = true
         
         return imageView
     }()
     
     private let blurView: UIVisualEffectView = {
-        let effect = UIBlurEffect(style: .Dark)
+        let effect = UIBlurEffect(style: .Light)
         let visualEffectView = UIVisualEffectView(effect: effect)
         
         return visualEffectView
@@ -40,24 +41,26 @@ class ImageLabel: UIView {
         self.textLabel.text = text
         self.imageView.image = image
         
-        self.addSubview(self.blurView)
-        self.blurView.contentView.addSubview(self.imageView)
+        self.addSubview(self.imageView)
+        self.imageView.addSubview(self.blurView)
         self.addSubview(self.textLabel)
         
-        constrain(self, self.textLabel, self.blurView) { view, textLabel, blurView in
+        constrain(self, self.textLabel, self.imageView) { view, textLabel, imageView in
             textLabel.edges == view.edges
-            blurView.edges == view.edges
+            imageView.edges == view.edges
         }
         
-//        constrain(self.imageView) { imageView in
-//            imageView.edges == imageView.superview!.edges
-//        }
+        constrain(self.imageView, self.blurView) { imageView, blurView in
+            // Swift bug
+            blurView.edges == imageView.edges; return
+        }
     }
 
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: -
+    
 
 }
