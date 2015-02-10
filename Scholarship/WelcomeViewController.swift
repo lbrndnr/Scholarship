@@ -20,15 +20,22 @@ class WelcomeViewController: UIViewController {
         
         let images = [UIImage(named: "Laurin-wink"), UIImage(named: "Laurin-sarcastic")]
         
-        let setImageAtIndex: (Int) -> () = { index in
-            let image = images[index]
-            button.setImage(image, forState: .Highlighted)
-        }
+        let setNewImage: () -> () = {
+            var index = 0
+            return {
+                let image = images[index]
+                button.setImage(image, forState: .Highlighted)
+                
+                index += 1
+                if index >= images.count {
+                    index = 0
+                }
+            }
+        }()
         
-        setImageAtIndex(0)
+        setNewImage()
         button.rac_signalForControlEvents(.TouchUpInside).subscribeNext { _ in
-            let index = Int(arc4random_uniform(UInt32(images.count)))
-            setImageAtIndex(index)
+            setNewImage()
         }
         
         button.rac_valuesForKeyPath("bounds", observer: self).subscribeNext { _ in
