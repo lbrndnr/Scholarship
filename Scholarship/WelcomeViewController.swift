@@ -34,7 +34,8 @@ class WelcomeViewController: UIViewController {
         }()
         
         setNewImage()
-        button.rac_signalForControlEvents(.TouchUpInside).subscribeNext { _ in
+        
+        button.rac_signalForControlEvents(.TouchUpInside).merge(button.rac_signalForControlEvents(.TouchUpOutside)).subscribeNext { _ in
             setNewImage()
         }
         
