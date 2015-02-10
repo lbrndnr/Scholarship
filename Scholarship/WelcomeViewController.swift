@@ -66,15 +66,24 @@ class WelcomeViewController: UIViewController {
         return label
     }()
     
+    private lazy var statsView: BarGraph = {
+        let graph = BarGraph(frame: CGRectZero)
+        graph.entries = [("Objective-C", 1.0),
+                         ("Python", 0.4),
+                         ("Swift", 0.7),
+                         ("Ruby", 0.3)]
+        
+        return graph
+    }()
+    
     // MARK: - View Lifecycle
     
     override func loadView() {
         super.loadView()
         
-        self.view.addSubview(self.avatarButton)
-        self.view.addSubview(self.titleLabel)
-        self.view.addSubview(self.textLabel)
+        let offset = 25.0
         
+        self.view.addSubview(self.avatarButton)
         constrain(self.view, self.avatarButton) { view, avatarButton in
             avatarButton.width  == 150
             avatarButton.height == 150
@@ -82,16 +91,25 @@ class WelcomeViewController: UIViewController {
             avatarButton.top == view.top+50
         }
         
+        self.view.addSubview(self.titleLabel)
         constrain(self.view, self.avatarButton, self.titleLabel) { view, avatarButton, titleLabel in
             titleLabel.width == view.width*0.7
-            titleLabel.top == avatarButton.bottom+25
+            titleLabel.top == avatarButton.bottom+offset
             titleLabel.centerX == view.centerX
         }
         
+        self.view.addSubview(self.textLabel)
         constrain(self.titleLabel, self.textLabel) { titleLabel, textLabel in
             textLabel.width == titleLabel.width
-            textLabel.top == titleLabel.bottom+25
+            textLabel.top == titleLabel.bottom+offset
             textLabel.centerX == titleLabel.centerX
+        }
+        
+        self.view.addSubview(self.statsView)
+        constrain(self.textLabel, self.statsView) { textLabel, statsView in
+            statsView.top == textLabel.bottom+offset
+            statsView.centerX == textLabel.centerX
+            statsView.width == 300
         }
     }
     
