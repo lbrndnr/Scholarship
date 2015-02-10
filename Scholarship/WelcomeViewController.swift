@@ -55,7 +55,7 @@ class WelcomeViewController: UIViewController {
         label.textAlignment = .Center
         
         return label
-        }()
+    }()
     
     private lazy var textLabel: UILabel = {
         let label = UILabel()
@@ -73,6 +73,9 @@ class WelcomeViewController: UIViewController {
                          ("Python", 0.4),
                          ("Swift", 0.7),
                          ("Ruby", 0.3)]
+        graph.labelColor = UIColor.darkBrandnerColor()
+        graph.labelFont = UIFont.lightHelveticaNeueWithSize(14.0)
+        graph.barColor = UIColor.brandnerColor()
         
         return graph
     }()
@@ -110,7 +113,7 @@ class WelcomeViewController: UIViewController {
         constrain(self.textLabel, self.statsView) { textLabel, statsView in
             statsView.top == textLabel.bottom+offset
             statsView.centerX == textLabel.centerX
-            statsView.width == 300
+            statsView.width == textLabel.width
         }
     }
     

@@ -23,6 +23,12 @@ class BarGraph: UIView {
         }
     }
     
+    var labelFont: UIFont = UIFont.systemFontOfSize(UIFont.labelFontSize()) {
+        didSet {
+            self.reloadColors()
+        }
+    }
+    
     var barColor: UIColor = UIColor.blackColor() {
         didSet {
             self.reloadColors()
@@ -95,6 +101,7 @@ class BarGraph: UIView {
     private func reloadColors() {
         for (label, bar) in self.entryViews {
             label.textColor = self.labelColor
+            label.font = self.labelFont
             bar.backgroundColor = self.barColor
         }
     }

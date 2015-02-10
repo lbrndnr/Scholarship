@@ -15,3 +15,15 @@ extension UIFont {
     }
     
 }
+
+extension UIColor {
+    
+    class func brandnerColor() -> UIColor {
+        return UIColor(red: 58.0/255.0, green: 161.0/255.0, blue: 83.0/255.0, alpha: 1.0)
+    }
+    
+    class func darkBrandnerColor() -> UIColor {
+        return UIColor(red: 55.0/255.0, green: 84.0/255.0, blue: 62.0/255.0, alpha: 1.0)
+    }
+    
+}
