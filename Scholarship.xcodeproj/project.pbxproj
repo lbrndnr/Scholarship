@@ -16,6 +16,7 @@
 		492D91DB1A8515B5009730D7 /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492D91D81A8515B5009730D7 /* Cartography.framework */; };
 		492D91DC1A8515B5009730D7 /* LlamaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492D91D91A8515B5009730D7 /* LlamaKit.framework */; };
 		492D91DD1A8515B5009730D7 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492D91DA1A8515B5009730D7 /* ReactiveCocoa.framework */; };
+		49D492F71A8A2E2200ECCCA6 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492F61A8A2E2200ECCCA6 /* Style.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		492D91D81A8515B5009730D7 /* Cartography.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cartography.framework; path = ../Carthage/Build/iOS/Cartography.framework; sourceTree = "<group>"; };
 		492D91D91A8515B5009730D7 /* LlamaKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LlamaKit.framework; path = ../Carthage/Build/iOS/LlamaKit.framework; sourceTree = "<group>"; };
 		492D91DA1A8515B5009730D7 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = ../Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		49D492F61A8A2E2200ECCCA6 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				492D91B81A850A62009730D7 /* AppDelegate.swift */,
 				492D91BA1A850A62009730D7 /* WelcomeViewController.swift */,
 				49186E771A866D0F006A602A /* ImageLabel.swift */,
+				49D492F61A8A2E2200ECCCA6 /* Style.swift */,
 				49186E751A8655E5006A602A /* Launch Screen.xib */,
 				492D91BF1A850A62009730D7 /* Images.xcassets */,
 				492D91DF1A85180E009730D7 /* Externals */,
@@ -254,6 +257,7 @@
 				492D91BB1A850A62009730D7 /* WelcomeViewController.swift in Sources */,
 				492D91B91A850A62009730D7 /* AppDelegate.swift in Sources */,
 				49186E781A866D0F006A602A /* ImageLabel.swift in Sources */,
+				49D492F71A8A2E2200ECCCA6 /* Style.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

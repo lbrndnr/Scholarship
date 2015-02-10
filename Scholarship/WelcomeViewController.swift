@@ -38,29 +38,25 @@ class WelcomeViewController: UIViewController {
         return button
     }()
     
-    private lazy var textLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Hi There! \n My name is Laurin. I'm from Switzerland. I code. A lot."
-        label.font = UIFont.systemFontOfSize(24.0)
-        label.numberOfLines = 0
-        label.textColor = UIColor.darkTextColor()
+        label.text = "Hi There!"
+        label.font = UIFont.lightHelveticaNeueWithSize(24.0)
+        label.numberOfLines = 1
+        label.textColor = UIColor(white: 0.0, alpha: 0.8)
         label.textAlignment = .Center
         
         return label
-    }()
+        }()
     
-    private lazy var projectsLabel: ImageLabel = {
-        let image = UIImage(named: "crimson-banner")
-        let imageLabel = ImageLabel(text: NSLocalizedString("Projects", comment: "Projects"), image: image)
+    private lazy var textLabel: UILabel = {
+        let label = UILabel()
+        label.text = "My name is Laurin Brandner. I’m a 20-year-old student living in Switzerland.\n \nI started programming when I was 14. With 15 I released my first iOS application.\nSince then, I have worked with various programming languages."
+        label.font = UIFont.lightHelveticaNeueWithSize(18.0)
+        label.numberOfLines = 0
+        label.textColor = UIColor(white: 0.0, alpha: 0.7)
         
-        return imageLabel
-    }()
-    
-    private lazy var hobbiesLabel: ImageLabel = {
-        let image = UIImage(named: "crimson-banner")
-        let imageLabel = ImageLabel(text: NSLocalizedString("Hobbies", comment: "Hobbies"), image: image)
-        
-        return imageLabel
+        return label
     }()
     
     // MARK: - View Lifecycle
@@ -69,30 +65,26 @@ class WelcomeViewController: UIViewController {
         super.loadView()
         
         self.view.addSubview(self.avatarButton)
+        self.view.addSubview(self.titleLabel)
         self.view.addSubview(self.textLabel)
         
-        constrain(self.view, self.avatarButton, self.textLabel) { view, avatarButton, textLabel in
+        constrain(self.view, self.avatarButton) { view, avatarButton in
             avatarButton.width  == 150
             avatarButton.height == 150
             avatarButton.centerX == view.centerX
             avatarButton.top == view.top+50
-            
-            textLabel.width == view.width*0.6
-            textLabel.top == avatarButton.bottom+50
-            textLabel.centerX == view.centerX
         }
         
-        self.view.addSubview(self.projectsLabel)
-        self.view.addSubview(self.hobbiesLabel)
+        constrain(self.view, self.avatarButton, self.titleLabel) { view, avatarButton, titleLabel in
+            titleLabel.width == view.width*0.7
+            titleLabel.top == avatarButton.bottom+25
+            titleLabel.centerX == view.centerX
+        }
         
-        constrain(self.view, self.projectsLabel, self.hobbiesLabel) { view, projectsLabel, hobbiesLabel in
-            hobbiesLabel.width == view.width
-            hobbiesLabel.height == 50
-            hobbiesLabel.bottom == view.bottom
-            
-            projectsLabel.width == view.width
-            projectsLabel.height == 50
-            projectsLabel.bottom == hobbiesLabel.top
+        constrain(self.titleLabel, self.textLabel) { titleLabel, textLabel in
+            textLabel.width == titleLabel.width
+            textLabel.top == titleLabel.bottom+25
+            textLabel.centerX == titleLabel.centerX
         }
     }
     
