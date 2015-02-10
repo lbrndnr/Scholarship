@@ -42,8 +42,8 @@ class WelcomeViewController: UIViewController {
         let label = UILabel()
         label.text = "Hi There! \n My name is Laurin. I'm from Switzerland. I code. A lot."
         label.font = UIFont.systemFontOfSize(24.0)
-        label.backgroundColor = UIColor.greenColor()
         label.numberOfLines = 0
+        label.textColor = UIColor.darkTextColor()
         label.textAlignment = .Center
         
         return label
@@ -78,7 +78,6 @@ class WelcomeViewController: UIViewController {
             avatarButton.top == view.top+50
             
             textLabel.width == view.width*0.6
-            textLabel.height == 300
             textLabel.top == avatarButton.bottom+50
             textLabel.centerX == view.centerX
         }
