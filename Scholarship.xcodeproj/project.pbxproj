@@ -96,9 +96,8 @@
 				49D492F61A8A2E2200ECCCA6 /* Style.swift */,
 				49D233C61A8B734400E7BAE0 /* Extension.swift */,
 				492D91B81A850A62009730D7 /* AppDelegate.swift */,
-				492D91BA1A850A62009730D7 /* WelcomeViewController.swift */,
+				49D8D47E1A8BA2A900ACAB4B /* WelcomeViewController */,
 				49D492F81A8A33CE00ECCCA6 /* BarGraph.swift */,
-				49186E771A866D0F006A602A /* BlurButton.swift */,
 				49186E751A8655E5006A602A /* Launch Screen.xib */,
 				492D91BF1A850A62009730D7 /* Images.xcassets */,
 				492D91DF1A85180E009730D7 /* Externals */,
@@ -140,6 +139,15 @@
 				492D91DA1A8515B5009730D7 /* ReactiveCocoa.framework */,
 			);
 			name = Externals;
+			sourceTree = "<group>";
+		};
+		49D8D47E1A8BA2A900ACAB4B /* WelcomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				492D91BA1A850A62009730D7 /* WelcomeViewController.swift */,
+				49186E771A866D0F006A602A /* BlurButton.swift */,
+			);
+			path = WelcomeViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
