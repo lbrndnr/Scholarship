@@ -36,6 +36,7 @@ class BarGraph: UIView {
     }
     
     private var entryViews = [(UILabel, UIView)]()
+    private let barWidthGroup = ConstraintGroup()
     
     // MARK: - Initialization
     
@@ -81,14 +82,18 @@ class BarGraph: UIView {
                 }
             }
             
-            constrain(self, label, bar, { view, label, bar in
+            // Swift bug
+            constrain(self, bar) { view, bar in
+                bar.width == (view.width/2.0)*progress; return
+            }
+            
+            constrain(self, label, bar) { view, label, bar in
                 bar.height == barHeight
-                bar.width == (view.width/2.0)*progress
                 bar.leading == view.left+100
                 
                 label.centerY == bar.centerY
                 label.trailing == bar.left-barHeight
-            })
+            }
             
             let views = (label, bar)
             self.entryViews.append(views)
@@ -96,6 +101,27 @@ class BarGraph: UIView {
         }
         
         self.reloadColors()
+    }
+    
+    func animateBars() {
+        for (_, bar) in self.entryViews {
+            // Swift bug
+            constrain(self, bar, replace: self.barWidthGroup) { _, bar in
+                bar.width == 0; return
+            }
+        }
+        self.layoutIfNeeded()
+        
+        for (_, bar) in self.entryViews {
+            // Swift bug
+            constrain(self, bar, replace: self.barWidthGroup) { view, bar in
+                bar.width == (view.width/2.0)*0.5; return
+            }
+        }
+        
+        UIView.animateWithDuration(0.3, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.6, options: .BeginFromCurrentState, animations: {
+            self.layoutIfNeeded()
+        }, completion: nil)
     }
     
     private func reloadColors() {

@@ -46,38 +46,27 @@ class WelcomeViewController: UIViewController {
         return button
     }()
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Hi There!"
-        label.font = UIFont.lightHelveticaNeueWithSize(24.0)
-        label.numberOfLines = 1
-        label.textColor = UIColor(white: 0.0, alpha: 0.8)
-        label.textAlignment = .Center
-        
-        return label
-    }()
-    
     private lazy var textLabel: UILabel = {
         let label = UILabel()
-        label.text = "My name is Laurin Brandner. I’m a 20-year-old student living in Switzerland.\n \nI started programming when I was 14. With 15 I released my first iOS application.\nSince then, I have worked with various programming languages."
-        label.font = UIFont.lightHelveticaNeueWithSize(18.0)
         label.numberOfLines = 0
-        label.textColor = UIColor(white: 0.0, alpha: 0.7)
+        
+        func attributedStringWithText(text: String, #color: UIColor, #font: UIFont, #lineSpacing: CGFloat) -> NSAttributedString {
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = lineSpacing
+            let attributes = [NSForegroundColorAttributeName: color, NSFontAttributeName: font, NSParagraphStyleAttributeName: paragraphStyle]
+            
+            return NSAttributedString(string: text, attributes: attributes)
+        }
+        
+        let title = NSLocalizedString("Hi There!\n", comment: "Introduction Title")
+        let attributedTitle = attributedStringWithText(title, color: UIColor(white: 0.0, alpha: 0.8), font: UIFont.lightHelveticaNeueWithSize(36.0), lineSpacing: 30.0)
+        
+        let text = NSLocalizedString("My name is Laurin Brandner. I’m a 20-year-old student living in Switzerland.\n \nTap on the topics below to learn more about me.", comment: "Introduction Text")
+        let attributedText = attributedStringWithText(text, color: UIColor(white: 0.0, alpha: 0.7), font: UIFont.lightHelveticaNeueWithSize(18.0), lineSpacing: 8.0)
+        
+        label.attributedText = attributedTitle+attributedText
         
         return label
-    }()
-    
-    private lazy var statsView: BarGraph = {
-        let graph = BarGraph(frame: CGRectZero)
-        graph.entries = [("Objective-C", 1.0),
-                         ("Python", 0.4),
-                         ("Swift", 0.7),
-                         ("Ruby", 0.3)]
-        graph.labelColor = UIColor.darkBrandnerColor()
-        graph.labelFont = UIFont.lightHelveticaNeueWithSize(14.0)
-        graph.barColor = UIColor.brandnerColor()
-        
-        return graph
     }()
     
     // MARK: - View Lifecycle
@@ -85,36 +74,23 @@ class WelcomeViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        let offset = 25.0
+        let offset = 20.0
         
         self.view.addSubview(self.avatarButton)
         constrain(self.view, self.avatarButton) { view, avatarButton in
-            avatarButton.width  == 150
-            avatarButton.height == 150
-            avatarButton.centerX == view.centerX
-            avatarButton.top == view.top+50
-        }
-        
-        self.view.addSubview(self.titleLabel)
-        constrain(self.view, self.avatarButton, self.titleLabel) { view, avatarButton, titleLabel in
-            titleLabel.width == view.width*0.7
-            titleLabel.top == avatarButton.bottom+offset
-            titleLabel.centerX == view.centerX
+            avatarButton.width  == 240
+            avatarButton.height == 240
+            avatarButton.trailing == view.centerX-offset
+            avatarButton.top == view.top+160
         }
         
         self.view.addSubview(self.textLabel)
-        constrain(self.titleLabel, self.textLabel) { titleLabel, textLabel in
-            textLabel.width == titleLabel.width
-            textLabel.top == titleLabel.bottom+offset
-            textLabel.centerX == titleLabel.centerX
+        constrain(self.view, self.avatarButton, self.textLabel) { view, avatarButton, textLabel in
+            textLabel.top == avatarButton.top
+            textLabel.leading == view.centerX+offset
+            textLabel.width == view.width*0.3
         }
-        
-        self.view.addSubview(self.statsView)
-        constrain(self.textLabel, self.statsView) { textLabel, statsView in
-            statsView.top == textLabel.bottom+offset
-            statsView.centerX == textLabel.centerX
-            statsView.width == textLabel.width
-        }
+
     }
     
     // MARK: -
