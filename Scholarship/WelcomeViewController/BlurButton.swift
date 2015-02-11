@@ -19,6 +19,7 @@ class BlurButton: UIButton {
         if let imageView = self.imageView {
             let effect = UIBlurEffect(style: .Light)
             let blurView = UIVisualEffectView(effect: effect)
+            blurView.userInteractionEnabled = false
             self.insertSubview(blurView, aboveSubview: imageView)
             
             // Swift bug

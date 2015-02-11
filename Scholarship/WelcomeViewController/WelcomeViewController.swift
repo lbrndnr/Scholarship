@@ -111,7 +111,7 @@ class WelcomeViewController: UIViewController {
         
         self.view.addSubview(self.textLabel)
         constrain(self.view, self.avatarButton, self.textLabel) { view, avatarButton, textLabel in
-            textLabel.top == avatarButton.top
+            textLabel.centerY == avatarButton.centerY
             textLabel.leading == view.centerX+offset
             textLabel.width == view.width*0.3
         }
@@ -125,7 +125,7 @@ class WelcomeViewController: UIViewController {
             
             if let previousButton = previousButton {
                 // Swift bug
-                constrain(previousButton, button) { previousButton, button in
+                constrain(self.view, previousButton, button) { view, previousButton, button in
                     button.leading == previousButton.right+100; return
                 }
             }
@@ -149,7 +149,20 @@ class WelcomeViewController: UIViewController {
             
             previousButton = button
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
+        let presentTopicViewController: () -> () = {
+            let controller = TopicViewController()
+            self.navigationController?.presentViewController(controller, animated: true, completion: nil)
+        }
+        
+        // Swift bug
+        self.topicButtons[0].rac_signalForControlEvents(.TouchUpInside).subscribeNext() { _ in
+            presentTopicViewController(); return
+        }
     }
     
     // MARK: -
