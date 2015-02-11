@@ -27,12 +27,3 @@ extension UIColor {
     }
     
 }
-
-infix operator + { associativity left precedence 160 }
-
-func + (left: NSAttributedString, right: NSAttributedString) -> NSAttributedString {
-    let string = NSMutableAttributedString(attributedString: left)
-    string.appendAttributedString(right)
-    
-    return string
-}
