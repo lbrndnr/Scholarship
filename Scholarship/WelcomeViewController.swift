@@ -71,14 +71,13 @@ class WelcomeViewController: UIViewController {
     
     private lazy var topicButtons: [BlurButton] = {
         func styleButton(button: UIButton) {
-            button.setTitleColor(UIColor(white: 0.0, alpha: 0.5), forState: .Normal)
             button.titleLabel?.font = UIFont.systemFontOfSize(25.0)
             button.layer.cornerRadius = 5.0
             button.layer.masksToBounds = true
         }
         
         let aboutButton = BlurButton()
-        aboutButton.setBackgroundImage(UIImage(named: "AKSA"), forState: .Normal)
+        aboutButton.setBackgroundImage(UIImage(named: "About"), forState: .Normal)
         aboutButton.setTitle(NSLocalizedString("About Me", comment: "About Me"), forState: .Normal)
         styleButton(aboutButton)
         
@@ -88,7 +87,7 @@ class WelcomeViewController: UIViewController {
         styleButton(projectsButton)
         
         let interestsButton = BlurButton()
-        interestsButton.setBackgroundImage(UIImage(named: "Snowboarding"), forState: .Normal)
+        interestsButton.setBackgroundImage(UIImage(named: "Interests"), forState: .Normal)
         interestsButton.setTitle(NSLocalizedString("Interests", comment: "Interests"), forState: .Normal)
         styleButton(interestsButton)
         

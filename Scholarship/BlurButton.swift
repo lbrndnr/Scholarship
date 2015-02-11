@@ -10,24 +10,18 @@ import UIKit
 import Cartography
 
 class BlurButton: UIButton {
-    
-    private let blurView: UIVisualEffectView = {
-        let effect = UIBlurEffect(style: .Light)
-        let visualEffectView = UIVisualEffectView(effect: effect)
-        
-        return visualEffectView
-    }()
-
     // MARK: - Initialization
     
     override init() {
         super.init(frame: CGRectZero)
         
         if let imageView = self.imageView {
-            self.insertSubview(self.blurView, aboveSubview: imageView)
+            let effect = UIBlurEffect(style: .Light)
+            let blurView = UIVisualEffectView(effect: effect)
+            self.insertSubview(blurView, aboveSubview: imageView)
             
             // Swift bug
-            constrain(self, self.blurView) { view, blurView in
+            constrain(self, blurView) { view, blurView in
                 blurView.edges == view.edges; return
             }
         }
