@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		49186E761A8655E5006A602A /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49186E751A8655E5006A602A /* Launch Screen.xib */; };
-		49186E781A866D0F006A602A /* ImageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49186E771A866D0F006A602A /* ImageLabel.swift */; };
+		49186E781A866D0F006A602A /* BlurButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49186E771A866D0F006A602A /* BlurButton.swift */; };
 		492D91B91A850A62009730D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D91B81A850A62009730D7 /* AppDelegate.swift */; };
 		492D91BB1A850A62009730D7 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D91BA1A850A62009730D7 /* WelcomeViewController.swift */; };
 		492D91C01A850A62009730D7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 492D91BF1A850A62009730D7 /* Images.xcassets */; };
@@ -34,7 +34,7 @@
 
 /* Begin PBXFileReference section */
 		49186E751A8655E5006A602A /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
-		49186E771A866D0F006A602A /* ImageLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLabel.swift; sourceTree = "<group>"; };
+		49186E771A866D0F006A602A /* BlurButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurButton.swift; sourceTree = "<group>"; };
 		492D91B31A850A62009730D7 /* Scholarship.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scholarship.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		492D91B71A850A62009730D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		492D91B81A850A62009730D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,12 +93,12 @@
 		492D91B51A850A62009730D7 /* Scholarship */ = {
 			isa = PBXGroup;
 			children = (
+				49D492F61A8A2E2200ECCCA6 /* Style.swift */,
+				49D233C61A8B734400E7BAE0 /* Extension.swift */,
 				492D91B81A850A62009730D7 /* AppDelegate.swift */,
 				492D91BA1A850A62009730D7 /* WelcomeViewController.swift */,
 				49D492F81A8A33CE00ECCCA6 /* BarGraph.swift */,
-				49186E771A866D0F006A602A /* ImageLabel.swift */,
-				49D492F61A8A2E2200ECCCA6 /* Style.swift */,
-				49D233C61A8B734400E7BAE0 /* Extension.swift */,
+				49186E771A866D0F006A602A /* BlurButton.swift */,
 				49186E751A8655E5006A602A /* Launch Screen.xib */,
 				492D91BF1A850A62009730D7 /* Images.xcassets */,
 				492D91DF1A85180E009730D7 /* Externals */,
@@ -265,7 +265,7 @@
 				492D91BB1A850A62009730D7 /* WelcomeViewController.swift in Sources */,
 				492D91B91A850A62009730D7 /* AppDelegate.swift in Sources */,
 				49D233C71A8B734400E7BAE0 /* Extension.swift in Sources */,
-				49186E781A866D0F006A602A /* ImageLabel.swift in Sources */,
+				49186E781A866D0F006A602A /* BlurButton.swift in Sources */,
 				49D492F71A8A2E2200ECCCA6 /* Style.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

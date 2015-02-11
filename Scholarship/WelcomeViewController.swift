@@ -69,6 +69,32 @@ class WelcomeViewController: UIViewController {
         return label
     }()
     
+    private lazy var topicButtons: [BlurButton] = {
+        func styleButton(button: UIButton) {
+            button.setTitleColor(UIColor(white: 0.0, alpha: 0.5), forState: .Normal)
+            button.titleLabel?.font = UIFont.systemFontOfSize(25.0)
+            button.layer.cornerRadius = 5.0
+            button.layer.masksToBounds = true
+        }
+        
+        let aboutButton = BlurButton()
+        aboutButton.setBackgroundImage(UIImage(named: "AKSA"), forState: .Normal)
+        aboutButton.setTitle(NSLocalizedString("About Me", comment: "About Me"), forState: .Normal)
+        styleButton(aboutButton)
+        
+        let projectsButton = BlurButton()
+        projectsButton.setBackgroundImage(UIImage(named: "Projects"), forState: .Normal)
+        projectsButton.setTitle(NSLocalizedString("Projects", comment: "Projects"), forState: .Normal)
+        styleButton(projectsButton)
+        
+        let interestsButton = BlurButton()
+        interestsButton.setBackgroundImage(UIImage(named: "Snowboarding"), forState: .Normal)
+        interestsButton.setTitle(NSLocalizedString("Interests", comment: "Interests"), forState: .Normal)
+        styleButton(interestsButton)
+        
+        return [aboutButton, projectsButton, interestsButton]
+    }()
+    
     // MARK: - View Lifecycle
     
     override func loadView() {
@@ -91,6 +117,40 @@ class WelcomeViewController: UIViewController {
             textLabel.width == view.width*0.3
         }
 
+        let buttonSize = CGSize(width: 200.0, height: 130.0)
+        
+        var previousButton: BlurButton?
+        let middleIndex = Double(self.topicButtons.count)/2.0
+        for (i, button) in enumerate(self.topicButtons) {
+            self.view.addSubview(button)
+            
+            if let previousButton = previousButton {
+                // Swift bug
+                constrain(previousButton, button) { previousButton, button in
+                    button.leading == previousButton.right+100; return
+                }
+            }
+            
+            constrain(self.view, button) { view, button in
+                let index = Double(i)
+                if index > middleIndex {
+                    button.centerX >= view.centerX
+                }
+                else if index < middleIndex {
+                    button.centerX <= view.centerX
+                }
+                else {
+                    button.centerX == view.centerX
+                }
+                
+                button.bottom == view.bottom-120
+                button.width == buttonSize.width
+                button.height == buttonSize.height
+            }
+            
+            previousButton = button
+        }
+        
     }
     
     // MARK: -
