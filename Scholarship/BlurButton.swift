@@ -10,6 +10,7 @@ import UIKit
 import Cartography
 
 class BlurButton: UIButton {
+    
     // MARK: - Initialization
     
     override init() {
