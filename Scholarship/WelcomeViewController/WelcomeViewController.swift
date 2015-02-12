@@ -135,7 +135,7 @@ class WelcomeViewController: UIViewController, UIViewControllerTransitioningDele
         super.viewDidLoad()
         
         let presentTopicViewController: () -> () = {
-            let paragraph = Topic.Paragraph(title: NSLocalizedString("About Me", comment: "About Me"), text: "Yolo", images: nil)
+            let paragraph = Topic.Paragraph(title: NSLocalizedString("About Me", comment: "About Me"), text: "Yolo", image: nil)
             let image = UIImage(named: "About")!
             let topic = Topic(headerImage: image, title: NSLocalizedString("About Me", comment: "About Me"), paragraphs: [paragraph])
             

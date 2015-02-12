@@ -14,7 +14,7 @@ struct Topic {
         
         let title: String
         let text: String
-        let images: [UIImage]?
+        let image: UIImage?
         
     }
     
