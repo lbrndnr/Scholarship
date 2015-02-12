@@ -10,7 +10,7 @@ import UIKit
 import Cartography
 import ReactiveCocoa
 
-class WelcomeViewController: UIViewController {
+class WelcomeViewController: UIViewController, UIViewControllerTransitioningDelegate {
 
     private lazy var avatarButton: UIButton = {
         let button = UIButton()
@@ -135,10 +135,13 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         
         let presentTopicViewController: () -> () = {
+            let paragraph = Topic.Paragraph(title: NSLocalizedString("About Me", comment: "About Me"), text: "Yolo", images: nil)
             let image = UIImage(named: "About")!
-            let topic = Topic(headerImage: image)
+            let topic = Topic(headerImage: image, title: NSLocalizedString("About Me", comment: "About Me"), paragraphs: [paragraph])
             
             let controller = TopicViewController(topic: topic)
+//            controller.transitioningDelegate = self
+//            controller.modalPresentationStyle = .Custom
             self.navigationController?.presentViewController(controller, animated: true, completion: nil)
         }
         
@@ -148,8 +151,13 @@ class WelcomeViewController: UIViewController {
         }
     }
     
+    // MARK: - UIViewControllerTransitioningDelegate
+    
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return TopicTransitionAnimator(presenting: true, topicButton: self.topicButtons[0])
+    }
+    
     // MARK: -
-
 
 }
 

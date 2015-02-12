@@ -14,11 +14,12 @@ struct Topic {
         
         let title: String
         let text: String
-        let images: [UIImage]
+        let images: [UIImage]?
         
     }
     
     let headerImage: UIImage
-    //let paragraphs: [Paragraph]
+    let title: String
+    let paragraphs: [Paragraph]
     
 }

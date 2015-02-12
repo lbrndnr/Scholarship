@@ -13,9 +13,15 @@ class TopicViewController: UIViewController {
     
     let topic: Topic
     
-    let headerView = UIImageView()
+    let headerView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .ScaleAspectFill
+        imageView.clipsToBounds = true
+        
+        return imageView
+    }()
 
-    // MARK: Initialization
+    // MARK: - Initialization
     
     init(topic: Topic) {
         self.topic = topic
@@ -27,11 +33,12 @@ class TopicViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: -
-    // MARK: View Lifecycle
+    // MARK: - View Lifecycle
     
     override func loadView() {
         super.loadView()
+        
+        self.view.backgroundColor = UIColor.whiteColor()
         
         self.headerView.image = self.topic.headerImage
         self.view.addSubview(self.headerView)
@@ -39,6 +46,7 @@ class TopicViewController: UIViewController {
             headerView.width == view.width
             headerView.top == view.top
             headerView.left == view.left
+            headerView.height == view.height*0.1
         }
     }
     

@@ -16,6 +16,7 @@
 		492D91DB1A8515B5009730D7 /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492D91D81A8515B5009730D7 /* Cartography.framework */; };
 		492D91DC1A8515B5009730D7 /* LlamaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492D91D91A8515B5009730D7 /* LlamaKit.framework */; };
 		492D91DD1A8515B5009730D7 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492D91DA1A8515B5009730D7 /* ReactiveCocoa.framework */; };
+		499A7D071A8CE27F00490F98 /* TopicTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A7D061A8CE27F00490F98 /* TopicTransitionAnimator.swift */; };
 		49D233C71A8B734400E7BAE0 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D233C61A8B734400E7BAE0 /* Extension.swift */; };
 		49D233C81A8B734400E7BAE0 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D233C61A8B734400E7BAE0 /* Extension.swift */; };
 		49D492F71A8A2E2200ECCCA6 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492F61A8A2E2200ECCCA6 /* Style.swift */; };
@@ -48,6 +49,7 @@
 		492D91D81A8515B5009730D7 /* Cartography.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cartography.framework; path = ../Carthage/Build/iOS/Cartography.framework; sourceTree = "<group>"; };
 		492D91D91A8515B5009730D7 /* LlamaKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LlamaKit.framework; path = ../Carthage/Build/iOS/LlamaKit.framework; sourceTree = "<group>"; };
 		492D91DA1A8515B5009730D7 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = ../Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		499A7D061A8CE27F00490F98 /* TopicTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicTransitionAnimator.swift; sourceTree = "<group>"; };
 		49D233C61A8B734400E7BAE0 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		49D492F61A8A2E2200ECCCA6 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		49D492F81A8A33CE00ECCCA6 /* BarGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarGraph.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				492D91BA1A850A62009730D7 /* WelcomeViewController.swift */,
+				499A7D061A8CE27F00490F98 /* TopicTransitionAnimator.swift */,
 				49186E771A866D0F006A602A /* BlurButton.swift */,
 			);
 			path = WelcomeViewController;
@@ -288,6 +291,7 @@
 				492D91B91A850A62009730D7 /* AppDelegate.swift in Sources */,
 				49D233C71A8B734400E7BAE0 /* Extension.swift in Sources */,
 				49186E781A866D0F006A602A /* BlurButton.swift in Sources */,
+				499A7D071A8CE27F00490F98 /* TopicTransitionAnimator.swift in Sources */,
 				49DAC2B91A8C9984004BBBC0 /* Topic.swift in Sources */,
 				49D492F71A8A2E2200ECCCA6 /* Style.swift in Sources */,
 				49D8D4811A8BA69C00ACAB4B /* TopicViewController.swift in Sources */,
