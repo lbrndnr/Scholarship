@@ -135,7 +135,10 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         
         let presentTopicViewController: () -> () = {
-            let controller = TopicViewController()
+            let image = UIImage(named: "About")!
+            let topic = Topic(headerImage: image)
+            
+            let controller = TopicViewController(topic: topic)
             self.navigationController?.presentViewController(controller, animated: true, completion: nil)
         }
         
