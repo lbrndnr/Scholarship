@@ -17,28 +17,8 @@ class WelcomeViewController: UIViewController {
         button.backgroundColor = UIColor.redColor()
         button.layer.masksToBounds = true
         button.setImage(UIImage(named: "Laurin"), forState: .Normal)
-        
-        let images = [UIImage(named: "Laurin-wink"), UIImage(named: "Laurin-sarcastic")]
-        
-        let setNewImage: () -> () = {
-            var index = 0
-            return {
-                let image = images[index]
-                button.setImage(image, forState: .Highlighted)
-                
-                index += 1
-                if index >= images.count {
-                    index = 0
-                }
-            }
-        }()
-        
-        setNewImage()
-        
-        button.rac_signalForControlEvents(.TouchUpInside).merge(button.rac_signalForControlEvents(.TouchUpOutside)).subscribeNext { _ in
-            setNewImage()
-        }
-        
+        button.setImage(UIImage(named: "Laurin-wink"), forState: .Highlighted)
+
         button.rac_valuesForKeyPath("bounds", observer: self).subscribeNext { _ in
             button.layer.cornerRadius = button.bounds.height/2.0
         }
