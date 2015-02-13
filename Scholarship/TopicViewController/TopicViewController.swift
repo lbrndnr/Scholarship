@@ -38,7 +38,8 @@ class TopicViewController: UICollectionViewController {
     override func loadView() {
         super.loadView()
         
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.collectionView?.backgroundColor = UIColor.whiteColor()
+        self.collectionView?.alwaysBounceVertical = true
         
         self.headerView.image = self.topic.headerImage
         self.view.addSubview(self.headerView)

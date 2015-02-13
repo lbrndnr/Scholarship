@@ -169,9 +169,9 @@
 			isa = PBXGroup;
 			children = (
 				49D8D4801A8BA69C00ACAB4B /* TopicViewController.swift */,
+				499A7D081A8CE7BE00490F98 /* TopicFlowLayout.swift */,
 				4948093B1A8DE84700EFA1BB /* TopicParagraphCell.swift */,
 				4948093D1A8DF37800EFA1BB /* TopicImageCell.swift */,
-				499A7D081A8CE7BE00490F98 /* TopicFlowLayout.swift */,
 			);
 			path = TopicViewController;
 			sourceTree = "<group>";

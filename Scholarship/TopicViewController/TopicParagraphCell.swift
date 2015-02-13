@@ -13,7 +13,8 @@ class TopicParagraphCell: UICollectionViewCell {
 
     var textLabel: UILabel = {
         let label = UILabel()
-        
+        label.numberOfLines = 0
+        label.font = UIFont.lightHelveticaNeueWithSize(18.0)
         
         return label
     }()

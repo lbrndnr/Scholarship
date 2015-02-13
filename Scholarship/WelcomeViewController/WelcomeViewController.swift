@@ -49,6 +49,20 @@ class WelcomeViewController: UIViewController, UIViewControllerTransitioningDele
         return label
     }()
     
+    private lazy var topics: [Topic] = {
+        let aboutMeTopic: Topic = {
+            let aboutMeParagraph = Topic.Paragraph(title: NSLocalizedString("About Me", comment: "About Me"), text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", image: nil)
+            let educationParagraph = Topic.Paragraph(title: NSLocalizedString("Education", comment: "Education"), text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", image: nil)
+            let futureParagraph = Topic.Paragraph(title: NSLocalizedString("Future", comment: "Future"), text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", image: nil)
+            
+            let headerImage = UIImage(named: "About")!
+            
+            return Topic(headerImage: headerImage, title: NSLocalizedString("About Me", comment: "About Me"), paragraphs: [aboutMeParagraph, educationParagraph, futureParagraph])
+        }()
+        
+        return [aboutMeTopic]
+    }()
+    
     private lazy var topicButtons: [BlurButton] = {
         func styleButton(button: UIButton) {
             button.titleLabel?.font = UIFont.systemFontOfSize(25.0)
@@ -135,11 +149,7 @@ class WelcomeViewController: UIViewController, UIViewControllerTransitioningDele
         super.viewDidLoad()
         
         let presentTopicViewController: () -> () = {
-            let paragraph = Topic.Paragraph(title: NSLocalizedString("About Me", comment: "About Me"), text: "Yolo", image: nil)
-            let image = UIImage(named: "About")!
-            let topic = Topic(headerImage: image, title: NSLocalizedString("About Me", comment: "About Me"), paragraphs: [paragraph])
-            
-            let controller = TopicViewController(topic: topic)
+            let controller = TopicViewController(topic: self.topics[0])
 //            controller.transitioningDelegate = self
 //            controller.modalPresentationStyle = .Custom
             self.navigationController?.presentViewController(controller, animated: true, completion: nil)
