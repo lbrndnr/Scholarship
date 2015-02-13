@@ -43,12 +43,6 @@ class TopicViewController: UICollectionViewController {
         
         self.headerView.image = self.topic.headerImage
         self.view.addSubview(self.headerView)
-        constrain(self.view, self.headerView) { view, headerView in
-            headerView.width == view.width
-            headerView.top == view.top
-            headerView.left == view.left
-            headerView.height == view.height*0.1
-        }
     }
     
     override func viewDidLoad() {
@@ -59,9 +53,14 @@ class TopicViewController: UICollectionViewController {
             collectionView.registerClass(TopicParagraphCell.self, forCellWithReuseIdentifier: "ParagraphCell")
             collectionView.registerClass(TopicImageCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "ImageCell")
             
-            // Swift bug
-            self.headerView.rac_valuesForKeyPath("bounds", observer: self).subscribeNext { _ in
-                collectionView.contentInset = UIEdgeInsets(top: self.headerView.frame.height, left: 0.0, bottom: 0.0, right: 0.0); return
+            collectionView.contentInset = UIEdgeInsets(top: 200, left: 0.0, bottom: 0.0, right: 0.0)
+            
+            collectionView.rac_valuesForKeyPath("contentOffset", observer: self).subscribeNext { _ in
+                let offset = collectionView.contentOffset.y
+                if offset <= 0.0 {
+                    let collectionViewFrame = collectionView.frame
+                    self.headerView.frame = CGRect(x: 0.0, y: 0.0, width: collectionViewFrame.width, height: -offset)
+                }
             }
         }
     }
