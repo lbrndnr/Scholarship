@@ -32,6 +32,13 @@ class HeaderCollectionViewController: UICollectionViewController {
         return label
     }()
     
+    lazy var dismissButton: UIButton = {
+        let button = UIButton.buttonWithType(.System) as UIButton
+        button.setTitle(NSLocalizedString("Back", comment: "Back"), forState: .Normal)
+        
+        return button
+    }()
+    
     // MARK: - View Lifecycle
     
     override func loadView() {
@@ -44,6 +51,12 @@ class HeaderCollectionViewController: UICollectionViewController {
         // Swift bug
         constrain(self.headerView, self.titleLabel) { headerView, titleLabel in
             titleLabel.edges == headerView.edges; return
+        }
+        
+        self.view.addSubview(self.dismissButton)
+        constrain(self.view, self.headerView, self.dismissButton) { view, headerView, dismissButton in
+            dismissButton.right == view.right-30
+            dismissButton.top == headerView.bottom+20
         }
     }
     
@@ -68,6 +81,11 @@ class HeaderCollectionViewController: UICollectionViewController {
         
         self.rac_valuesForKeyPath("title", observer: self).subscribeNext { _ in
             self.titleLabel.text = self.title
+        }
+        
+        // Swift bug
+        self.dismissButton.rac_signalForControlEvents(.TouchUpInside).subscribeNext { _ in
+            self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil); return
         }
     }
     
