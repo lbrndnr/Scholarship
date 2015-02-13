@@ -21,6 +21,7 @@ class TopicViewController: HeaderCollectionViewController {
         super.init(collectionViewLayout: TopicFlowLayout())
         
         self.headerImage = topic.headerImage
+        self.title = topic.title
     }
 
     required override init(coder aDecoder: NSCoder) {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cartography
 import ReactiveCocoa
 
 class HeaderCollectionViewController: UICollectionViewController {
@@ -14,12 +15,21 @@ class HeaderCollectionViewController: UICollectionViewController {
     var headerImage: UIImage?
     var defaultHeaderHeight: CGFloat = 100.0
     
-    private let headerView: UIImageView = {
+    private lazy var headerView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .ScaleAspectFill
         imageView.clipsToBounds = true
         
         return imageView
+    }()
+    
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .Center
+        label.font = UIFont.systemFontOfSize(24.0)
+        label.textColor = UIColor.whiteColor()
+        
+        return label
     }()
     
     // MARK: - View Lifecycle
@@ -29,6 +39,12 @@ class HeaderCollectionViewController: UICollectionViewController {
         
         self.headerView.image = self.headerImage
         self.view.addSubview(self.headerView)
+        
+        self.headerView.addSubview(self.titleLabel)
+        // Swift bug
+        constrain(self.headerView, self.titleLabel) { headerView, titleLabel in
+            titleLabel.edges == headerView.edges; return
+        }
     }
     
     override func viewDidLoad() {
@@ -48,6 +64,10 @@ class HeaderCollectionViewController: UICollectionViewController {
                     self.headerView.frame = CGRect(x: 0.0, y: 0.0, width: collectionViewFrame.width, height: -offset)
                 }
             }
+        }
+        
+        self.rac_valuesForKeyPath("title", observer: self).subscribeNext { _ in
+            self.titleLabel.text = self.title
         }
     }
     
