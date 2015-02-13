@@ -9,17 +9,9 @@
 import UIKit
 import Cartography
 
-class TopicViewController: UICollectionViewController {
+class TopicViewController: HeaderCollectionViewController {
     
     let topic: Topic
-    
-    let headerView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .ScaleAspectFill
-        imageView.clipsToBounds = true
-        
-        return imageView
-    }()
 
     // MARK: - Initialization
     
@@ -27,9 +19,11 @@ class TopicViewController: UICollectionViewController {
         self.topic = topic
         
         super.init(collectionViewLayout: TopicFlowLayout())
+        
+        self.headerImage = topic.headerImage
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required override init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -40,9 +34,6 @@ class TopicViewController: UICollectionViewController {
         
         self.collectionView?.backgroundColor = UIColor.whiteColor()
         self.collectionView?.alwaysBounceVertical = true
-        
-        self.headerView.image = self.topic.headerImage
-        self.view.addSubview(self.headerView)
     }
     
     override func viewDidLoad() {
@@ -52,16 +43,6 @@ class TopicViewController: UICollectionViewController {
             collectionView.backgroundColor = UIColor.whiteColor()
             collectionView.registerClass(TopicParagraphCell.self, forCellWithReuseIdentifier: "ParagraphCell")
             collectionView.registerClass(TopicImageCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "ImageCell")
-            
-            collectionView.contentInset = UIEdgeInsets(top: 200, left: 0.0, bottom: 0.0, right: 0.0)
-            
-            collectionView.rac_valuesForKeyPath("contentOffset", observer: self).subscribeNext { _ in
-                let offset = collectionView.contentOffset.y
-                if offset <= 0.0 {
-                    let collectionViewFrame = collectionView.frame
-                    self.headerView.frame = CGRect(x: 0.0, y: 0.0, width: collectionViewFrame.width, height: -offset)
-                }
-            }
         }
     }
     
