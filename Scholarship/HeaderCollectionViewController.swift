@@ -71,6 +71,12 @@ class HeaderCollectionViewController: UICollectionViewController {
         }
     }
     
+    // MARK: - Status Bar Style
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
     // MARK: -
 
 }

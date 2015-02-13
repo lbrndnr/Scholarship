@@ -58,6 +58,7 @@
 		499A7D061A8CE27F00490F98 /* TopicTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicTransitionAnimator.swift; sourceTree = "<group>"; };
 		499A7D081A8CE7BE00490F98 /* TopicFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicFlowLayout.swift; sourceTree = "<group>"; };
 		49CAF2AA1A8E112C00C2B7CC /* HeaderCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewController.swift; sourceTree = "<group>"; };
+		49CAF2AC1A8E15BB00C2B7CC /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		49D233C61A8B734400E7BAE0 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		49D492F61A8A2E2200ECCCA6 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		49D492F81A8A33CE00ECCCA6 /* BarGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarGraph.swift; sourceTree = "<group>"; };
@@ -117,7 +118,7 @@
 				49D492F81A8A33CE00ECCCA6 /* BarGraph.swift */,
 				49186E751A8655E5006A602A /* Launch Screen.xib */,
 				492D91BF1A850A62009730D7 /* Images.xcassets */,
-				492D91DF1A85180E009730D7 /* Externals */,
+				492D91DF1A85180E009730D7 /* Frameworks */,
 				492D91B61A850A62009730D7 /* Supporting Files */,
 			);
 			path = Scholarship;
@@ -148,14 +149,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		492D91DF1A85180E009730D7 /* Externals */ = {
+		492D91DF1A85180E009730D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49CAF2AC1A8E15BB00C2B7CC /* CoreImage.framework */,
 				492D91D81A8515B5009730D7 /* Cartography.framework */,
 				492D91D91A8515B5009730D7 /* LlamaKit.framework */,
 				492D91DA1A8515B5009730D7 /* ReactiveCocoa.framework */,
 			);
-			name = Externals;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		49D8D47E1A8BA2A900ACAB4B /* WelcomeViewController */ = {
