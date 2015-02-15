@@ -86,7 +86,7 @@ class HeaderCollectionViewController: UICollectionViewController {
         
         self.rac_valuesForKeyPath("headerImage", observer: self).subscribeNext { _ in
             self.headerImageView.image = self.headerImage
-            self.blurredHeaderImageView.image = self.headerImage?.applyBlurWithRadius(30.0, tintColor: UIColor(white: 0.0, alpha: 0.1), saturationDeltaFactor: 1.0, maskImage: nil)
+            self.blurredHeaderImageView.image = self.headerImage?.applyBlurWithRadius(20.0, tintColor: UIColor(white: 0.11, alpha: 0.3), saturationDeltaFactor: 1.4, maskImage: nil)
         }
         
         if let collectionView = self.collectionView {
