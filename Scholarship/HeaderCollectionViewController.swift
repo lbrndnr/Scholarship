@@ -72,10 +72,7 @@ class HeaderCollectionViewController: UICollectionViewController {
             
             collectionView.rac_valuesForKeyPath("contentOffset", observer: self).subscribeNext { _ in
                 let offset = collectionView.contentOffset.y
-                if offset <= 0.0 {
-                    let collectionViewFrame = collectionView.frame
-                    self.headerView.frame = CGRect(x: 0.0, y: 0.0, width: collectionViewFrame.width, height: -offset)
-                }
+                self.headerView.frame = CGRect(x: 0.0, y: 0.0, width: collectionView.frame.width, height: max(-offset, 0.0))
             }
         }
         
