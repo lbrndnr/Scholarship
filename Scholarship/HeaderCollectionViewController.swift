@@ -56,14 +56,12 @@ class HeaderCollectionViewController: UICollectionViewController {
         
         self.view.addSubview(self.headerView)
         
-        self.headerImageView.image = self.headerImage
         self.headerView.addSubview(self.headerImageView)
         // Swift bug
         constrain(self.headerView, self.headerImageView) { headerView, headerImageView in
             headerImageView.edges == headerView.edges; return
         }
         
-        self.blurredHeaderImageView.image = self.headerImage?.applyBlurWithRadius(30.0, tintColor: UIColor(white: 0.0, alpha: 0.1), saturationDeltaFactor: 1.0, maskImage: nil)
         self.headerView.addSubview(self.blurredHeaderImageView)
         // Swift bug
         constrain(self.headerView, self.blurredHeaderImageView) { headerView, blurredHeaderImageView in
@@ -85,6 +83,11 @@ class HeaderCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.rac_valuesForKeyPath("headerImage", observer: self).subscribeNext { _ in
+            self.headerImageView.image = self.headerImage
+            self.blurredHeaderImageView.image = self.headerImage?.applyBlurWithRadius(30.0, tintColor: UIColor(white: 0.0, alpha: 0.1), saturationDeltaFactor: 1.0, maskImage: nil)
+        }
         
         if let collectionView = self.collectionView {
             collectionView.backgroundColor = UIColor.whiteColor()
