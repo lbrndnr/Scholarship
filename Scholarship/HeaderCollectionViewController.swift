@@ -13,9 +13,19 @@ import ReactiveCocoa
 class HeaderCollectionViewController: UICollectionViewController {
 
     var headerImage: UIImage?
-    var defaultHeaderHeight: CGFloat = 100.0
+    var defaultHeaderHeight: CGFloat = 200.0
     
-    private lazy var headerView: UIImageView = {
+    private lazy var headerView = UIView()
+    
+    private lazy var headerImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .ScaleAspectFill
+        imageView.clipsToBounds = true
+        
+        return imageView
+    }()
+    
+    private lazy var blurredHeaderImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .ScaleAspectFill
         imageView.clipsToBounds = true
@@ -44,8 +54,21 @@ class HeaderCollectionViewController: UICollectionViewController {
     override func loadView() {
         super.loadView()
         
-        self.headerView.image = self.headerImage
         self.view.addSubview(self.headerView)
+        
+        self.headerImageView.image = self.headerImage
+        self.headerView.addSubview(self.headerImageView)
+        // Swift bug
+        constrain(self.headerView, self.headerImageView) { headerView, headerImageView in
+            headerImageView.edges == headerView.edges; return
+        }
+        
+        self.blurredHeaderImageView.image = self.headerImage?.applyBlurWithRadius(30.0, tintColor: UIColor(white: 0.0, alpha: 0.1), saturationDeltaFactor: 1.0, maskImage: nil)
+        self.headerView.addSubview(self.blurredHeaderImageView)
+        // Swift bug
+        constrain(self.headerView, self.blurredHeaderImageView) { headerView, blurredHeaderImageView in
+            blurredHeaderImageView.edges == headerView.edges; return
+        }
         
         self.headerView.addSubview(self.titleLabel)
         // Swift bug
@@ -68,11 +91,20 @@ class HeaderCollectionViewController: UICollectionViewController {
             collectionView.registerClass(TopicParagraphCell.self, forCellWithReuseIdentifier: "ParagraphCell")
             collectionView.registerClass(TopicImageCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "ImageCell")
             
-            collectionView.contentInset = UIEdgeInsets(top: 200, left: 0.0, bottom: 0.0, right: 0.0)
+            self.rac_valuesForKeyPath("defaultHeaderHeight", observer: self).subscribeNext { _ in
+                collectionView.contentInset = UIEdgeInsets(top: self.defaultHeaderHeight, left: 0.0, bottom: 0.0, right: 0.0)
+            }
             
             collectionView.rac_valuesForKeyPath("contentOffset", observer: self).subscribeNext { _ in
                 let offset = collectionView.contentOffset.y
                 self.headerView.frame = CGRect(x: 0.0, y: 0.0, width: collectionView.frame.width, height: max(-offset, 0.0))
+                
+                if offset+self.defaultHeaderHeight < 0 {
+                    self.blurredHeaderImageView.alpha = 1.0-((offset+self.defaultHeaderHeight)/(-self.defaultHeaderHeight))
+                }
+                else {
+                    self.blurredHeaderImageView.alpha = 1.0
+                }
             }
         }
         
