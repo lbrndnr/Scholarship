@@ -9,7 +9,10 @@
 import UIKit
 import Cartography
 
-class TopicViewController: HeaderCollectionViewController {
+private let paragraphCellIdentifier = "ParagraphCell"
+private let imageCellIdentifier = "ImageCell"
+
+class TopicViewController: HeaderCollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let topic: Topic
 
@@ -42,8 +45,8 @@ class TopicViewController: HeaderCollectionViewController {
         
         if let collectionView = self.collectionView {
             collectionView.backgroundColor = UIColor.whiteColor()
-            collectionView.registerClass(TopicParagraphCell.self, forCellWithReuseIdentifier: "ParagraphCell")
-            collectionView.registerClass(TopicImageCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "ImageCell")
+            collectionView.registerClass(TopicParagraphCell.self, forCellWithReuseIdentifier: paragraphCellIdentifier)
+            collectionView.registerClass(TopicImageCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: imageCellIdentifier)
         }
     }
     
@@ -58,17 +61,38 @@ class TopicViewController: HeaderCollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ParagraphCell", forIndexPath: indexPath) as TopicParagraphCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(paragraphCellIdentifier, forIndexPath: indexPath) as TopicParagraphCell
         cell.textLabel.text = self.topic.paragraphs[indexPath.section].text
         
         return cell
     }
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let cell = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "ImageCell", forIndexPath: indexPath) as TopicImageCell
+        let cell = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: imageCellIdentifier, forIndexPath: indexPath) as TopicImageCell
         cell.imageView.image = self.topic.paragraphs[indexPath.section].image
         
         return cell
+    }
+    
+    // MARK: - UICollectionViewDelegateFlowLayout
+    
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let text: NSString = self.topic.paragraphs[indexPath.section].text
+        let bounds = collectionView.bounds
+        let constraint = CGSize(width: 0.6*bounds.width, height: CGFloat.max)
+        let attributes = [NSFontAttributeName: UIFont.lightHelveticaNeueWithSize(18.0)]
+        
+        return text.boundingRectWithSize(constraint, options: .UsesLineFragmentOrigin, attributes: attributes, context: nil).size
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if let image = self.topic.paragraphs[section].image {
+            let bounds = collectionView.bounds
+            return CGSize(width: 0.2*bounds.width, height: 50)
+        }
+        
+        return CGSizeZero
     }
     
     // MARK: -

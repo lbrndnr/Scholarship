@@ -26,12 +26,7 @@ class TopicFlowLayout: UICollectionViewFlowLayout {
     }
     
     private func initialize() {
-        self.rac_valuesForKeyPath("collectionView.bounds", observer: self).subscribeNext { _ in
-            if let collectionView = self.collectionView {
-                let bounds = collectionView.bounds
-                self.itemSize = CGSize(width: bounds.width*0.75, height: 100)
-            }
-        }
+
     }
     
     // MARK: -
