@@ -10,7 +10,9 @@ import UIKit
 import Cartography
 import ReactiveCocoa
 
-class BlurButton: UIButton {
+class TopicButton: UIButton {
+    
+    var topic: Topic?
     
     // MARK: - Initialization
     
@@ -28,6 +30,11 @@ class BlurButton: UIButton {
             constrain(self, blurView) { view, blurView in
                 blurView.edges == view.edges; return
             }
+        }
+        
+        self.rac_valuesForKeyPath("topic", observer: self).subscribeNext { _ in
+            self.setTitle(self.topic?.title, forState: .Normal)
+            self.setBackgroundImage(self.topic?.headerImage, forState: .Normal)
         }
         
         self.rac_valuesForKeyPath("highlighted", observer: self).subscribeNext { _ in

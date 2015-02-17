@@ -10,7 +10,7 @@ import UIKit
 import Cartography
 import ReactiveCocoa
 
-class WelcomeViewController: UIViewController, UIViewControllerTransitioningDelegate {
+class WelcomeViewController: UIViewController {
 
     private lazy var avatarButton: UIButton = {
         let button = UIButton()
@@ -71,30 +71,7 @@ class WelcomeViewController: UIViewController, UIViewControllerTransitioningDele
         return [aboutMeTopic, projectsTopic]
     }()
     
-    private lazy var topicButtons: [BlurButton] = {
-        func styleButton(button: UIButton) {
-            button.titleLabel?.font = UIFont.systemFontOfSize(25.0)
-            button.layer.cornerRadius = 5.0
-            button.layer.masksToBounds = true
-        }
-        
-        let aboutButton = BlurButton()
-        aboutButton.setBackgroundImage(UIImage(named: "About"), forState: .Normal)
-        aboutButton.setTitle(NSLocalizedString("About Me", comment: "About Me"), forState: .Normal)
-        styleButton(aboutButton)
-        
-        let projectsButton = BlurButton()
-        projectsButton.setBackgroundImage(UIImage(named: "Projects"), forState: .Normal)
-        projectsButton.setTitle(NSLocalizedString("Projects", comment: "Projects"), forState: .Normal)
-        styleButton(projectsButton)
-        
-        let interestsButton = BlurButton()
-        interestsButton.setBackgroundImage(UIImage(named: "Interests"), forState: .Normal)
-        interestsButton.setTitle(NSLocalizedString("Interests", comment: "Interests"), forState: .Normal)
-        styleButton(interestsButton)
-        
-        return [aboutButton, projectsButton, interestsButton]
-    }()
+    private var topicButtons = [TopicButton]()
     
     // MARK: - View Lifecycle
     
@@ -120,7 +97,17 @@ class WelcomeViewController: UIViewController, UIViewControllerTransitioningDele
 
         let buttonSize = CGSize(width: 200.0, height: 130.0)
         
-        var previousButton: BlurButton?
+        self.topicButtons = self.topics.map { topic in
+            let button = TopicButton()
+            button.topic = topic
+            button.titleLabel?.font = UIFont.systemFontOfSize(25.0)
+            button.layer.cornerRadius = 5.0
+            button.layer.masksToBounds = true
+            
+            return button
+        }
+        
+        var previousButton: TopicButton?
         let middleIndex = Double(self.topicButtons.count)/2.0
         for (i, button) in enumerate(self.topicButtons) {
             self.view.addSubview(button)
@@ -156,23 +143,14 @@ class WelcomeViewController: UIViewController, UIViewControllerTransitioningDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let presentTopicViewController: () -> () = {
-            let controller = TopicViewController(topic: self.topics[1])
-//            controller.transitioningDelegate = self
-//            controller.modalPresentationStyle = .Custom
-            self.navigationController?.presentViewController(controller, animated: true, completion: nil)
+        for button in self.topicButtons {
+            button.rac_signalForControlEvents(.TouchUpInside).subscribeNext() { _ in
+                if let topic = button.topic {
+                    let controller = TopicViewController(topic: topic)
+                    self.navigationController?.presentViewController(controller, animated: true, completion: nil)
+                }
+            }
         }
-        
-        // Swift bug
-        self.topicButtons[1].rac_signalForControlEvents(.TouchUpInside).subscribeNext() { _ in
-            presentTopicViewController(); return
-        }
-    }
-    
-    // MARK: - UIViewControllerTransitioningDelegate
-    
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return TopicTransitionAnimator(presenting: true, topicButton: self.topicButtons[0])
     }
     
     // MARK: -

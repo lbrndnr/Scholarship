@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		49186E761A8655E5006A602A /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49186E751A8655E5006A602A /* Launch Screen.xib */; };
-		49186E781A866D0F006A602A /* BlurButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49186E771A866D0F006A602A /* BlurButton.swift */; };
+		49186E781A866D0F006A602A /* TopicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49186E771A866D0F006A602A /* TopicButton.swift */; };
 		492D91B91A850A62009730D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D91B81A850A62009730D7 /* AppDelegate.swift */; };
 		492D91BB1A850A62009730D7 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D91BA1A850A62009730D7 /* WelcomeViewController.swift */; };
 		492D91C01A850A62009730D7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 492D91BF1A850A62009730D7 /* Images.xcassets */; };
@@ -19,7 +19,6 @@
 		4948093C1A8DE84700EFA1BB /* TopicParagraphCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4948093B1A8DE84700EFA1BB /* TopicParagraphCell.swift */; };
 		4948093E1A8DF37800EFA1BB /* TopicImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4948093D1A8DF37800EFA1BB /* TopicImageCell.swift */; };
 		497E7C421A90EBC200717AA3 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 497E7C401A90EBC200717AA3 /* UIImage+ImageEffects.m */; };
-		499A7D071A8CE27F00490F98 /* TopicTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A7D061A8CE27F00490F98 /* TopicTransitionAnimator.swift */; };
 		499A7D091A8CE7BE00490F98 /* TopicFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A7D081A8CE7BE00490F98 /* TopicFlowLayout.swift */; };
 		49CAF2AB1A8E112C00C2B7CC /* HeaderCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CAF2AA1A8E112C00C2B7CC /* HeaderCollectionViewController.swift */; };
 		49D233C71A8B734400E7BAE0 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D233C61A8B734400E7BAE0 /* Extension.swift */; };
@@ -42,7 +41,7 @@
 
 /* Begin PBXFileReference section */
 		49186E751A8655E5006A602A /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
-		49186E771A866D0F006A602A /* BlurButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurButton.swift; sourceTree = "<group>"; };
+		49186E771A866D0F006A602A /* TopicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicButton.swift; sourceTree = "<group>"; };
 		492D91B31A850A62009730D7 /* Scholarship.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scholarship.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		492D91B71A850A62009730D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		492D91B81A850A62009730D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,7 +58,6 @@
 		497E7C401A90EBC200717AA3 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		497E7C411A90EBC200717AA3 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		497E7C431A90EBF600717AA3 /* Scholarship-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Scholarship-Bridging-Header.h"; sourceTree = "<group>"; };
-		499A7D061A8CE27F00490F98 /* TopicTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicTransitionAnimator.swift; sourceTree = "<group>"; };
 		499A7D081A8CE7BE00490F98 /* TopicFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicFlowLayout.swift; sourceTree = "<group>"; };
 		49CAF2AA1A8E112C00C2B7CC /* HeaderCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewController.swift; sourceTree = "<group>"; };
 		49CAF2AC1A8E15BB00C2B7CC /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
@@ -171,8 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				492D91BA1A850A62009730D7 /* WelcomeViewController.swift */,
-				499A7D061A8CE27F00490F98 /* TopicTransitionAnimator.swift */,
-				49186E771A866D0F006A602A /* BlurButton.swift */,
+				49186E771A866D0F006A602A /* TopicButton.swift */,
 			);
 			path = WelcomeViewController;
 			sourceTree = "<group>";
@@ -312,10 +309,9 @@
 				497E7C421A90EBC200717AA3 /* UIImage+ImageEffects.m in Sources */,
 				492D91B91A850A62009730D7 /* AppDelegate.swift in Sources */,
 				49D233C71A8B734400E7BAE0 /* Extension.swift in Sources */,
-				49186E781A866D0F006A602A /* BlurButton.swift in Sources */,
+				49186E781A866D0F006A602A /* TopicButton.swift in Sources */,
 				4948093E1A8DF37800EFA1BB /* TopicImageCell.swift in Sources */,
 				4948093C1A8DE84700EFA1BB /* TopicParagraphCell.swift in Sources */,
-				499A7D071A8CE27F00490F98 /* TopicTransitionAnimator.swift in Sources */,
 				49DAC2B91A8C9984004BBBC0 /* Topic.swift in Sources */,
 				49D492F71A8A2E2200ECCCA6 /* Style.swift in Sources */,
 				49D8D4811A8BA69C00ACAB4B /* TopicViewController.swift in Sources */,
