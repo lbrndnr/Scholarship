@@ -47,7 +47,7 @@ class TopicImageCell: UICollectionViewCell {
                 self.transform = (self.highlighted) ? CGAffineTransformMakeScale(0.95, 0.95) : CGAffineTransformIdentity
                 }, completion: nil)
         }
-    }    
+    }
     
     // MARK: -
 

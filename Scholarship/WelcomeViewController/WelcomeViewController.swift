@@ -68,7 +68,15 @@ class WelcomeViewController: UIViewController {
             return Topic(headerImage: headerImage, title: NSLocalizedString("Projects", comment: "Projects"), paragraphs: [crimsonParagraph])
         }()
         
-        return [aboutMeTopic, projectsTopic]
+        let interestsTopic: Topic = {
+            let crimsonParagraph = Topic.Paragraph(title: "Crimson", text: NSLocalizedString("As you type, Crimson gives suggestions on the next word it thinks you’ll pick directly above the letter. The same autocorrect style can be found on BlackBerry 10’s virtual keyboard; it’s an awesome way to present a number of options on screen, without taking up more space above the keyboard.", comment: "Crimson text"), mainImage: UIImage(named: "Crimson-Icon"), images: [UIImage(named: "crimson-banner")!, UIImage(named: "crimson-banner")!])
+            
+            let headerImage = UIImage(named: "Interests")!
+            
+            return Topic(headerImage: headerImage, title: NSLocalizedString("Interests", comment: "Interests"), paragraphs: [crimsonParagraph])
+        }()
+        
+        return [aboutMeTopic, projectsTopic, interestsTopic]
     }()
     
     private var topicButtons = [TopicButton]()
