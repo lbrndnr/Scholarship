@@ -14,7 +14,15 @@ struct Topic {
         
         let title: String
         let text: String
-        let image: UIImage?
+        let mainImage: UIImage?
+        let images: [UIImage]?
+        
+        init(title: String, text: String, mainImage: UIImage? = nil, images: [UIImage]? = nil) {
+            self.title = title
+            self.text = text
+            self.mainImage = mainImage
+            self.images = images
+        }
         
     }
     

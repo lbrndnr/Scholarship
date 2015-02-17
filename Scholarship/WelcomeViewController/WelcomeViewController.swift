@@ -51,16 +51,24 @@ class WelcomeViewController: UIViewController, UIViewControllerTransitioningDele
     
     private lazy var topics: [Topic] = {
         let aboutMeTopic: Topic = {
-            let aboutMeParagraph = Topic.Paragraph(title: NSLocalizedString("About Me", comment: "About Me"), text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", image: UIImage(named: "crimson-banner"))
-            let educationParagraph = Topic.Paragraph(title: NSLocalizedString("Education", comment: "Education"), text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", image: nil)
-            let futureParagraph = Topic.Paragraph(title: NSLocalizedString("Future", comment: "Future"), text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", image: nil)
+            let aboutMeParagraph = Topic.Paragraph(title: NSLocalizedString("About Me", comment: "About Me"), text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
+            let educationParagraph = Topic.Paragraph(title: NSLocalizedString("Education", comment: "Education"), text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
+            let futureParagraph = Topic.Paragraph(title: NSLocalizedString("Future", comment: "Future"), text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
             
             let headerImage = UIImage(named: "About")!
             
             return Topic(headerImage: headerImage, title: NSLocalizedString("About Me", comment: "About Me"), paragraphs: [aboutMeParagraph, educationParagraph, futureParagraph])
         }()
         
-        return [aboutMeTopic]
+        let projectsTopic: Topic = {
+            let crimsonParagraph = Topic.Paragraph(title: "Crimson", text: NSLocalizedString("As you type, Crimson gives suggestions on the next word it thinks you’ll pick directly above the letter. The same autocorrect style can be found on BlackBerry 10’s virtual keyboard; it’s an awesome way to present a number of options on screen, without taking up more space above the keyboard.", comment: "Crimson text"), mainImage: UIImage(named: "Crimson-Icon"), images: [UIImage(named: "crimson-banner")!])
+            
+            let headerImage = UIImage(named: "Projects")!
+            
+            return Topic(headerImage: headerImage, title: NSLocalizedString("Projects", comment: "Projects"), paragraphs: [crimsonParagraph])
+        }()
+        
+        return [aboutMeTopic, projectsTopic]
     }()
     
     private lazy var topicButtons: [BlurButton] = {
@@ -149,14 +157,14 @@ class WelcomeViewController: UIViewController, UIViewControllerTransitioningDele
         super.viewDidLoad()
         
         let presentTopicViewController: () -> () = {
-            let controller = TopicViewController(topic: self.topics[0])
+            let controller = TopicViewController(topic: self.topics[1])
 //            controller.transitioningDelegate = self
 //            controller.modalPresentationStyle = .Custom
             self.navigationController?.presentViewController(controller, animated: true, completion: nil)
         }
         
         // Swift bug
-        self.topicButtons[0].rac_signalForControlEvents(.TouchUpInside).subscribeNext() { _ in
+        self.topicButtons[1].rac_signalForControlEvents(.TouchUpInside).subscribeNext() { _ in
             presentTopicViewController(); return
         }
     }

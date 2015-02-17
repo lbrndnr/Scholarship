@@ -46,7 +46,7 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
         if let collectionView = self.collectionView {
             collectionView.backgroundColor = UIColor.whiteColor()
             collectionView.registerClass(TopicParagraphCell.self, forCellWithReuseIdentifier: paragraphCellIdentifier)
-            collectionView.registerClass(TopicImageCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: imageCellIdentifier)
+            collectionView.registerClass(TopicImageCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: imageCellIdentifier)
         }
     }
     
@@ -61,21 +61,24 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let paragraph = self.topic.paragraphs[indexPath.section]
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(paragraphCellIdentifier, forIndexPath: indexPath) as TopicParagraphCell
-        cell.textLabel.text = self.topic.paragraphs[indexPath.section].text
+        
+        cell.titleLabel.text = paragraph.title
+        cell.textLabel.text = paragraph.text
+        cell.imageView.image = paragraph.mainImage
         
         return cell
     }
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let cell = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: imageCellIdentifier, forIndexPath: indexPath) as TopicImageCell
-        cell.imageView.image = self.topic.paragraphs[indexPath.section].image
+        let cell = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionFooter, withReuseIdentifier: imageCellIdentifier, forIndexPath: indexPath) as TopicImageCell
+        cell.imageView.image = self.topic.paragraphs[indexPath.section].images?.first
         
         return cell
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout
-    
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let text: NSString = self.topic.paragraphs[indexPath.section].text
@@ -86,8 +89,8 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
         return text.boundingRectWithSize(constraint, options: .UsesLineFragmentOrigin, attributes: attributes, context: nil).size
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if let image = self.topic.paragraphs[section].image {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if let images = self.topic.paragraphs[section].images {
             let bounds = collectionView.bounds
             return CGSize(width: 0.2*bounds.width, height: 50)
         }
