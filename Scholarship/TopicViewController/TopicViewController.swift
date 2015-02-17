@@ -21,7 +21,10 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
     init(topic: Topic) {
         self.topic = topic
         
-        super.init(collectionViewLayout: TopicFlowLayout())
+        let layout = TopicFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 10.0, left: 0.0, bottom: 10.0, right: 0.0)
+
+        super.init(collectionViewLayout: layout)
         
         self.headerImage = topic.headerImage
         self.title = topic.title
@@ -46,7 +49,7 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
         if let collectionView = self.collectionView {
             collectionView.backgroundColor = UIColor.whiteColor()
             collectionView.registerClass(TopicParagraphCell.self, forCellWithReuseIdentifier: paragraphCellIdentifier)
-            collectionView.registerClass(TopicImageCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: imageCellIdentifier)
+            collectionView.registerClass(TopicImageCell.self, forCellWithReuseIdentifier: imageCellIdentifier)
         }
     }
     
@@ -57,25 +60,29 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        let paragraph = self.topic.paragraphs[section]
+        
+        return 1+(paragraph.images?.count ?? 0)
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let paragraph = self.topic.paragraphs[indexPath.section]
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(paragraphCellIdentifier, forIndexPath: indexPath) as TopicParagraphCell
         
-        cell.titleLabel.text = paragraph.title
-        cell.textLabel.text = paragraph.text
-        cell.imageView.image = paragraph.mainImage
-        
-        return cell
-    }
-    
-    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let cell = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionFooter, withReuseIdentifier: imageCellIdentifier, forIndexPath: indexPath) as TopicImageCell
-        cell.imageView.image = self.topic.paragraphs[indexPath.section].images?.first
-        
-        return cell
+        if indexPath.item == 0 {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(paragraphCellIdentifier, forIndexPath: indexPath) as TopicParagraphCell
+            cell.titleLabel.text = paragraph.title
+            cell.textLabel.text = paragraph.text
+            cell.imageView.image = paragraph.mainImage
+            
+            return cell
+        }
+        else {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(imageCellIdentifier, forIndexPath: indexPath) as TopicImageCell
+            cell.imageView.image = paragraph.images?[indexPath.item-1]
+            cell.backgroundColor = UIColor.greenColor()
+            
+            return cell
+        }
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout
