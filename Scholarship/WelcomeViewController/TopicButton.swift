@@ -12,7 +12,12 @@ import ReactiveCocoa
 
 class TopicButton: UIButton {
     
-    var topic: Topic?
+    var topic: Topic? {
+        didSet {
+            self.setTitle(self.topic?.title, forState: .Normal)
+            self.setBackgroundImage(self.topic?.headerImage, forState: .Normal)
+        }
+    }
     
     // MARK: - Initialization
     
@@ -30,11 +35,6 @@ class TopicButton: UIButton {
             constrain(self, blurView) { view, blurView in
                 blurView.edges == view.edges; return
             }
-        }
-        
-        self.rac_valuesForKeyPath("topic", observer: self).subscribeNext { _ in
-            self.setTitle(self.topic?.title, forState: .Normal)
-            self.setBackgroundImage(self.topic?.headerImage, forState: .Normal)
         }
         
         self.rac_valuesForKeyPath("highlighted", observer: self).subscribeNext { _ in
