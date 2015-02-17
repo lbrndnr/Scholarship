@@ -14,6 +14,7 @@ class HeaderCollectionViewController: UICollectionViewController {
 
     var headerImage: UIImage?
     var defaultHeaderHeight: CGFloat = 200.0
+    var minimumHeaderHeight: CGFloat = 100.0
     
     private lazy var headerView = UIView()
     
@@ -101,7 +102,9 @@ class HeaderCollectionViewController: UICollectionViewController {
             
             collectionView.rac_valuesForKeyPath("contentOffset", observer: self).subscribeNext { _ in
                 let offset = collectionView.contentOffset.y
-                self.headerView.frame = CGRect(x: 0.0, y: 0.0, width: collectionView.frame.width, height: max(-offset, 0.0))
+                
+                self.headerView.frame = CGRect(x: 0.0, y: 0.0, width: collectionView.frame.width, height: max(-offset, self.minimumHeaderHeight))
+                collectionView.scrollIndicatorInsets = UIEdgeInsets(top: self.headerView.frame.height, left: 0.0, bottom: 0.0, right: 0.0)
                 
                 if offset+self.defaultHeaderHeight < 0 {
                     self.blurredHeaderImageView.alpha = 1.0-((offset+self.defaultHeaderHeight)/(-self.defaultHeaderHeight))

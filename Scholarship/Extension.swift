@@ -22,7 +22,7 @@ func + (left: NSAttributedString, right: NSAttributedString) -> NSAttributedStri
 // MARK: - UIEdgeInsets
 
 extension UIEdgeInsets {
-    
+
     var horizontal: CGFloat {
         return self.left+self.right
     }
