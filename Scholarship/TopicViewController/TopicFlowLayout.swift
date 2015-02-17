@@ -78,6 +78,10 @@ class TopicFlowLayout: UICollectionViewFlowLayout {
         }
     }
     
+    override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+        return (self.collectionView?.bounds.width ?? 0) != newBounds.width
+    }
+    
     override func collectionViewContentSize() -> CGSize {
         let rect = self.layoutAttributes.reduce(CGRectZero) { memo, section in
             return section.reduce(memo) { memo, attributes in
@@ -88,12 +92,8 @@ class TopicFlowLayout: UICollectionViewFlowLayout {
         return rect.size
     }
     
-    override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
-        return (self.collectionView?.bounds.width ?? 0) != newBounds.width
-    }
-    
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
-        let allAttributes = self.layoutAttributes.reduce([UICollectionViewLayoutAttributes]()) { $0 + $1 }
+        let allAttributes = self.layoutAttributes.reduce([], +)
         
         return allAttributes.filter { attributes in
             CGRectIntersectsRect(rect, attributes.frame)
