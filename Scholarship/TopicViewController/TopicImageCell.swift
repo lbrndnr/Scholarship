@@ -8,13 +8,15 @@
 
 import UIKit
 import Cartography
+import ReactiveCocoa
 
 class TopicImageCell: UICollectionViewCell {
 
     var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .ScaleAspectFill
-        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 8.0
+        imageView.layer.masksToBounds = true
         
         return imageView
     }()
@@ -39,7 +41,13 @@ class TopicImageCell: UICollectionViewCell {
         constrain(self.contentView, self.imageView) { view, imageView in
             imageView.edges == view.edges; return
         }
-    }
+    
+        self.rac_valuesForKeyPath("highlighted", observer: self).subscribeNext { _ in
+            UIView.animateWithDuration(0.2, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options: .BeginFromCurrentState, animations: {
+                self.transform = (self.highlighted) ? CGAffineTransformMakeScale(0.95, 0.95) : CGAffineTransformIdentity
+                }, completion: nil)
+        }
+    }    
     
     // MARK: -
 

@@ -30,11 +30,12 @@ class TopicFlowLayout: UICollectionViewFlowLayout {
         if let collectionView = self.collectionView {
             if let dataSource = collectionView.dataSource {
                 if let delegate = collectionView.delegate as? UICollectionViewDelegateFlowLayout {
+                    var origin = CGPoint(x: self.sectionInset.left, y: self.sectionInset.top)
+                    
                     for s in 0..<(dataSource.numberOfSectionsInCollectionView?(collectionView) ?? 0) {
                         let numberOfItems = dataSource.collectionView(collectionView, numberOfItemsInSection: s)
                         
                         var layoutAttributes = [UICollectionViewLayoutAttributes]()
-                        var origin = CGPoint(x: self.sectionInset.left, y: self.sectionInset.top)
                         let numberOfSecondaryItems = numberOfItems-1
                         
                         if numberOfItems > 0 {
@@ -54,7 +55,13 @@ class TopicFlowLayout: UICollectionViewFlowLayout {
                                 }
                                 else {
                                     frame = CGRect(origin: origin, size: secondaryItemSize)
-                                    origin.x = frame.maxX+self.minimumInteritemSpacing
+                                    
+                                    if i == numberOfItems-1 {
+                                        origin = CGPoint(x: self.sectionInset.left, y: frame.maxY+self.sectionInset.bottom+self.sectionInset.top)
+                                    }
+                                    else {
+                                        origin.x = frame.maxX+self.minimumInteritemSpacing
+                                    }
                                 }
                                 
                                 let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: NSIndexPath(forItem: i, inSection: s))

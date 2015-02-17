@@ -15,6 +15,8 @@ private let imageCellIdentifier = "ImageCell"
 class TopicViewController: HeaderCollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let topic: Topic
+    
+    private lazy var prototypingCell = TopicParagraphCell(frame: CGRectZero)
 
     // MARK: - Initialization
     
@@ -81,7 +83,6 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
         else {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(imageCellIdentifier, forIndexPath: indexPath) as TopicImageCell
             cell.imageView.image = paragraph.images?[indexPath.item-1]
-            cell.backgroundColor = UIColor.greenColor()
             
             return cell
         }
@@ -92,10 +93,10 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let text: NSString = self.topic.paragraphs[indexPath.section].text
         let bounds = collectionView.bounds
-        let constraint = CGSize(width: 0.6*bounds.width, height: CGFloat.max)
+        let constraint = CGSize(width: 0.6*bounds.width-160, height: CGFloat.max)
         let attributes = [NSFontAttributeName: UIFont.lightHelveticaNeueWithSize(18.0)]
         
-        return text.boundingRectWithSize(constraint, options: .UsesLineFragmentOrigin, attributes: attributes, context: nil).size
+        return CGSize(width: 0.6*bounds.width, height: text.boundingRectWithSize(constraint, options: .UsesLineFragmentOrigin, attributes: attributes, context: nil).height)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
