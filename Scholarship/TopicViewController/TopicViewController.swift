@@ -22,7 +22,9 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
         self.topic = topic
         
         let layout = TopicFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 10.0, left: 0.0, bottom: 10.0, right: 0.0)
+        layout.sectionInset = UIEdgeInsets(top: 20.0, left: 0.0, bottom: 0.0, right: 0.0)
+        layout.minimumInteritemSpacing = 20
+        layout.minimumLineSpacing = 20
 
         super.init(collectionViewLayout: layout)
         

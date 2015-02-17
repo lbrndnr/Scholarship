@@ -9,15 +9,9 @@
 import UIKit
 import ReactiveCocoa
 
-class TopicFlowLayout: UICollectionViewLayout {
+class TopicFlowLayout: UICollectionViewFlowLayout {
     
     private var layoutAttributes = [[UICollectionViewLayoutAttributes]]()
-    
-    var sectionInset: UIEdgeInsets = UIEdgeInsetsZero {
-        didSet {
-            self.invalidateLayout()
-        }
-    }
     
     var secondaryItemHeight: CGFloat = 100.0 {
         didSet {
@@ -45,17 +39,22 @@ class TopicFlowLayout: UICollectionViewLayout {
                         
                         if numberOfItems > 0 {
                             let mainItemSize = delegate.collectionView?(collectionView, layout: self, sizeForItemAtIndexPath: NSIndexPath(forItem: 0, inSection: s)) ?? CGSizeZero
-                            let secondaryItemSize = CGSize(width: mainItemSize.width/CGFloat(numberOfSecondaryItems), height: self.secondaryItemHeight)
+                            let secondaryItemSize: CGSize = {
+                                let spacing = CGFloat(numberOfSecondaryItems-1)*self.minimumInteritemSpacing
+                                let width = (mainItemSize.width-spacing)/CGFloat(numberOfSecondaryItems)
+                                
+                                return CGSize(width: width, height: self.secondaryItemHeight)
+                            }()
                             
                             for i in 0..<numberOfItems {
                                 var frame = CGRectZero
                                 if i == 0 {
-                                    frame = CGRect(center: CGPoint(x: collectionView.bounds.midX, y: mainItemSize.height/2.0), size: mainItemSize)
-                                    origin = CGPoint(x: frame.minX, y: frame.maxY)
+                                    frame = CGRect(center: CGPoint(x: collectionView.bounds.midX, y: mainItemSize.height/2.0+origin.y), size: mainItemSize)
+                                    origin = CGPoint(x: frame.minX, y: frame.maxY+self.minimumLineSpacing)
                                 }
                                 else {
                                     frame = CGRect(origin: origin, size: secondaryItemSize)
-                                    origin.x = frame.maxX
+                                    origin.x = frame.maxX+self.minimumInteritemSpacing
                                 }
                                 
                                 let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: NSIndexPath(forItem: i, inSection: s))

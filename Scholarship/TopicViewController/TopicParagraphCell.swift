@@ -53,20 +53,19 @@ class TopicParagraphCell: UICollectionViewCell {
         self.contentView.addSubview(self.imageView)
         self.contentView.addSubview(self.titleLabel)
         
-        let offset: CGFloat = 10
         constrain(self.contentView, self.titleLabel, self.imageView) { view, titleLabel, imageView in
-            imageView.top == view.top+offset
-            imageView.leading == view.left+offset
+            imageView.top == view.top
+            imageView.leading == view.left
             
-            titleLabel.leading == imageView.right+2*offset
+            titleLabel.leading == imageView.right+20
             titleLabel.top == imageView.top
         }
         
         self.contentView.addSubview(self.textLabel)
         constrain(self.contentView, self.titleLabel, self.textLabel) { view, titleLabel, textLabel in
             textLabel.leading == titleLabel.leading
-            textLabel.top == titleLabel.bottom+offset
-            textLabel.trailing == view.right-offset
+            textLabel.top == titleLabel.bottom
+            textLabel.trailing == view.right
         }
     }
     
