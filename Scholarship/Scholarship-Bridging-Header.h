@@ -7,3 +7,4 @@
 //
 
 #import "UIImage+ImageEffects.h"
+#import "JTSImageViewController.h"
