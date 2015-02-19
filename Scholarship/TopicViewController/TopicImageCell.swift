@@ -43,7 +43,7 @@ class TopicImageCell: UICollectionViewCell {
         }
     
         self.rac_valuesForKeyPath("highlighted", observer: self).subscribeNext { _ in
-            UIView.animateWithDuration(0.2, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options: .BeginFromCurrentState, animations: {
+            UIView.animateWithDuration(0.1, delay: 0.0, options: .BeginFromCurrentState, animations: {
                 self.transform = (self.highlighted) ? CGAffineTransformMakeScale(0.95, 0.95) : CGAffineTransformIdentity
                 }, completion: nil)
         }
