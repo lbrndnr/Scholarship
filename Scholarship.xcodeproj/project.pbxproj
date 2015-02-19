@@ -9,12 +9,6 @@
 /* Begin PBXBuildFile section */
 		49186E761A8655E5006A602A /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49186E751A8655E5006A602A /* Launch Screen.xib */; };
 		49186E781A866D0F006A602A /* TopicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49186E771A866D0F006A602A /* TopicButton.swift */; };
-		491D2C851A96234A0050FEB8 /* JTSAnimatedGIFUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 491D2C7A1A96234A0050FEB8 /* JTSAnimatedGIFUtility.m */; };
-		491D2C861A96234A0050FEB8 /* JTSImageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 491D2C7C1A96234A0050FEB8 /* JTSImageInfo.m */; };
-		491D2C871A96234A0050FEB8 /* JTSImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 491D2C7E1A96234A0050FEB8 /* JTSImageViewController.m */; };
-		491D2C881A96234A0050FEB8 /* JTSSimpleImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 491D2C801A96234A0050FEB8 /* JTSSimpleImageDownloader.m */; };
-		491D2C891A96234A0050FEB8 /* UIApplication+JTSImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 491D2C821A96234A0050FEB8 /* UIApplication+JTSImageViewController.m */; };
-		491D2C8A1A96234A0050FEB8 /* UIImage+JTSImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 491D2C841A96234A0050FEB8 /* UIImage+JTSImageEffects.m */; };
 		492D91B91A850A62009730D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D91B81A850A62009730D7 /* AppDelegate.swift */; };
 		492D91BB1A850A62009730D7 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D91BA1A850A62009730D7 /* WelcomeViewController.swift */; };
 		492D91C01A850A62009730D7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 492D91BF1A850A62009730D7 /* Images.xcassets */; };
@@ -27,6 +21,7 @@
 		497E7C421A90EBC200717AA3 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 497E7C401A90EBC200717AA3 /* UIImage+ImageEffects.m */; };
 		499A7D091A8CE7BE00490F98 /* TopicFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A7D081A8CE7BE00490F98 /* TopicFlowLayout.swift */; };
 		49CAF2AB1A8E112C00C2B7CC /* HeaderCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CAF2AA1A8E112C00C2B7CC /* HeaderCollectionViewController.swift */; };
+		49CB15A61A964BCF00C2ECFA /* JTSImageViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49CB15A51A964BCF00C2ECFA /* JTSImageViewController.framework */; };
 		49D233C71A8B734400E7BAE0 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D233C61A8B734400E7BAE0 /* Extension.swift */; };
 		49D233C81A8B734400E7BAE0 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D233C61A8B734400E7BAE0 /* Extension.swift */; };
 		49D492F71A8A2E2200ECCCA6 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492F61A8A2E2200ECCCA6 /* Style.swift */; };
@@ -48,18 +43,6 @@
 /* Begin PBXFileReference section */
 		49186E751A8655E5006A602A /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		49186E771A866D0F006A602A /* TopicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicButton.swift; sourceTree = "<group>"; };
-		491D2C791A96234A0050FEB8 /* JTSAnimatedGIFUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTSAnimatedGIFUtility.h; sourceTree = "<group>"; };
-		491D2C7A1A96234A0050FEB8 /* JTSAnimatedGIFUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTSAnimatedGIFUtility.m; sourceTree = "<group>"; };
-		491D2C7B1A96234A0050FEB8 /* JTSImageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTSImageInfo.h; sourceTree = "<group>"; };
-		491D2C7C1A96234A0050FEB8 /* JTSImageInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTSImageInfo.m; sourceTree = "<group>"; };
-		491D2C7D1A96234A0050FEB8 /* JTSImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTSImageViewController.h; sourceTree = "<group>"; };
-		491D2C7E1A96234A0050FEB8 /* JTSImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTSImageViewController.m; sourceTree = "<group>"; };
-		491D2C7F1A96234A0050FEB8 /* JTSSimpleImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTSSimpleImageDownloader.h; sourceTree = "<group>"; };
-		491D2C801A96234A0050FEB8 /* JTSSimpleImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTSSimpleImageDownloader.m; sourceTree = "<group>"; };
-		491D2C811A96234A0050FEB8 /* UIApplication+JTSImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+JTSImageViewController.h"; sourceTree = "<group>"; };
-		491D2C821A96234A0050FEB8 /* UIApplication+JTSImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+JTSImageViewController.m"; sourceTree = "<group>"; };
-		491D2C831A96234A0050FEB8 /* UIImage+JTSImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JTSImageEffects.h"; sourceTree = "<group>"; };
-		491D2C841A96234A0050FEB8 /* UIImage+JTSImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JTSImageEffects.m"; sourceTree = "<group>"; };
 		492D91B31A850A62009730D7 /* Scholarship.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scholarship.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		492D91B71A850A62009730D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		492D91B81A850A62009730D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +62,7 @@
 		499A7D081A8CE7BE00490F98 /* TopicFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicFlowLayout.swift; sourceTree = "<group>"; };
 		49CAF2AA1A8E112C00C2B7CC /* HeaderCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewController.swift; sourceTree = "<group>"; };
 		49CAF2AC1A8E15BB00C2B7CC /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		49CB15A51A964BCF00C2ECFA /* JTSImageViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JTSImageViewController.framework; sourceTree = "<group>"; };
 		49D233C61A8B734400E7BAE0 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		49D492F61A8A2E2200ECCCA6 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		49D492F81A8A33CE00ECCCA6 /* BarGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarGraph.swift; sourceTree = "<group>"; };
@@ -93,6 +77,7 @@
 			files = (
 				492D91DB1A8515B5009730D7 /* Cartography.framework in Frameworks */,
 				492D91DC1A8515B5009730D7 /* LlamaKit.framework in Frameworks */,
+				49CB15A61A964BCF00C2ECFA /* JTSImageViewController.framework in Frameworks */,
 				492D91DD1A8515B5009730D7 /* ReactiveCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -107,25 +92,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		491D2C781A96234A0050FEB8 /* JTSImageViewController */ = {
-			isa = PBXGroup;
-			children = (
-				491D2C791A96234A0050FEB8 /* JTSAnimatedGIFUtility.h */,
-				491D2C7A1A96234A0050FEB8 /* JTSAnimatedGIFUtility.m */,
-				491D2C7B1A96234A0050FEB8 /* JTSImageInfo.h */,
-				491D2C7C1A96234A0050FEB8 /* JTSImageInfo.m */,
-				491D2C7D1A96234A0050FEB8 /* JTSImageViewController.h */,
-				491D2C7E1A96234A0050FEB8 /* JTSImageViewController.m */,
-				491D2C7F1A96234A0050FEB8 /* JTSSimpleImageDownloader.h */,
-				491D2C801A96234A0050FEB8 /* JTSSimpleImageDownloader.m */,
-				491D2C811A96234A0050FEB8 /* UIApplication+JTSImageViewController.h */,
-				491D2C821A96234A0050FEB8 /* UIApplication+JTSImageViewController.m */,
-				491D2C831A96234A0050FEB8 /* UIImage+JTSImageEffects.h */,
-				491D2C841A96234A0050FEB8 /* UIImage+JTSImageEffects.m */,
-			);
-			path = JTSImageViewController;
-			sourceTree = "<group>";
-		};
 		492D91AA1A850A62009730D7 = {
 			isa = PBXGroup;
 			children = (
@@ -154,7 +120,6 @@
 				49CAF2AA1A8E112C00C2B7CC /* HeaderCollectionViewController.swift */,
 				497E7C411A90EBC200717AA3 /* UIImage+ImageEffects.h */,
 				497E7C401A90EBC200717AA3 /* UIImage+ImageEffects.m */,
-				491D2C781A96234A0050FEB8 /* JTSImageViewController */,
 				49D8D47E1A8BA2A900ACAB4B /* WelcomeViewController */,
 				49D8D47F1A8BA67200ACAB4B /* TopicViewController */,
 				49D492F81A8A33CE00ECCCA6 /* BarGraph.swift */,
@@ -195,6 +160,7 @@
 		492D91DF1A85180E009730D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49CB15A51A964BCF00C2ECFA /* JTSImageViewController.framework */,
 				49CAF2AC1A8E15BB00C2B7CC /* CoreImage.framework */,
 				492D91D81A8515B5009730D7 /* Cartography.framework */,
 				492D91D91A8515B5009730D7 /* LlamaKit.framework */,
@@ -328,6 +294,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/LlamaKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Cartography.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/JTSImageViewController.framework",
 			);
 			outputPaths = (
 			);
@@ -343,15 +310,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				49D492F91A8A33CE00ECCCA6 /* BarGraph.swift in Sources */,
-				491D2C891A96234A0050FEB8 /* UIApplication+JTSImageViewController.m in Sources */,
 				492D91BB1A850A62009730D7 /* WelcomeViewController.swift in Sources */,
-				491D2C881A96234A0050FEB8 /* JTSSimpleImageDownloader.m in Sources */,
 				497E7C421A90EBC200717AA3 /* UIImage+ImageEffects.m in Sources */,
 				492D91B91A850A62009730D7 /* AppDelegate.swift in Sources */,
-				491D2C851A96234A0050FEB8 /* JTSAnimatedGIFUtility.m in Sources */,
-				491D2C8A1A96234A0050FEB8 /* UIImage+JTSImageEffects.m in Sources */,
-				491D2C861A96234A0050FEB8 /* JTSImageInfo.m in Sources */,
-				491D2C871A96234A0050FEB8 /* JTSImageViewController.m in Sources */,
 				49D233C71A8B734400E7BAE0 /* Extension.swift in Sources */,
 				49186E781A866D0F006A602A /* TopicButton.swift in Sources */,
 				4948093E1A8DF37800EFA1BB /* TopicImageCell.swift in Sources */,
@@ -469,6 +430,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Scholarship",
 				);
 				INFOPLIST_FILE = Scholarship/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -488,6 +450,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Scholarship",
 				);
 				INFOPLIST_FILE = Scholarship/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

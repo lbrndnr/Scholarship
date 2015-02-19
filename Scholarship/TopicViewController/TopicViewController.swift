@@ -126,8 +126,6 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        collectionView.deselectItemAtIndexPath(indexPath, animated: true)
-        
         if indexPath.item != 0 {
             let cell = collectionView.cellForItemAtIndexPath(indexPath) as TopicImageCell
             
@@ -143,7 +141,12 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
             }()
             
             let controller = JTSImageViewController(imageInfo: imageInfo, mode: .Image, backgroundStyle: .Scaled)
-            controller.showFromViewController(self, transition: ._FromOriginalPosition)
+            controller.showFromViewController(self, transition: ._FromOriginalPosition) {
+                collectionView.deselectItemAtIndexPath(indexPath, animated: false)
+            }
+        }
+        else {
+            collectionView.deselectItemAtIndexPath(indexPath, animated: true)
         }
     }
     
