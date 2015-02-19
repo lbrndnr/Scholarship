@@ -12,7 +12,7 @@ import ReactiveCocoa
 
 class TopicImageCell: UICollectionViewCell {
 
-    var imageView: UIImageView = {
+    let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .ScaleAspectFill
         imageView.layer.cornerRadius = 8.0

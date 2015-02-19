@@ -11,14 +11,9 @@ import Cartography
 
 class TopicParagraphCell: UICollectionViewCell {
 
-    var imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.blueColor()
-        
-        return imageView
-    }()
+    let imageView: UIImageView = UIImageView()
     
-    var titleLabel: UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.lightHelveticaNeueWithSize(20.0)
         label.textColor = UIColor(white: 0.0, alpha: 0.8)
@@ -26,7 +21,7 @@ class TopicParagraphCell: UICollectionViewCell {
         return label
     }()
     
-    var textLabel: UILabel = {
+    let textLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = UIFont.lightHelveticaNeueWithSize(18.0)

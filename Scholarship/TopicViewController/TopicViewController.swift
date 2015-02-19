@@ -77,7 +77,6 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
             cell.titleLabel.text = paragraph.title
             cell.textLabel.text = paragraph.text
             cell.imageView.image = paragraph.mainImage
-            cell.backgroundColor = UIColor.greenColor()
             
             return cell
         }
