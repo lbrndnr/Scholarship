@@ -79,7 +79,7 @@ class WelcomeViewController: UIViewController {
         return [aboutMeTopic, projectsTopic, interestsTopic]
     }()
     
-    private var topicButtons = [TopicButton]()
+    private var topicButtons = [(TopicButton, ConstraintGroup)]()
     
     // MARK: - View Lifecycle
     
@@ -102,8 +102,6 @@ class WelcomeViewController: UIViewController {
             textLabel.leading == view.centerX+offset
             textLabel.width == view.width*0.3
         }
-
-        let buttonSize = CGSize(width: 200.0, height: 130.0)
         
         self.topicButtons = self.topics.map { topic in
             let button = TopicButton()
@@ -112,46 +110,18 @@ class WelcomeViewController: UIViewController {
             button.layer.cornerRadius = 5.0
             button.layer.masksToBounds = true
             
-            return button
-        }
-        
-        var previousButton: TopicButton?
-        let middleIndex = Double(self.topicButtons.count)/2.0
-        for (i, button) in enumerate(self.topicButtons) {
             self.view.addSubview(button)
             
-            if let previousButton = previousButton {
-                // Swift bug
-                constrain(self.view, previousButton, button) { view, previousButton, button in
-                    button.leading == previousButton.right+100; return
-                }
-            }
-            
-            constrain(self.view, button) { view, button in
-                let index = Double(i)
-                if index > middleIndex {
-                    button.centerX >= view.centerX
-                }
-                else if index < middleIndex {
-                    button.centerX <= view.centerX
-                }
-                else {
-                    button.centerX == view.centerX
-                }
-                
-                button.bottom == view.bottom-120
-                button.width == buttonSize.width
-                button.height == buttonSize.height
-            }
-            
-            previousButton = button
+            return (button, ConstraintGroup())
         }
+        
+        self.constrainTopicButtons(UIApplication.sharedApplication().statusBarOrientation)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for button in self.topicButtons {
+        for (button, _) in self.topicButtons {
             button.rac_signalForControlEvents(.TouchUpInside).subscribeNext() { _ in
                 if let topic = button.topic {
                     let controller = TopicViewController(topic: topic)
@@ -161,7 +131,64 @@ class WelcomeViewController: UIViewController {
         }
     }
     
+    func constrainTopicButtons(interfaceOrientation: UIInterfaceOrientation) {
+        var previousButton: TopicButton?
+        let middleIndex = Double(self.topicButtons.count)/2.0
+        for (i, (button, constraints)) in enumerate(self.topicButtons) {
+            
+            var newConstraints: ConstraintGroup?
+            if interfaceOrientation.isPortrait {
+                let upperView = previousButton ?? self.avatarButton
+                
+                newConstraints = constrain(view, upperView, button, replace: constraints) { view, upperView, button in
+                    button.centerX == view.centerX
+                    button.top == upperView.bottom+50
+                    button.width == view.width*0.6
+                    button.height == 80
+                }
+            }
+            else {
+                
+                if let previousButton = previousButton {
+                    // Swift bug
+                    constrain(self.view, previousButton, button, replace: constraints) { view, previousButton, button in
+                        button.leading == previousButton.right+100; return
+                    }
+                }
+                
+                newConstraints = constrain(self.view, button, replace: constraints) { view, button in
+                    let index = Double(i)
+                    if index > middleIndex {
+                        button.centerX >= view.centerX
+                    }
+                    else if index < middleIndex {
+                        button.centerX <= view.centerX
+                    }
+                    else {
+                        button.centerX == view.centerX
+                    }
+                    
+                    button.bottom == view.bottom-120
+                    button.width == 200
+                    button.height == 130
+                }
+            }
+            
+            previousButton = button
+            self.topicButtons[i] = (button, newConstraints ?? ConstraintGroup())
+        }
+    }
+    
     // MARK: -
+    
+    
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        self.constrainTopicButtons(toInterfaceOrientation)
+        
+        UIView.animateWithDuration(duration, delay: 0.0, options: .BeginFromCurrentState, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
 
 }
 
