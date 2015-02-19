@@ -43,15 +43,16 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
     override func loadView() {
         super.loadView()
         
-        self.collectionView?.backgroundColor = UIColor.whiteColor()
-        self.collectionView?.alwaysBounceVertical = true
+        if let collectionView = self.collectionView {
+            collectionView.backgroundColor = UIColor.whiteColor()
+            collectionView.alwaysBounceVertical = true
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let collectionView = self.collectionView {
-            collectionView.backgroundColor = UIColor.whiteColor()
             collectionView.registerClass(TopicParagraphCell.self, forCellWithReuseIdentifier: paragraphCellIdentifier)
             collectionView.registerClass(TopicImageCell.self, forCellWithReuseIdentifier: imageCellIdentifier)
         }
@@ -118,6 +119,32 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
         }
         
         return CGSizeZero
+    }
+
+    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return (indexPath.item != 0)
+    }
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        collectionView.deselectItemAtIndexPath(indexPath, animated: true)
+        
+        if indexPath.item != 0 {
+            let cell = collectionView.cellForItemAtIndexPath(indexPath) as TopicImageCell
+            
+            let imageInfo: JTSImageInfo = {
+                let info = JTSImageInfo()
+                info.image = cell.imageView.image
+                info.referenceRect = cell.imageView.frame
+                info.referenceView = cell.contentView
+                info.referenceContentMode = cell.imageView.contentMode
+                info.referenceCornerRadius = cell.imageView.layer.cornerRadius
+            
+                return info
+            }()
+            
+            let controller = JTSImageViewController(imageInfo: imageInfo, mode: .Image, backgroundStyle: .Scaled)
+            controller.showFromViewController(self, transition: ._FromOriginalPosition)
+        }
     }
     
     // MARK: -
