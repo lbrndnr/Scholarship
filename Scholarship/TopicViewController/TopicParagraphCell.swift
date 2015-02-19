@@ -8,6 +8,7 @@
 
 import UIKit
 import Cartography
+import ReactiveCocoa
 
 class TopicParagraphCell: UICollectionViewCell {
 
@@ -48,22 +49,42 @@ class TopicParagraphCell: UICollectionViewCell {
         self.contentView.addSubview(self.imageView)
         self.contentView.addSubview(self.titleLabel)
         
+        var leadingTitleLabelConstraint: NSLayoutConstraint?
+        var trailingTitleLabelConstraint: NSLayoutConstraint?
+        
         constrain(self.contentView, self.titleLabel, self.imageView) { view, titleLabel, imageView in
             imageView.leading == view.left
             imageView.top == view.top
             imageView.width <= 120
             imageView.height <= view.height
             
-            titleLabel.leading == imageView.right+20
             titleLabel.top == imageView.top
+            leadingTitleLabelConstraint = titleLabel.leading == imageView.right
+            trailingTitleLabelConstraint = titleLabel.trailing == view.right
         }
         
         self.contentView.addSubview(self.textLabel)
         constrain(self.contentView, self.titleLabel, self.textLabel) { view, titleLabel, textLabel in
             textLabel.top == titleLabel.bottom
             textLabel.leading == titleLabel.leading
-            textLabel.trailing == view.right
+            textLabel.trailing == titleLabel.trailing
+            textLabel.bottom == view.bottom
         }
+        
+        self.rac_valuesForKeyPath("imageView.image", observer: self).subscribeNext { _ in
+            let offset: CGFloat = (self.imageView.image == nil) ? 0 : 20
+            
+            leadingTitleLabelConstraint?.constant = offset
+            trailingTitleLabelConstraint?.constant = -offset
+        }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let width = self.bounds.width-self.imageView.frame.width
+        self.titleLabel.preferredMaxLayoutWidth = width
+        self.textLabel.preferredMaxLayoutWidth = width
     }
     
     // MARK: -

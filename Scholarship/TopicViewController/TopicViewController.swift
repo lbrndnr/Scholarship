@@ -91,12 +91,24 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
     // MARK: - UICollectionViewDelegateFlowLayout
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let text: NSString = self.topic.paragraphs[indexPath.section].text
         let bounds = collectionView.bounds
-        let constraint = CGSize(width: 0.6*bounds.width-160, height: CGFloat.max)
-        let attributes = [NSFontAttributeName: UIFont.lightHelveticaNeueWithSize(18.0)]
         
-        return CGSize(width: 0.6*bounds.width, height: text.boundingRectWithSize(constraint, options: .UsesLineFragmentOrigin, attributes: attributes, context: nil).height)
+        let paragraph = self.topic.paragraphs[indexPath.section]
+
+        let cell = TopicParagraphCell(frame: CGRectZero)
+        cell.titleLabel.text = paragraph.title
+        cell.textLabel.text = paragraph.text
+        cell.imageView.image = paragraph.mainImage
+        
+        
+        cell.bounds = CGRectMake(0, 0, 0.6*bounds.width, cell.bounds.height)
+        cell.contentView.bounds = cell.bounds
+        
+        // Layout subviews, this will let labels on this cell to set preferredMaxLayoutWidth
+        cell.setNeedsLayout()
+        cell.layoutIfNeeded()
+        
+        return cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
