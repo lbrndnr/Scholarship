@@ -13,7 +13,7 @@ class TopicParagraphCell: UICollectionViewCell {
 
     var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .Center
+        imageView.backgroundColor = UIColor.blueColor()
         
         return imageView
     }()
@@ -54,8 +54,10 @@ class TopicParagraphCell: UICollectionViewCell {
         self.contentView.addSubview(self.titleLabel)
         
         constrain(self.contentView, self.titleLabel, self.imageView) { view, titleLabel, imageView in
-            imageView.top == view.top
             imageView.leading == view.left
+            imageView.top == view.top
+            imageView.width <= 120
+            imageView.height <= view.height
             
             titleLabel.leading == imageView.right+20
             titleLabel.top == imageView.top
@@ -63,8 +65,8 @@ class TopicParagraphCell: UICollectionViewCell {
         
         self.contentView.addSubview(self.textLabel)
         constrain(self.contentView, self.titleLabel, self.textLabel) { view, titleLabel, textLabel in
-            textLabel.leading == titleLabel.leading
             textLabel.top == titleLabel.bottom
+            textLabel.leading == titleLabel.leading
             textLabel.trailing == view.right
         }
     }
