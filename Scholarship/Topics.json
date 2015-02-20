@@ -1,0 +1,20 @@
+[
+    {
+        "title": "About Me",
+        "headerImage": "About",
+        "paragraphs": [
+            {
+                "title": "About Me",
+                "text": "My name is Laurin Brandner. When my dad bought our first iMac, I was 14 at that time, I became interested in developing Mac apps.  With 15 I developed my first Mac and iOS application. Since then there’s scarcely a day I don’t work anymore. By reading blogs and books I have learnt a handful of programming languages including: <b>Objective-C</b>, <b>C</b>, <b>Python</b>, <b>Ruby</b> and <b>Swift</b>. During my last year of high school I was also working part time at <b>Ubique</b>, a software agency based in Zurich.",
+            },
+            {
+                "title": "Education",
+                "text": "I graduated from the <b>Alte Kantonsschule Aarau</b> in 2014 and will begin my studies at the <b>Swiss Federal Institute of Technology</b> (ETH) in Zurich this year. I’m planning on pursuing a Master degree in Computer Science.",
+            },
+            {
+                "title": "Future",
+                "text": "I don’t really know what company I want to work for in the future. In fact, I don’t even know what exactly I want to work on. I could be developing apps for mobile devices just as much as I could be working in a lab at a university. What I do know is that I want to work abroad for a certain period of time after university",
+            }
+        ]
+    }
+]

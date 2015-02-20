@@ -13,15 +13,25 @@ struct Topic {
     struct Paragraph {
         
         let title: String
-        let text: String
+        let text: NSAttributedString
         let mainImage: UIImage?
         let images: [UIImage]?
         
-        init(title: String, text: String, mainImage: UIImage? = nil, images: [UIImage]? = nil) {
+        init(title: String, text: String, mainImageName: String? = nil, imageNames: [String]? = nil) {
             self.title = title
-            self.text = text
-            self.mainImage = mainImage
-            self.images = images
+            let data = text.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+            self.text = NSAttributedString(data: data!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil, error: nil)!
+            
+            if let mainImageName = mainImageName {
+                self.mainImage = UIImage(named: mainImageName)
+            }
+            
+            self.images = imageNames?.map { name in
+                let image = UIImage(named: name)
+                precondition(image != nil, "Couldn't load paragraph image")
+                
+                return image!
+            }
         }
         
     }
@@ -29,5 +39,14 @@ struct Topic {
     let headerImage: UIImage
     let title: String
     let paragraphs: [Paragraph]
+    
+    init(headerImageName: String, title: String, paragraphs: [Paragraph]) {
+        let headerImage = UIImage(named: headerImageName)
+        precondition(headerImage != nil, "Couldn't load header image")
+        
+        self.headerImage = headerImage!
+        self.title = title
+        self.paragraphs = paragraphs
+    }
     
 }

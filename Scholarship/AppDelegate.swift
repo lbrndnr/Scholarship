@@ -17,15 +17,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.backgroundColor = UIColor.whiteColor()
         window.tintColor = UIColor.brandnerColor()
         
-        let controller = WelcomeViewController()
-        let navigationController = UINavigationController(rootViewController: controller)
-        navigationController.navigationBarHidden = true
-        window.rootViewController = navigationController
-        
         return window
     }()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        if let path = NSBundle.mainBundle().pathForResource("Topics", ofType: "json") {
+            let parser = TopicParser(path: path)
+            let topics = parser.parse() ?? [Topic]()
+            
+            let controller = WelcomeViewController(topics: topics)
+            let navigationController = UINavigationController(rootViewController: controller)
+            navigationController.navigationBarHidden = true
+            window.rootViewController = navigationController
+        }
+        
         self.window.makeKeyAndVisible()
         
         return true

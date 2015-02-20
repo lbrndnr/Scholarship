@@ -11,26 +11,14 @@ import XCTest
 
 class ScholarshipTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
+    func testParsing() {
+        let path = NSBundle(forClass: self.dynamicType).pathForResource("Topics", ofType: "json")
+        XCTAssertFalse(path == nil, "Couldn't retrieve topics file")
+        
+        let parser = TopicParser(path: path!)
+        let topics = parser.parse()
+        XCTAssertFalse(topics == nil, "Failed to parse topics")
+        XCTAssertTrue(topics!.count > 0, "Failed to parse topics")
     }
     
 }

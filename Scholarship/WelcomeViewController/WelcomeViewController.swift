@@ -41,7 +41,7 @@ class WelcomeViewController: UIViewController {
         let title = NSLocalizedString("Hi There!\n", comment: "Introduction Title")
         let attributedTitle = attributedStringWithText(title, color: UIColor(white: 0.0, alpha: 0.8), font: UIFont.lightHelveticaNeueWithSize(36.0), lineSpacing: 30.0)
         
-        let text = NSLocalizedString("My name is Laurin Brandner. I’m a 20-year-old student living in Switzerland.\n \nTap on the topics below to learn more about me.", comment: "Introduction Text")
+        let text = NSLocalizedString("My name is Laurin Brandner. I’m a 20-year-old developer living in Switzerland.\n \nTap on the topics below to learn more about me.", comment: "Introduction Text")
         let attributedText = attributedStringWithText(text, color: UIColor(white: 0.0, alpha: 0.7), font: UIFont.lightHelveticaNeueWithSize(18.0), lineSpacing: 8.0)
         
         label.attributedText = attributedTitle+attributedText
@@ -49,37 +49,50 @@ class WelcomeViewController: UIViewController {
         return label
     }()
     
-    private lazy var topics: [Topic] = {
-        let aboutMeTopic: Topic = {
-            let aboutMeParagraph = Topic.Paragraph(title: NSLocalizedString("About Me", comment: "About Me"), text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
-            let educationParagraph = Topic.Paragraph(title: NSLocalizedString("Education", comment: "Education"), text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
-            let futureParagraph = Topic.Paragraph(title: NSLocalizedString("Future", comment: "Future"), text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
-            
-            let headerImage = UIImage(named: "About")!
-            
-            return Topic(headerImage: headerImage, title: NSLocalizedString("About Me", comment: "About Me"), paragraphs: [aboutMeParagraph, educationParagraph, futureParagraph])
-        }()
-        
-        let projectsTopic: Topic = {
-            let crimsonParagraph = Topic.Paragraph(title: "Crimson", text: NSLocalizedString("As you type, Crimson gives suggestions on the next word it thinks you’ll pick directly above the letter. The same autocorrect style can be found on BlackBerry 10’s virtual keyboard; it’s an awesome way to present a number of options on screen, without taking up more space above the keyboard.", comment: "Crimson text"), mainImage: UIImage(named: "Crimson-Icon"), images: [UIImage(named: "crimson-banner")!, UIImage(named: "crimson-banner")!])
-            
-            let headerImage = UIImage(named: "Projects")!
-            
-            return Topic(headerImage: headerImage, title: NSLocalizedString("Projects", comment: "Projects"), paragraphs: [crimsonParagraph])
-        }()
-        
-        let interestsTopic: Topic = {
-            let crimsonParagraph = Topic.Paragraph(title: "Crimson", text: NSLocalizedString("As you type, Crimson gives suggestions on the next word it thinks you’ll pick directly above the letter. The same autocorrect style can be found on BlackBerry 10’s virtual keyboard; it’s an awesome way to present a number of options on screen, without taking up more space above the keyboard.", comment: "Crimson text"), mainImage: UIImage(named: "Crimson-Icon"), images: [UIImage(named: "crimson-banner")!, UIImage(named: "crimson-banner")!])
-            
-            let headerImage = UIImage(named: "Interests")!
-            
-            return Topic(headerImage: headerImage, title: NSLocalizedString("Interests", comment: "Interests"), paragraphs: [crimsonParagraph])
-        }()
-        
-        return [aboutMeTopic, projectsTopic, interestsTopic]
-    }()
+//    private lazy var topics: [Topic] = {
+//        let aboutMeTopic: Topic = {
+//            let aboutMeParagraph = Topic.Paragraph(title: NSLocalizedString("About Me", comment: "About Me"), text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
+//            let educationParagraph = Topic.Paragraph(title: NSLocalizedString("Education", comment: "Education"), text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
+//            let futureParagraph = Topic.Paragraph(title: NSLocalizedString("Future", comment: "Future"), text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
+//            
+//            let headerImage = UIImage(named: "About")!
+//            
+//            return Topic(headerImage: headerImage, title: NSLocalizedString("About Me", comment: "About Me"), paragraphs: [aboutMeParagraph, educationParagraph, futureParagraph])
+//        }()
+//        
+//        let projectsTopic: Topic = {
+//            let crimsonParagraph = Topic.Paragraph(title: "Crimson", text: NSLocalizedString("As you type, Crimson gives suggestions on the next word it thinks you’ll pick directly above the letter. The same autocorrect style can be found on BlackBerry 10’s virtual keyboard; it’s an awesome way to present a number of options on screen, without taking up more space above the keyboard.", comment: "Crimson text"), mainImage: UIImage(named: "Crimson-Icon"), images: [UIImage(named: "crimson-banner")!, UIImage(named: "crimson-banner")!])
+//            
+//            let headerImage = UIImage(named: "Projects")!
+//            
+//            return Topic(headerImage: headerImage, title: NSLocalizedString("Projects", comment: "Projects"), paragraphs: [crimsonParagraph])
+//        }()
+//        
+//        let interestsTopic: Topic = {
+//            let crimsonParagraph = Topic.Paragraph(title: "Crimson", text: NSLocalizedString("As you type, Crimson gives suggestions on the next word it thinks you’ll pick directly above the letter. The same autocorrect style can be found on BlackBerry 10’s virtual keyboard; it’s an awesome way to present a number of options on screen, without taking up more space above the keyboard.", comment: "Crimson text"), mainImage: UIImage(named: "Crimson-Icon"), images: [UIImage(named: "crimson-banner")!, UIImage(named: "crimson-banner")!])
+//            
+//            let headerImage = UIImage(named: "Interests")!
+//            
+//            return Topic(headerImage: headerImage, title: NSLocalizedString("Interests", comment: "Interests"), paragraphs: [crimsonParagraph])
+//        }()
+//        
+//        return [aboutMeTopic, projectsTopic, interestsTopic]
+//    }()
     
+    let topics: [Topic]
     private var topicButtons = [(TopicButton, ConstraintGroup)]()
+    
+    // MARK: - Initialization
+    
+    init(topics: [Topic]) {
+        self.topics = topics
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - View Lifecycle
     
