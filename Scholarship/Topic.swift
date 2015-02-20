@@ -27,9 +27,7 @@ struct Topic {
             self.title = title
             self.text = text
             
-            if let mainImageName = mainImageName {
-                self.mainImage = UIImage(named: mainImageName)
-            }
+            self.mainImage = mainImageName.map { UIImage(named: $0) } ?? nil
             
             self.images = imageNames?.map { name in
                 let image = UIImage(named: name)
