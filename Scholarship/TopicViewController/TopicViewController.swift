@@ -141,12 +141,7 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        if let images = self.topic.paragraphs[section].images {
-            let bounds = collectionView.bounds
-            return CGSize(width: 0.2*bounds.width, height: 50)
-        }
-        
-        return CGSizeZero
+        return self.topic.paragraphs[section].images.map { _ in CGSize(width: 0.2*collectionView.bounds.width, height: 50) } ?? CGSizeZero
     }
 
     override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
