@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReactiveCocoa
 import StoreKit
 import Cartography
 
@@ -87,11 +88,36 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
                 switch source {
                 case .GitHub(let URL):
                     cell.button.rac_signalForControlEvents(.TouchUpInside).subscribeNext { _ in
-                        let parameters = [SKStoreProductParameterITunesItemIdentifier : ""]
-                        let controller = SKStoreProductViewController()
-                        controller.delegate = self
-                        controller.loadProductWithParameters(parameters, completionBlock: nil)
-                        self.presentViewController(controller, animated: true, completion: nil)
+                        let controller  = WebViewController()
+                        controller.webView.loadRequest(NSURLRequest(URL: URL))
+                        
+                        controller.navigationItem.rightBarButtonItem = {
+                            let item = UIBarButtonItem(title: NSLocalizedString("Open in Safari", comment: "Open in Safari"), style: .Plain, target: nil, action: nil)
+                            item.rac_command = RACCommand(signalBlock: { _ in
+                                UIApplication.sharedApplication().openURL(URL)
+                                self.dismissViewControllerAnimated(true, completion: nil)
+                                
+                                return RACSignal.empty()
+                            })
+                            
+                            return item
+                        }()
+                        
+                        controller.navigationItem.leftBarButtonItem = {
+                            let item = UIBarButtonItem(barButtonSystemItem: .Cancel, target: nil, action: nil)
+                            item.rac_command = RACCommand(signalBlock: { _ in
+                                self.dismissViewControllerAnimated(true, completion: nil)
+                                
+                                return RACSignal.empty()
+                            })
+                            
+                            return item
+                        }()
+                        
+                        let navigationController = UINavigationController(rootViewController: controller)
+                        navigationController.modalPresentationStyle = .FormSheet
+                        
+                        self.presentViewController(navigationController, animated: true, completion: nil)
                     }
                     
                 case .AppStore(let identifier):
