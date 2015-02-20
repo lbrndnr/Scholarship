@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import StoreKit
 import Cartography
 
 private let paragraphCellIdentifier = "ParagraphCell"
 private let imageCellIdentifier = "ImageCell"
 
-class TopicViewController: HeaderCollectionViewController, UICollectionViewDelegateFlowLayout {
+class TopicViewController: HeaderCollectionViewController, UICollectionViewDelegateFlowLayout, SKStoreProductViewControllerDelegate {
     
     let topic: Topic
     
@@ -78,6 +79,15 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
             cell.titleLabel.text = paragraph.title
             cell.textLabel.text = paragraph.text
             cell.imageView.image = paragraph.mainImage
+            cell.button.setTitle("Store", forState: .Normal)
+            
+            cell.button.rac_signalForControlEvents(.TouchUpInside).subscribeNext { _ in
+                let parameters = [SKStoreProductParameterITunesItemIdentifier : "918925779"]
+                let controller = SKStoreProductViewController()
+                controller.delegate = self
+                controller.loadProductWithParameters(parameters, completionBlock: nil)
+                self.presentViewController(controller, animated: true, completion: nil)
+            }
             
             return cell
         }
@@ -100,7 +110,6 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
         cell.titleLabel.text = paragraph.title
         cell.textLabel.text = paragraph.text
         cell.imageView.image = paragraph.mainImage
-        
         
         cell.bounds = CGRectMake(0, 0, 0.6*bounds.width, cell.bounds.height)
         cell.contentView.bounds = cell.bounds
@@ -148,6 +157,12 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
         else {
             collectionView.deselectItemAtIndexPath(indexPath, animated: true)
         }
+    }
+    
+    // MARK: - SKStoreProductViewControllerDelegate
+
+    func productViewControllerDidFinish(viewController: SKStoreProductViewController!) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: -

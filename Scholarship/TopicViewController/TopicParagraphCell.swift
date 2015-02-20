@@ -14,6 +14,13 @@ class TopicParagraphCell: UICollectionViewCell {
 
     let imageView: UIImageView = UIImageView()
     
+    let button: UIButton = {
+        let button = UIButton.buttonWithType(.System) as UIButton
+        button.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
+        
+        return button
+    }()
+    
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.lightHelveticaNeueWithSize(20.0)
@@ -61,6 +68,13 @@ class TopicParagraphCell: UICollectionViewCell {
             titleLabel.top == imageView.top
             leadingTitleLabelConstraint = titleLabel.leading == imageView.right
             trailingTitleLabelConstraint = titleLabel.trailing == view.right
+        }
+        
+        self.contentView.addSubview(self.button)
+        constrain(self.contentView, self.button, self.imageView) { view, button, imageView in
+            button.width <= imageView.width
+            button.top == imageView.bottom+10
+            button.trailing == imageView.right
         }
         
         self.contentView.addSubview(self.textLabel)
