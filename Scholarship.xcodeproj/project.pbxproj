@@ -25,12 +25,9 @@
 		49D492F71A8A2E2200ECCCA6 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492F61A8A2E2200ECCCA6 /* Style.swift */; };
 		49D492F91A8A33CE00ECCCA6 /* BarGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492F81A8A33CE00ECCCA6 /* BarGraph.swift */; };
 		49D8D4811A8BA69C00ACAB4B /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D8D4801A8BA69C00ACAB4B /* TopicViewController.swift */; };
-		49D9DD5E1A97284B001FBDCA /* Topics.json in Resources */ = {isa = PBXBuildFile; fileRef = 49D9DD5D1A97284B001FBDCA /* Topics.json */; };
-		49D9DD601A9728EC001FBDCA /* TopicParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D9DD5F1A9728EC001FBDCA /* TopicParser.swift */; };
 		49D9DD6E1A972C17001FBDCA /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492F61A8A2E2200ECCCA6 /* Style.swift */; };
 		49D9DD6F1A972C17001FBDCA /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D233C61A8B734400E7BAE0 /* Extension.swift */; };
 		49D9DD701A972C17001FBDCA /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DAC2B81A8C9984004BBBC0 /* Topic.swift */; };
-		49D9DD711A972C17001FBDCA /* TopicParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D9DD5F1A9728EC001FBDCA /* TopicParser.swift */; };
 		49D9DD721A972C17001FBDCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D91B81A850A62009730D7 /* AppDelegate.swift */; };
 		49D9DD731A972C17001FBDCA /* HeaderCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CAF2AA1A8E112C00C2B7CC /* HeaderCollectionViewController.swift */; };
 		49D9DD741A972C17001FBDCA /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 497E7C401A90EBC200717AA3 /* UIImage+ImageEffects.m */; };
@@ -85,8 +82,6 @@
 		49D492F61A8A2E2200ECCCA6 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		49D492F81A8A33CE00ECCCA6 /* BarGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarGraph.swift; sourceTree = "<group>"; };
 		49D8D4801A8BA69C00ACAB4B /* TopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicViewController.swift; sourceTree = "<group>"; };
-		49D9DD5D1A97284B001FBDCA /* Topics.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Topics.json; sourceTree = "<group>"; };
-		49D9DD5F1A9728EC001FBDCA /* TopicParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicParser.swift; sourceTree = "<group>"; };
 		49D9DD801A972D91001FBDCA /* JTSImageViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JTSImageViewController.framework; path = ../Carthage/Build/iOS/JTSImageViewController.framework; sourceTree = "<group>"; };
 		49DAC2B81A8C9984004BBBC0 /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,7 +136,6 @@
 				49D492F61A8A2E2200ECCCA6 /* Style.swift */,
 				49D233C61A8B734400E7BAE0 /* Extension.swift */,
 				49DAC2B81A8C9984004BBBC0 /* Topic.swift */,
-				49D9DD5F1A9728EC001FBDCA /* TopicParser.swift */,
 				492D91B81A850A62009730D7 /* AppDelegate.swift */,
 				49CAF2AA1A8E112C00C2B7CC /* HeaderCollectionViewController.swift */,
 				497E7C411A90EBC200717AA3 /* UIImage+ImageEffects.h */,
@@ -160,7 +154,6 @@
 		492D91B61A850A62009730D7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				49D9DD5D1A97284B001FBDCA /* Topics.json */,
 				492D91B71A850A62009730D7 /* Info.plist */,
 				497E7C431A90EBF600717AA3 /* Scholarship-Bridging-Header.h */,
 			);
@@ -299,7 +292,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				492D91C01A850A62009730D7 /* Images.xcassets in Resources */,
-				49D9DD5E1A97284B001FBDCA /* Topics.json in Resources */,
 				49186E761A8655E5006A602A /* Launch Screen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,7 +350,6 @@
 			files = (
 				49D492F91A8A33CE00ECCCA6 /* BarGraph.swift in Sources */,
 				492D91BB1A850A62009730D7 /* WelcomeViewController.swift in Sources */,
-				49D9DD601A9728EC001FBDCA /* TopicParser.swift in Sources */,
 				497E7C421A90EBC200717AA3 /* UIImage+ImageEffects.m in Sources */,
 				492D91B91A850A62009730D7 /* AppDelegate.swift in Sources */,
 				49D233C71A8B734400E7BAE0 /* Extension.swift in Sources */,
@@ -390,7 +381,6 @@
 				49D9DD7A1A972C17001FBDCA /* TopicImageCell.swift in Sources */,
 				49D9DD781A972C17001FBDCA /* TopicFlowLayout.swift in Sources */,
 				49D9DD791A972C17001FBDCA /* TopicParagraphCell.swift in Sources */,
-				49D9DD711A972C17001FBDCA /* TopicParser.swift in Sources */,
 				49D9DD771A972C17001FBDCA /* TopicViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

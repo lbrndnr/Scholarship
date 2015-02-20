@@ -5,13 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>C26FF2C1-7ACE-444B-95A0-462ECC81258D</string>
+	<string>12924E4B-9E9D-4A96-B63B-AD9D4719A85B</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Scholarship</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>BA34FBE29DFFB236EB53665C35BE0B471D069471</key>
-		<string>https://github.com/larcus94/Scholarship</string>
+		<string>https://github.com/larcus94/Scholarship.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Scholarship.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/larcus94/Scholarship</string>
+	<string>https://github.com/larcus94/Scholarship.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

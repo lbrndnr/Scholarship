@@ -76,7 +76,7 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
         if indexPath.item == 0 {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(paragraphCellIdentifier, forIndexPath: indexPath) as TopicParagraphCell
             cell.titleLabel.text = paragraph.title
-            cell.textLabel.attributedText = paragraph.text
+            cell.textLabel.text = paragraph.text
             cell.imageView.image = paragraph.mainImage
             
             return cell
@@ -98,7 +98,7 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
 
         let cell = TopicParagraphCell(frame: CGRectZero)
         cell.titleLabel.text = paragraph.title
-        cell.textLabel.attributedText = paragraph.text
+        cell.textLabel.text = paragraph.text
         cell.imageView.image = paragraph.mainImage
         
         
