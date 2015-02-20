@@ -44,4 +44,19 @@ extension CGRect {
     
 }
 
+// MARK: - Topic.Source
+
+extension Topic.Source {
+    
+    var name: String {
+        switch self {
+        case .GitHub:
+            return NSLocalizedString("GitHub", comment: "GitHub")
+        case .AppStore:
+            return NSLocalizedString("Store", comment: "Store")
+        }
+    }
+    
+}
+
 // MARK: -

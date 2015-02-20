@@ -79,14 +79,33 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
             cell.titleLabel.text = paragraph.title
             cell.textLabel.text = paragraph.text
             cell.imageView.image = paragraph.mainImage
-            cell.button.setTitle("Store", forState: .Normal)
             
-            cell.button.rac_signalForControlEvents(.TouchUpInside).subscribeNext { _ in
-                let parameters = [SKStoreProductParameterITunesItemIdentifier : "918925779"]
-                let controller = SKStoreProductViewController()
-                controller.delegate = self
-                controller.loadProductWithParameters(parameters, completionBlock: nil)
-                self.presentViewController(controller, animated: true, completion: nil)
+            if let source = paragraph.source {
+                cell.button.hidden = false
+                cell.button.setTitle(source.name, forState: .Normal)
+                
+                switch source {
+                case .GitHub(let URL):
+                    cell.button.rac_signalForControlEvents(.TouchUpInside).subscribeNext { _ in
+                        let parameters = [SKStoreProductParameterITunesItemIdentifier : ""]
+                        let controller = SKStoreProductViewController()
+                        controller.delegate = self
+                        controller.loadProductWithParameters(parameters, completionBlock: nil)
+                        self.presentViewController(controller, animated: true, completion: nil)
+                    }
+                    
+                case .AppStore(let identifier):
+                    cell.button.rac_signalForControlEvents(.TouchUpInside).subscribeNext { _ in
+                        let parameters = [SKStoreProductParameterITunesItemIdentifier : identifier]
+                        let controller = SKStoreProductViewController()
+                        controller.delegate = self
+                        controller.loadProductWithParameters(parameters, completionBlock: nil)
+                        self.presentViewController(controller, animated: true, completion: nil)
+                    }
+                }
+            }
+            else {
+                cell.button.hidden = true
             }
             
             return cell

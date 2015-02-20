@@ -10,12 +10,18 @@ import UIKit
 
 struct Topic {
     
+    enum Source {
+        case AppStore(String)
+        case GitHub(NSURL)
+    }
+    
     struct Paragraph {
         
         let title: String
         let text: String
         let mainImage: UIImage?
         let images: [UIImage]?
+        var source: Source?
         
         init(title: String, text: String, mainImageName: String? = nil, imageNames: [String]? = nil) {
             self.title = title
@@ -57,7 +63,8 @@ struct Topic {
     }
     
     static func projectsTopic() -> Topic {
-        let crimsonParagraph = Topic.Paragraph(title: "Crimson", text: NSLocalizedString("As you type, Crimson gives suggestions on the next word it thinks you’ll pick directly above the letter. The same autocorrect style can be found on BlackBerry 10’s virtual keyboard; it’s an awesome way to present a number of options on screen, without taking up more space above the keyboard.", comment: "Crimson text"), mainImageName: "Crimson-Icon", imageNames: ["crimson-banner", "crimson-banner"])
+        var crimsonParagraph = Topic.Paragraph(title: "Crimson", text: NSLocalizedString("As you type, Crimson gives suggestions on the next word it thinks you’ll pick directly above the letter. The same autocorrect style can be found on BlackBerry 10’s virtual keyboard; it’s an awesome way to present a number of options on screen, without taking up more space above the keyboard.", comment: "Crimson text"), mainImageName: "Crimson-Icon", imageNames: ["crimson-banner", "crimson-banner"])
+        crimsonParagraph.source = .AppStore("918925779")
         
         return Topic(headerImageName: "Projects", title: NSLocalizedString("Projects", comment: "Projects"), paragraphs: [crimsonParagraph])
     }
