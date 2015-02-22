@@ -57,7 +57,6 @@ class TopicParagraphCell: UICollectionViewCell {
         self.contentView.addSubview(self.titleLabel)
         
         var leadingTitleLabelConstraint: NSLayoutConstraint?
-        var trailingTitleLabelConstraint: NSLayoutConstraint?
         
         constrain(self.contentView, self.titleLabel, self.imageView) { view, titleLabel, imageView in
             imageView.leading == view.left
@@ -67,12 +66,12 @@ class TopicParagraphCell: UICollectionViewCell {
             
             titleLabel.top == imageView.top
             leadingTitleLabelConstraint = titleLabel.leading == imageView.right
-            trailingTitleLabelConstraint = titleLabel.trailing == view.right
+            titleLabel.trailing == view.right
         }
         
         self.contentView.addSubview(self.button)
         constrain(self.contentView, self.button, self.imageView) { view, button, imageView in
-            button.width <= imageView.width
+            button.width <= imageView.width ~ 90
             button.top == imageView.bottom+10
             button.trailing == imageView.right
         }
@@ -89,7 +88,6 @@ class TopicParagraphCell: UICollectionViewCell {
             let offset: CGFloat = (self.imageView.image == nil) ? 0 : 20
             
             leadingTitleLabelConstraint?.constant = offset
-            trailingTitleLabelConstraint?.constant = -offset
         }
     }
     

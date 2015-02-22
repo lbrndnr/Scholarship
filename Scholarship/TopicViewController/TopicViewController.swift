@@ -18,7 +18,7 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
     
     let topic: Topic
     
-    private lazy var prototypingCell = TopicParagraphCell(frame: CGRectZero)
+    private lazy var prototypeCell = TopicParagraphCell(frame: CGRectZero)
 
     // MARK: - Initialization
     
@@ -77,62 +77,7 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
         
         if indexPath.item == 0 {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(paragraphCellIdentifier, forIndexPath: indexPath) as TopicParagraphCell
-            cell.titleLabel.text = paragraph.title
-            cell.textLabel.text = paragraph.text
-            cell.imageView.image = paragraph.mainImage
-            
-            if let source = paragraph.source {
-                cell.button.hidden = false
-                cell.button.setTitle(source.name, forState: .Normal)
-                
-                switch source {
-                case .GitHub(let URL):
-                    cell.button.rac_signalForControlEvents(.TouchUpInside).subscribeNext { _ in
-                        let controller  = WebViewController()
-                        controller.webView.loadRequest(NSURLRequest(URL: URL))
-                        
-                        controller.navigationItem.rightBarButtonItem = {
-                            let item = UIBarButtonItem(title: NSLocalizedString("Open in Safari", comment: "Open in Safari"), style: .Plain, target: nil, action: nil)
-                            item.rac_command = RACCommand(signalBlock: { _ in
-                                UIApplication.sharedApplication().openURL(URL)
-                                self.dismissViewControllerAnimated(true, completion: nil)
-                                
-                                return RACSignal.empty()
-                            })
-                            
-                            return item
-                        }()
-                        
-                        controller.navigationItem.leftBarButtonItem = {
-                            let item = UIBarButtonItem(barButtonSystemItem: .Cancel, target: nil, action: nil)
-                            item.rac_command = RACCommand(signalBlock: { _ in
-                                self.dismissViewControllerAnimated(true, completion: nil)
-                                
-                                return RACSignal.empty()
-                            })
-                            
-                            return item
-                        }()
-                        
-                        let navigationController = UINavigationController(rootViewController: controller)
-                        navigationController.modalPresentationStyle = .FormSheet
-                        
-                        self.presentViewController(navigationController, animated: true, completion: nil)
-                    }
-                    
-                case .AppStore(let identifier):
-                    cell.button.rac_signalForControlEvents(.TouchUpInside).subscribeNext { _ in
-                        let parameters = [SKStoreProductParameterITunesItemIdentifier : identifier]
-                        let controller = SKStoreProductViewController()
-                        controller.delegate = self
-                        controller.loadProductWithParameters(parameters, completionBlock: nil)
-                        self.presentViewController(controller, animated: true, completion: nil)
-                    }
-                }
-            }
-            else {
-                cell.button.hidden = true
-            }
+            self.configureParagraphCell(cell, paragraph: paragraph)
             
             return cell
         }
@@ -150,20 +95,16 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
         let bounds = collectionView.bounds
         
         let paragraph = self.topic.paragraphs[indexPath.section]
-
-        let cell = TopicParagraphCell(frame: CGRectZero)
-        cell.titleLabel.text = paragraph.title
-        cell.textLabel.text = paragraph.text
-        cell.imageView.image = paragraph.mainImage
+        self.configureParagraphCell(self.prototypeCell, paragraph: paragraph)
         
-        cell.bounds = CGRectMake(0, 0, 0.6*bounds.width, cell.bounds.height)
-        cell.contentView.bounds = cell.bounds
+        self.prototypeCell.bounds = CGRectMake(0, 0, 0.6*bounds.width, self.prototypeCell.bounds.height)
+        self.prototypeCell.contentView.bounds = self.prototypeCell.bounds
         
         // Layout subviews, this will let labels on this cell to set preferredMaxLayoutWidth
-        cell.setNeedsLayout()
-        cell.layoutIfNeeded()
+        self.prototypeCell.setNeedsLayout()
+        self.prototypeCell.layoutIfNeeded()
         
-        return cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+        return self.prototypeCell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
@@ -203,6 +144,68 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
 
     func productViewControllerDidFinish(viewController: SKStoreProductViewController!) {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // MARK: - Other Methods
+    
+    func configureParagraphCell(cell: TopicParagraphCell, paragraph: Topic.Paragraph) {
+        cell.titleLabel.text = paragraph.title
+        cell.textLabel.text = paragraph.text
+        cell.imageView.image = paragraph.mainImage
+        
+        if let source = paragraph.source {
+            cell.button.hidden = false
+            cell.button.setTitle(source.name, forState: .Normal)
+            
+            switch source {
+            case .GitHub(let URL):
+                cell.button.rac_signalForControlEvents(.TouchUpInside).subscribeNext { _ in
+                    let controller  = WebViewController()
+                    controller.title = source.name
+                    controller.webView.loadRequest(NSURLRequest(URL: URL))
+                    
+                    controller.navigationItem.rightBarButtonItem = {
+                        let item = UIBarButtonItem(title: NSLocalizedString("Open in Safari", comment: "Open in Safari"), style: .Plain, target: nil, action: nil)
+                        item.rac_command = RACCommand(signalBlock: { _ in
+                            UIApplication.sharedApplication().openURL(URL)
+                            self.dismissViewControllerAnimated(true, completion: nil)
+                            
+                            return RACSignal.empty()
+                        })
+                        
+                        return item
+                        }()
+                    
+                    controller.navigationItem.leftBarButtonItem = {
+                        let item = UIBarButtonItem(barButtonSystemItem: .Cancel, target: nil, action: nil)
+                        item.rac_command = RACCommand(signalBlock: { _ in
+                            self.dismissViewControllerAnimated(true, completion: nil)
+                            
+                            return RACSignal.empty()
+                        })
+                        
+                        return item
+                        }()
+                    
+                    let navigationController = UINavigationController(rootViewController: controller)
+                    navigationController.modalPresentationStyle = .FormSheet
+                    
+                    self.presentViewController(navigationController, animated: true, completion: nil)
+                }
+                
+            case .AppStore(let identifier):
+                cell.button.rac_signalForControlEvents(.TouchUpInside).subscribeNext { _ in
+                    let parameters = [SKStoreProductParameterITunesItemIdentifier : identifier]
+                    let controller = SKStoreProductViewController()
+                    controller.delegate = self
+                    controller.loadProductWithParameters(parameters, completionBlock: nil)
+                    self.presentViewController(controller, animated: true, completion: nil)
+                }
+            }
+        }
+        else {
+            cell.button.hidden = true
+        }
     }
     
     // MARK: -
