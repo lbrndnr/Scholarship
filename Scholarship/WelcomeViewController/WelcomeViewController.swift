@@ -50,7 +50,7 @@ class WelcomeViewController: UIViewController {
     }()
     
     let topics = [Topic.aboutTopic(), Topic.projectsTopic(), Topic.interestsTopic()]
-    private var topicButtons = [(TopicButton, ConstraintGroup)]()
+    private var topicButtons = [TopicButton]()
     
     // MARK: - View Lifecycle
     
@@ -83,16 +83,14 @@ class WelcomeViewController: UIViewController {
             
             self.view.addSubview(button)
             
-            return (button, ConstraintGroup())
+            return button
         }
-        
-        self.constrainTopicButtons(UIApplication.sharedApplication().statusBarOrientation)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for (button, _) in self.topicButtons {
+        for button in self.topicButtons {
             button.rac_signalForControlEvents(.TouchUpInside).subscribeNext() { _ in
                 if let topic = button.topic {
                     let controller = TopicViewController(topic: topic)
@@ -102,64 +100,61 @@ class WelcomeViewController: UIViewController {
         }
     }
     
-    func constrainTopicButtons(interfaceOrientation: UIInterfaceOrientation) {
-        var previousButton: TopicButton?
-        let middleIndex = Double(self.topicButtons.count)/2.0
-        for (i, (button, constraints)) in enumerate(self.topicButtons) {
+    // MARK: - Layout
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.layoutTopicButtons(self.view.bounds, interfaceOrientation: UIApplication.sharedApplication().statusBarOrientation)
+    }
+    
+    
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        UIView.animateWithDuration(duration, delay: 0.0, options: .BeginFromCurrentState, animations: {
+            let bounds = CGRect(origin: CGPointZero, size: CGSize(width: self.view.bounds.height, height: self.view.bounds.width))
+            self.layoutTopicButtons(bounds, interfaceOrientation: toInterfaceOrientation)
+        }, completion: nil)
+    }
+    
+    func layoutTopicButtons(bounds: CGRect, interfaceOrientation: UIInterfaceOrientation) {
+        if interfaceOrientation.isPortrait {
+            let offset: CGFloat = 50
+            let size = CGSize(width: 0.6*bounds.width, height: 80)
+            var center: CGPoint = {
+                let totalButtonHeight = CGFloat(self.topicButtons.count)*size.height
+                let totalButtonOffset = CGFloat(self.topicButtons.count-1)*offset
+                let centerY = self.avatarButton.frame.maxY+size.height/2+(bounds.maxY-self.avatarButton.frame.maxY-totalButtonHeight-totalButtonOffset)/2
+                
+                return CGPoint(x: bounds.midX, y: centerY)
+                }()
             
-            var newConstraints: ConstraintGroup?
-            if interfaceOrientation.isPortrait {
-                let upperView = previousButton ?? self.avatarButton
+            for button in self.topicButtons {
+                button.frame = CGRect(center: center, size: size)
                 
-                newConstraints = constrain(view, upperView, button, replace: constraints) { view, upperView, button in
-                    button.centerX == view.centerX
-                    button.top == upperView.bottom+50
-                    button.width == view.width*0.6
-                    button.height == 80
-                }
+                center.y += size.height+offset
             }
-            else {
+        }
+        else {
+            let offset: CGFloat = 100
+            let size = CGSize(width: 0.2*bounds.width, height: 130)
+            var center: CGPoint = {
+                let totalButtonWidth = CGFloat(self.topicButtons.count)*size.width
+                let totalButtonOffset = CGFloat(self.topicButtons.count-1)*offset
+                let centerX = size.width/2+(bounds.maxX-totalButtonWidth-totalButtonOffset)/2
+                let centerY = self.avatarButton.frame.maxY+(bounds.maxY-self.avatarButton.frame.maxY)/2
                 
-                if let previousButton = previousButton {
-                    // Swift bug
-                    constrain(self.view, previousButton, button, replace: constraints) { view, previousButton, button in
-                        button.leading == previousButton.right+100; return
-                    }
-                }
-                
-                newConstraints = constrain(self.view, button, replace: constraints) { view, button in
-                    let index = Double(i)
-                    if index > middleIndex {
-                        button.centerX >= view.centerX
-                    }
-                    else if index < middleIndex {
-                        button.centerX <= view.centerX
-                    }
-                    else {
-                        button.centerX == view.centerX
-                    }
-                    
-                    button.bottom == view.bottom-120
-                    button.width == 200
-                    button.height == 130
-                }
-            }
+                return CGPoint(x: centerX, y: centerY)
+                }()
             
-            previousButton = button
-            self.topicButtons[i] = (button, newConstraints ?? ConstraintGroup())
+            for button in self.topicButtons {
+                button.frame = CGRect(center: center, size: size)
+                
+                center.x += size.width+offset
+            }
         }
     }
     
     // MARK: -
-    
-    
-    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        self.constrainTopicButtons(toInterfaceOrientation)
-        
-        UIView.animateWithDuration(duration, delay: 0.0, options: .BeginFromCurrentState, animations: {
-            self.view.layoutIfNeeded()
-        }, completion: nil)
-    }
 
 }
 
