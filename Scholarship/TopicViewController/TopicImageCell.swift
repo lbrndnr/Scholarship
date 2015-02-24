@@ -11,14 +11,19 @@ import Cartography
 import ReactiveCocoa
 
 class TopicImageCell: UICollectionViewCell {
-
+    
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .ScaleAspectFill
-        imageView.layer.cornerRadius = 8.0
-        imageView.layer.masksToBounds = true
         
         return imageView
+    }()
+    
+    let highlightView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(white: 0.0, alpha: 0.3)
+        
+        return view
     }()
     
     // MARK: - Initialization
@@ -36,19 +41,26 @@ class TopicImageCell: UICollectionViewCell {
     }
     
     private func initialize() {
+        self.layer.cornerRadius = 8.0
+        self.layer.masksToBounds = true
+        
         self.contentView.addSubview(self.imageView)
         // Swift bug
         constrain(self.contentView, self.imageView) { view, imageView in
             imageView.edges == view.edges; return
         }
-    
+        
+        self.contentView.addSubview(self.highlightView)
+        // Swift bug
+        constrain(self.contentView, self.highlightView) { view, highlightView in
+            highlightView.edges == view.edges; return
+        }
+        
         self.rac_valuesForKeyPath("highlighted", observer: self).subscribeNext { _ in
-            UIView.animateWithDuration(0.1, delay: 0.0, options: .BeginFromCurrentState, animations: {
-                self.transform = (self.highlighted) ? CGAffineTransformMakeScale(0.95, 0.95) : CGAffineTransformIdentity
-                }, completion: nil)
+            self.highlightView.hidden = !self.highlighted
         }
     }
     
     // MARK: -
-
+    
 }

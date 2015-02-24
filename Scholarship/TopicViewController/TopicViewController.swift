@@ -116,30 +116,25 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.item != 0 {
-            let cell = collectionView.cellForItemAtIndexPath(indexPath) as TopicImageCell
-            let paragraph = self.topic.paragraphs[indexPath.section]
+        collectionView.deselectItemAtIndexPath(indexPath, animated: false)
+        
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as TopicImageCell
+        let paragraph = self.topic.paragraphs[indexPath.section]
+        
+        let imageInfo: JTSMediaInfo = {
+            let info = JTSMediaInfo()
+            info.image = cell.imageView.image
+            info.referenceRect = cell.imageView.frame
+            info.referenceView = cell.contentView
+            info.referenceContentMode = cell.imageView.contentMode
+            info.referenceCornerRadius = cell.layer.cornerRadius
+            info.videoURL = paragraph.images?[indexPath.item-1].1
             
-            let imageInfo: JTSMediaInfo = {
-                let info = JTSMediaInfo()
-                info.image = cell.imageView.image
-                info.referenceRect = cell.imageView.frame
-                info.referenceView = cell.contentView
-                info.referenceContentMode = cell.imageView.contentMode
-                info.referenceCornerRadius = cell.imageView.layer.cornerRadius
-                info.videoURL = paragraph.images?[indexPath.item-1].1
-            
-                return info
-            }()
-            
-            let controller = JTSImageViewController(imageInfo: imageInfo, mode: .Image, backgroundStyle: .Scaled)
-            controller.showFromViewController(self, transition: ._FromOriginalPosition) {
-                collectionView.deselectItemAtIndexPath(indexPath, animated: false)
-            }
-        }
-        else {
-            collectionView.deselectItemAtIndexPath(indexPath, animated: true)
-        }
+            return info
+        }()
+        
+        let controller = JTSImageViewController(imageInfo: imageInfo, mode: .Image, backgroundStyle: .Scaled)
+        controller.showFromViewController(self, transition: ._FromOriginalPosition, completion: nil)
     }
     
     // MARK: - SKStoreProductViewControllerDelegate
