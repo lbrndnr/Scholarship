@@ -61,7 +61,7 @@ struct Topic {
             paragraph.source = .AppStore("918925779")
             paragraph.mainImage = UIImage(named: "Crimson-Icon")
             
-            let images = [UIImage(named: "crimson-banner"), UIImage(named: "crimson-banner")].filter { $0 != nil }.map { $0! }
+            let images = [UIImage(named: "crimson-banner"), UIImage(named: "Crimson-Typing-Thumbnail")].filter { $0 != nil }.map { $0! }
             paragraph.images = images
             
             return paragraph

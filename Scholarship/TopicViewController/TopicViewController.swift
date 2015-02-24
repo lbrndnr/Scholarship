@@ -119,13 +119,14 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
         if indexPath.item != 0 {
             let cell = collectionView.cellForItemAtIndexPath(indexPath) as TopicImageCell
             
-            let imageInfo: JTSImageInfo = {
-                let info = JTSImageInfo()
+            let imageInfo: JTSMediaInfo = {
+                let info = JTSMediaInfo()
                 info.image = cell.imageView.image
                 info.referenceRect = cell.imageView.frame
                 info.referenceView = cell.contentView
                 info.referenceContentMode = cell.imageView.contentMode
                 info.referenceCornerRadius = cell.imageView.layer.cornerRadius
+                info.videoURL = NSBundle.mainBundle().URLForResource("Crimson-Typing", withExtension: "mp4")
             
                 return info
             }()
@@ -174,7 +175,7 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
                         })
                         
                         return item
-                        }()
+                    }()
                     
                     controller.navigationItem.leftBarButtonItem = {
                         let item = UIBarButtonItem(barButtonSystemItem: .Cancel, target: nil, action: nil)
@@ -185,7 +186,7 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
                         })
                         
                         return item
-                        }()
+                    }()
                     
                     let navigationController = UINavigationController(rootViewController: controller)
                     navigationController.modalPresentationStyle = .FormSheet
