@@ -161,7 +161,7 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
             
             switch source {
             case .GitHub(let URL):
-                cell.button.rac_signalForControlEvents(.TouchUpInside).subscribeNext { _ in
+                cell.button.rac_command = RACCommand(signalBlock: { _ in
                     let controller  = WebViewController()
                     controller.title = source.name
                     controller.webView.loadRequest(NSURLRequest(URL: URL))
@@ -193,20 +193,25 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
                     navigationController.modalPresentationStyle = .FormSheet
                     
                     self.presentViewController(navigationController, animated: true, completion: nil)
-                }
+                    
+                    return RACSignal.empty()
+                })
                 
             case .AppStore(let identifier):
-                cell.button.rac_signalForControlEvents(.TouchUpInside).subscribeNext { _ in
+                cell.button.rac_command = RACCommand(signalBlock: { _ in
                     let parameters = [SKStoreProductParameterITunesItemIdentifier : identifier]
                     let controller = SKStoreProductViewController()
                     controller.delegate = self
                     controller.loadProductWithParameters(parameters, completionBlock: nil)
                     self.presentViewController(controller, animated: true, completion: nil)
-                }
+                    
+                    return RACSignal.empty()
+                })
             }
         }
         else {
             cell.button.hidden = true
+            cell.button.rac_command = nil
         }
     }
     
