@@ -19,13 +19,6 @@ class TopicImageCell: UICollectionViewCell {
         return imageView
     }()
     
-    let highlightView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(white: 0.0, alpha: 0.3)
-        
-        return view
-    }()
-    
     // MARK: - Initialization
     
     override init(frame: CGRect) {
@@ -50,14 +43,10 @@ class TopicImageCell: UICollectionViewCell {
             imageView.edges == view.edges; return
         }
         
-        self.contentView.addSubview(self.highlightView)
-        // Swift bug
-        constrain(self.contentView, self.highlightView) { view, highlightView in
-            highlightView.edges == view.edges; return
-        }
-        
         self.rac_valuesForKeyPath("highlighted", observer: self).subscribeNext { _ in
-            self.highlightView.hidden = !self.highlighted
+            UIView.animateWithDuration(0.1, delay: 0.0, options: .BeginFromCurrentState, animations: {
+                self.transform = (self.highlighted) ? CGAffineTransformMakeScale(0.95, 0.95) : CGAffineTransformIdentity
+                }, completion: nil)
         }
     }
     

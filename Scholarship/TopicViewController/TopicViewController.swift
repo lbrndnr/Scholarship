@@ -116,25 +116,29 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+
         collectionView.deselectItemAtIndexPath(indexPath, animated: false)
         
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as TopicImageCell
-        let paragraph = self.topic.paragraphs[indexPath.section]
-        
-        let imageInfo: JTSMediaInfo = {
-            let info = JTSMediaInfo()
-            info.image = cell.imageView.image
-            info.referenceRect = cell.imageView.frame
-            info.referenceView = cell.contentView
-            info.referenceContentMode = cell.imageView.contentMode
-            info.referenceCornerRadius = cell.layer.cornerRadius
-            info.videoURL = paragraph.images?[indexPath.item-1].1
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW,  Int64(0.03 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            let cell = collectionView.cellForItemAtIndexPath(indexPath) as TopicImageCell
+            let paragraph = self.topic.paragraphs[indexPath.section]
             
-            return info
-        }()
-        
-        let controller = JTSImageViewController(imageInfo: imageInfo, mode: .Image, backgroundStyle: .Scaled)
-        controller.showFromViewController(self, transition: ._FromOriginalPosition, completion: nil)
+            let imageInfo: JTSMediaInfo = {
+                let info = JTSMediaInfo()
+                info.image = cell.imageView.image
+                info.referenceRect = cell.imageView.frame
+                info.referenceView = cell.contentView
+                info.referenceContentMode = cell.imageView.contentMode
+                info.referenceCornerRadius = cell.layer.cornerRadius
+                info.videoURL = paragraph.images?[indexPath.item-1].1
+                
+                return info
+            }()
+            
+            let controller = JTSImageViewController(imageInfo: imageInfo, mode: .Image, backgroundStyle: .Scaled)
+            controller.showFromViewController(self, transition: ._FromOriginalPosition, completion: nil)
+        }
     }
     
     // MARK: - SKStoreProductViewControllerDelegate
