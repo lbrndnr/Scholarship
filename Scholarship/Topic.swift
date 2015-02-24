@@ -20,7 +20,7 @@ struct Topic {
         var title: String
         var text: String
         var mainImage: UIImage?
-        var images: [UIImage]?
+        var images: [(UIImage, NSURL?)]?
         var source: Source?
         
         init(title: String, text: String) {
@@ -61,7 +61,7 @@ struct Topic {
             paragraph.source = .AppStore("918925779")
             paragraph.mainImage = UIImage(named: "Crimson-Icon")
             
-            let images = [UIImage(named: "crimson-banner"), UIImage(named: "Crimson-Typing-Thumbnail")].filter { $0 != nil }.map { $0! }
+            let images = [(UIImage(named: "crimson-banner")!, nil), (UIImage(named: "Crimson-Typing-Thumbnail")!, NSBundle.mainBundle().URLForResource("Crimson-Typing", withExtension: "mp4"))]
             paragraph.images = images
             
             return paragraph
@@ -75,9 +75,6 @@ struct Topic {
             }
             paragraph.mainImage = UIImage(named: "Whistles-Icon")
             
-            let images = [UIImage(named: "crimson-banner"), UIImage(named: "crimson-banner")].filter { $0 != nil }.map { $0! }
-            paragraph.images = images
-            
             return paragraph
         }()
         
@@ -90,9 +87,6 @@ struct Topic {
                 text: NSLocalizedString("As you type, Crimson gives suggestions on the next word it thinks you’ll pick directly above the letter. The same autocorrect style can be found on BlackBerry 10’s virtual keyboard; it’s an awesome way to present a number of options on screen, without taking up more space above the keyboard.", comment: "Crimson Text"))
             paragraph.source = .AppStore("918925779")
             paragraph.mainImage = UIImage(named: "Crimson-Icon")
-            
-            let images = [UIImage(named: "crimson-banner"), UIImage(named: "crimson-banner")].filter { $0 != nil }.map { $0! }
-            paragraph.images = images
             
             return paragraph
         }()

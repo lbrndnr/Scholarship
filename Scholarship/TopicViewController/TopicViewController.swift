@@ -83,7 +83,7 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
         }
         else {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(imageCellIdentifier, forIndexPath: indexPath) as TopicImageCell
-            cell.imageView.image = paragraph.images?[indexPath.item-1]
+            cell.imageView.image = paragraph.images?[indexPath.item-1].0
             
             return cell
         }
@@ -118,6 +118,7 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if indexPath.item != 0 {
             let cell = collectionView.cellForItemAtIndexPath(indexPath) as TopicImageCell
+            let paragraph = self.topic.paragraphs[indexPath.section]
             
             let imageInfo: JTSMediaInfo = {
                 let info = JTSMediaInfo()
@@ -126,7 +127,7 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
                 info.referenceView = cell.contentView
                 info.referenceContentMode = cell.imageView.contentMode
                 info.referenceCornerRadius = cell.imageView.layer.cornerRadius
-                info.videoURL = NSBundle.mainBundle().URLForResource("Crimson-Typing", withExtension: "mp4")
+                info.videoURL = paragraph.images?[indexPath.item-1].1
             
                 return info
             }()
