@@ -66,15 +66,24 @@ struct Topic {
     }
     
     static func interestsTopic() -> Topic {
-        let crimsonParagraph: Paragraph = {
-            var paragraph = Paragraph(title: "Crimson",
-                text: NSLocalizedString("As you type, Crimson gives suggestions on the next word it thinks you’ll pick directly above the letter. The same autocorrect style can be found on BlackBerry 10’s virtual keyboard; it’s an awesome way to present a number of options on screen, without taking up more space above the keyboard.", comment: "Crimson Text"))
-            paragraph.source = .AppStore("918925779")
-            paragraph.mainImage = UIImage(named: "Crimson-Icon")
+        let programmingParagraph: Paragraph = {
+            var paragraph = Paragraph(title: NSLocalizedString("Programming", comment: "Programming"),
+                text: NSLocalizedString("Programming is my biggest hobby. I develop iOS and Mac apps for about 6 years. However, I'm also interested in web development using Node.js or Ruby on Rails. Most recently I have also used OpenCV to make a script that takes a picture whenever you wink at the camera. It intrigues me that computers can learn such human like behavior. When I have the time, I also like to go to meetups or attend hackathons.", comment: "Programming Text"))
+            paragraph.images = [(UIImage(named: "Programming-Wink")!, nil),
+                (UIImage(named: "Programming-HackZurich")!, nil)]
             
             return paragraph
         }()
         
-        return Topic(headerImageName: "Interests", title: NSLocalizedString("Interests", comment: "Interests"), paragraphs: [crimsonParagraph])
+        let snowboardingParagraph: Paragraph = {
+            var paragraph = Paragraph(title: NSLocalizedString("Snowboarding", comment: "Snowboarding"),
+                text: NSLocalizedString("As a Swiss, I'm obsessed with the mountains. I started skiing when I was 6 years old and learnt snowboarding when I was 12. I try to go snowboarding as many times as possible during the winter. I'm still convinced that there's nothing more fun than a beautiful day with a meter of fresh powder.", comment: "Snowboarding Text"))
+            paragraph.images = [(UIImage(named: "Snowboarding-Kimberley")!, nil),
+                (UIImage(named: "Snowboarding-Tour")!, nil)]
+            
+            return paragraph
+        }()
+        
+        return Topic(headerImageName: "Interests", title: NSLocalizedString("Interests", comment: "Interests"), paragraphs: [programmingParagraph, snowboardingParagraph])
     }
 }
