@@ -37,23 +37,27 @@ struct Topic {
     static func projectsTopic() -> Topic {
         let crimsonParagraph: Paragraph = {
             var paragraph = Paragraph(title: "Crimson",
-                                       text: NSLocalizedString("As you type, Crimson gives suggestions on the next word it thinks you’ll pick directly above the letter. The same autocorrect style can be found on BlackBerry 10’s virtual keyboard; it’s an awesome way to present a number of options on screen, without taking up more space above the keyboard.", comment: "Crimson Text"))
+                                       text: NSLocalizedString("Crimson is an iOS keyboard extension I developed in 2014. It shows suggestions above the keys the user is likey to tap next. Swiping up on a key inserts the suggestion. It learns new words as the user types and adapts to the general writing style too. The native design is refined and improved with delightful animations and a clearer shift key. Additionally, the spacebar splits to make it easy to insert a comma or period.", comment: "Crimson Text"))
             paragraph.source = .AppStore("918925779")
             paragraph.mainImage = UIImage(named: "Crimson-Icon")
             
-            let images = [(UIImage(named: "crimson-banner")!, nil), (UIImage(named: "Crimson-Typing-Thumbnail")!, NSBundle.mainBundle().URLForResource("Crimson-Typing", withExtension: "mp4"))]
-            paragraph.images = images
+            paragraph.images = [(UIImage(named: "Crimson-Video-Thumbnail")!, NSBundle.mainBundle().URLForResource("Crimson-Video", withExtension: "mp4")),
+                          (UIImage(named: "Crimson-Banner-1")!, nil),
+                          (UIImage(named: "Crimson-Banner-2")!, nil),]
             
             return paragraph
         }()
         
         let whistlesParagraph: Paragraph = {
             var paragraph = Paragraph(title: "Whistles",
-                                       text: NSLocalizedString("As you type, Crimson gives suggestions on the next word it thinks you’ll pick directly above the letter. The same autocorrect style can be found on BlackBerry 10’s virtual keyboard; it’s an awesome way to present a number of options on screen, without taking up more space above the keyboard.", comment: "Crimson Text"))
+                                       text: NSLocalizedString("Whistles is an iPhone app that identifies birds by their whistling. I developed an audio fingerprinting algorithm that consists of multiple algorithms including the Fast Fourier Transform and the Haar-Wavelet Transform. To store the fingerprints of the birds and match them I have also developed a Ruby on Rails server. I won the \"Best Computer Science Graduation Project of the Year 2014\" award with it.", comment: "Crimson Text"))
             if let URL = NSURL(string: "https://github.com/larcus94/LBAudioDetective") {
                 paragraph.source = .GitHub(URL)
             }
             paragraph.mainImage = UIImage(named: "Whistles-Icon")
+            
+            paragraph.images = [(UIImage(named: "Whistles-Video-Thumbnail")!, NSBundle.mainBundle().URLForResource("Whistles-Video", withExtension: "mp4")),
+                        (UIImage(named: "Whistles-ETH")!, nil)]
             
             return paragraph
         }()

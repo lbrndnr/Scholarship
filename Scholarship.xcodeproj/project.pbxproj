@@ -26,7 +26,7 @@
 		49CAF2AB1A8E112C00C2B7CC /* HeaderCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CAF2AA1A8E112C00C2B7CC /* HeaderCollectionViewController.swift */; };
 		49D233C71A8B734400E7BAE0 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D233C61A8B734400E7BAE0 /* Extension.swift */; };
 		49D492F71A8A2E2200ECCCA6 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492F61A8A2E2200ECCCA6 /* Style.swift */; };
-		49D4E2E41A9C7B3D00FCB089 /* Crimson-Typing.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 49D4E2E11A9C709300FCB089 /* Crimson-Typing.mp4 */; };
+		49D4E2E41A9C7B3D00FCB089 /* Crimson-Video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 49D4E2E11A9C709300FCB089 /* Crimson-Video.mp4 */; };
 		49D8D4811A8BA69C00ACAB4B /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D8D4801A8BA69C00ACAB4B /* TopicViewController.swift */; };
 		49D9DD6E1A972C17001FBDCA /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492F61A8A2E2200ECCCA6 /* Style.swift */; };
 		49D9DD6F1A972C17001FBDCA /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D233C61A8B734400E7BAE0 /* Extension.swift */; };
@@ -48,6 +48,8 @@
 		49E2FBC91A9DD01D002AB4B6 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E2FBC71A9DD01D002AB4B6 /* Topic.swift */; };
 		49E2FBCB1A9DD026002AB4B6 /* Paragraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E2FBCA1A9DD026002AB4B6 /* Paragraph.swift */; };
 		49E2FBCC1A9DD026002AB4B6 /* Paragraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E2FBCA1A9DD026002AB4B6 /* Paragraph.swift */; };
+		49E2FBCE1A9DE0BC002AB4B6 /* Whistles-Video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 49E2FBCD1A9DE0BC002AB4B6 /* Whistles-Video.mp4 */; };
+		49E2FBCF1A9DE0BC002AB4B6 /* Whistles-Video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 49E2FBCD1A9DE0BC002AB4B6 /* Whistles-Video.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,11 +88,12 @@
 		49CAF2AC1A8E15BB00C2B7CC /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		49D233C61A8B734400E7BAE0 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		49D492F61A8A2E2200ECCCA6 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
-		49D4E2E11A9C709300FCB089 /* Crimson-Typing.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Crimson-Typing.mp4"; sourceTree = "<group>"; };
+		49D4E2E11A9C709300FCB089 /* Crimson-Video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Crimson-Video.mp4"; sourceTree = "<group>"; };
 		49D8D4801A8BA69C00ACAB4B /* TopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicViewController.swift; sourceTree = "<group>"; };
 		49D9DD801A972D91001FBDCA /* JTSImageViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JTSImageViewController.framework; path = ../Carthage/Build/iOS/JTSImageViewController.framework; sourceTree = "<group>"; };
 		49E2FBC71A9DD01D002AB4B6 /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		49E2FBCA1A9DD026002AB4B6 /* Paragraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paragraph.swift; sourceTree = "<group>"; };
+		49E2FBCD1A9DE0BC002AB4B6 /* Whistles-Video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Whistles-Video.mp4"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,7 +165,8 @@
 		492D91B61A850A62009730D7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				49D4E2E11A9C709300FCB089 /* Crimson-Typing.mp4 */,
+				49E2FBCD1A9DE0BC002AB4B6 /* Whistles-Video.mp4 */,
+				49D4E2E11A9C709300FCB089 /* Crimson-Video.mp4 */,
 				492D91B71A850A62009730D7 /* Info.plist */,
 				497E7C431A90EBF600717AA3 /* Scholarship-Bridging-Header.h */,
 			);
@@ -310,9 +314,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49E2FBCE1A9DE0BC002AB4B6 /* Whistles-Video.mp4 in Resources */,
 				492D91C01A850A62009730D7 /* Images.xcassets in Resources */,
 				49186E761A8655E5006A602A /* Launch Screen.xib in Resources */,
-				49D4E2E41A9C7B3D00FCB089 /* Crimson-Typing.mp4 in Resources */,
+				49D4E2E41A9C7B3D00FCB089 /* Crimson-Video.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +325,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49E2FBCF1A9DE0BC002AB4B6 /* Whistles-Video.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
