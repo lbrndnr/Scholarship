@@ -80,6 +80,7 @@ class WelcomeViewController: UIViewController {
             button.titleLabel?.font = UIFont.systemFontOfSize(25.0)
             button.layer.cornerRadius = 5.0
             button.layer.masksToBounds = true
+            button.hidden = true
             
             self.view.addSubview(button)
             
@@ -96,6 +97,26 @@ class WelcomeViewController: UIViewController {
                     let controller = TopicViewController(topic: topic)
                     self.navigationController?.presentViewController(controller, animated: true, completion: nil)
                 }
+            }
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        var delay = 0.5
+        for (i, button) in enumerate(self.topicButtons) {
+            if button.hidden {
+                let buttonFrame = button.frame
+                
+                button.frame = CGRect(center: button.center, size: CGSizeZero)
+                button.hidden = false
+                
+                [UIView .animateWithDuration(0.7, delay: delay, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options: nil, animations: { () -> Void in
+                    button.frame = buttonFrame
+                }, completion: nil)]
+                
+                delay += 0.15
             }
         }
     }
