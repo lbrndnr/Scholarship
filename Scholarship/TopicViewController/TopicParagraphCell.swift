@@ -90,6 +90,12 @@ class TopicParagraphCell: UICollectionViewCell {
     // MARK: - Layout
     
     func setPreferedMaxLayoutWidthForCellWidth(var width: CGFloat) {
+        self.bounds = CGRect(origin: CGPointZero, size: CGSize(width: width, height: 500))
+        self.contentView.frame = self.bounds
+        
+        self.setNeedsLayout()
+        self.layoutIfNeeded()
+        
         width -= self.titleLabel.frame.minX
         
         self.titleLabel.preferredMaxLayoutWidth = width
