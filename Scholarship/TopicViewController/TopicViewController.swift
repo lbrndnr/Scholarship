@@ -92,17 +92,10 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
     // MARK: - UICollectionViewDelegateFlowLayout
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let bounds = collectionView.bounds
-        
         let paragraph = self.topic.paragraphs[indexPath.section]
+        
         self.configureParagraphCell(self.prototypeCell, paragraph: paragraph)
-        
-        self.prototypeCell.bounds = CGRectMake(0, 0, 0.6*bounds.width, self.prototypeCell.bounds.height)
-        self.prototypeCell.contentView.bounds = self.prototypeCell.bounds
-        
-        // Layout subviews, this will let labels on this cell to set preferredMaxLayoutWidth
-        self.prototypeCell.setNeedsLayout()
-        self.prototypeCell.layoutIfNeeded()
+        self.prototypeCell.setPreferedMaxLayoutWidthForCellWidth(collectionView.bounds.width*0.6)
         
         return self.prototypeCell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
     }
@@ -116,7 +109,6 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-
         collectionView.deselectItemAtIndexPath(indexPath, animated: false)
         
         let delayTime = dispatch_time(DISPATCH_TIME_NOW,  Int64(0.03 * Double(NSEC_PER_SEC)))
@@ -149,10 +141,14 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
     
     // MARK: - Other Methods
     
-    func configureParagraphCell(cell: TopicParagraphCell, paragraph: Topic.Paragraph) {
+    func configureParagraphCell(cell: TopicParagraphCell, paragraph: Paragraph) {
         cell.titleLabel.text = paragraph.title
-        cell.textLabel.text = paragraph.text
         cell.imageView.image = paragraph.mainImage
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 6
+        let attributes = [NSForegroundColorAttributeName: UIColor(white: 0.0, alpha: 0.7), NSFontAttributeName: UIFont.lightHelveticaNeueWithSize(16.0), NSParagraphStyleAttributeName: paragraphStyle]
+        cell.textLabel.attributedText = NSAttributedString(string: paragraph.text, attributes: attributes)
         
         if let source = paragraph.source {
             cell.button.hidden = false

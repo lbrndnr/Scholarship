@@ -32,8 +32,6 @@ class TopicParagraphCell: UICollectionViewCell {
     let textLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = UIFont.lightHelveticaNeueWithSize(18.0)
-        label.textColor = UIColor(white: 0.0, alpha: 0.7)
         
         return label
     }()
@@ -58,43 +56,42 @@ class TopicParagraphCell: UICollectionViewCell {
         
         var leadingTitleLabelConstraint: NSLayoutConstraint?
         
-        constrain(self.contentView, self.titleLabel, self.imageView) { view, titleLabel, imageView in
+        constrain(self.contentView, self.imageView, self.titleLabel) { view, imageView, titleLabel in
             imageView.leading == view.left
             imageView.top == view.top
             imageView.width <= 120
             imageView.height <= view.height
             
-            titleLabel.top == imageView.top
-            leadingTitleLabelConstraint = titleLabel.leading == imageView.right
-            titleLabel.trailing == view.right
+            titleLabel.top == view.top
+            leadingTitleLabelConstraint = (titleLabel.leading == imageView.right)
+            titleLabel.right == view.right
         }
         
         self.contentView.addSubview(self.button)
         constrain(self.contentView, self.button, self.imageView) { view, button, imageView in
-            button.width <= imageView.width ~ 90
             button.top == imageView.bottom+10
-            button.trailing == imageView.right
+            button.right == imageView.right
         }
         
         self.contentView.addSubview(self.textLabel)
         constrain(self.contentView, self.titleLabel, self.textLabel) { view, titleLabel, textLabel in
-            textLabel.top == titleLabel.bottom
+            textLabel.top == titleLabel.bottom+10
             textLabel.leading == titleLabel.leading
-            textLabel.trailing == titleLabel.trailing
+            textLabel.right == view.right
             textLabel.bottom == view.bottom
         }
         
         self.rac_valuesForKeyPath("imageView.image", observer: self).subscribeNext { _ in
             let offset: CGFloat = (self.imageView.image == nil) ? 0 : 20
-            
             leadingTitleLabelConstraint?.constant = offset
         }
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    // MARK: - Layout
+    
+    func setPreferedMaxLayoutWidthForCellWidth(var width: CGFloat) {
+        width -= self.titleLabel.frame.minX
         
-        let width = self.bounds.width-self.imageView.frame.width
         self.titleLabel.preferredMaxLayoutWidth = width
         self.textLabel.preferredMaxLayoutWidth = width
     }
