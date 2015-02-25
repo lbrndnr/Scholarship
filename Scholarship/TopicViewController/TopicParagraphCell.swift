@@ -50,7 +50,7 @@ class TopicParagraphCell: UICollectionViewCell {
         self.initialize()
     }
     
-    private func initialize() {
+    private func initialize() {        
         self.contentView.addSubview(self.imageView)
         self.contentView.addSubview(self.titleLabel)
         
@@ -63,7 +63,7 @@ class TopicParagraphCell: UICollectionViewCell {
             imageView.height <= view.height
             
             titleLabel.top == view.top
-            leadingTitleLabelConstraint = (titleLabel.leading == imageView.right)
+            leadingTitleLabelConstraint = (titleLabel.leading == view.left)
             titleLabel.right == view.right
         }
         
@@ -71,6 +71,7 @@ class TopicParagraphCell: UICollectionViewCell {
         constrain(self.contentView, self.button, self.imageView) { view, button, imageView in
             button.top == imageView.bottom+10
             button.right == imageView.right
+            button.left == imageView.left
         }
         
         self.contentView.addSubview(self.textLabel)
@@ -83,7 +84,8 @@ class TopicParagraphCell: UICollectionViewCell {
         
         self.rac_valuesForKeyPath("imageView.image", observer: self).subscribeNext { _ in
             let offset: CGFloat = (self.imageView.image == nil) ? 0 : 20
-            leadingTitleLabelConstraint?.constant = offset
+            let imageWidth = min(self.imageView.image?.size.width ?? 0, 120)
+            leadingTitleLabelConstraint?.constant = offset+imageWidth
         }
     }
     
