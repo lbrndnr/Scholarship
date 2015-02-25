@@ -26,7 +26,6 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
         self.topic = topic
         
         let layout = TopicFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20.0, left: 0.0, bottom: 0.0, right: 0.0)
         layout.minimumInteritemSpacing = 20
         layout.minimumLineSpacing = 20
 
@@ -94,14 +93,29 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let paragraph = self.topic.paragraphs[indexPath.section]
         
+        let width = collectionView.bounds.width*0.6
         self.configureParagraphCell(self.prototypeCell, paragraph: paragraph)
-        self.prototypeCell.setPreferedMaxLayoutWidthForCellWidth(collectionView.bounds.width*0.6)
+        self.prototypeCell.setPreferedMaxLayoutWidthForCellWidth(width)
         
-        return self.prototypeCell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+        return CGSize(width: width, height: self.prototypeCell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         return self.topic.paragraphs[section].images.map { _ in CGSize(width: 0.2*collectionView.bounds.width, height: 50) } ?? CGSizeZero
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        let defaultInset: CGFloat = 20
+        let edgeInset: CGFloat = 60
+        
+        if (section == 0) {
+            return UIEdgeInsets(top: edgeInset, left: 0, bottom: defaultInset, right: 0)
+        }
+        else if (section == collectionView.numberOfSections()-1) {
+            return UIEdgeInsets(top: defaultInset, left: 0, bottom: edgeInset, right: 0)
+        }
+        
+        return UIEdgeInsets(top: defaultInset, left: 0, bottom: defaultInset, right: 0)
     }
 
     override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {

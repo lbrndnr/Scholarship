@@ -12,6 +12,7 @@ import ReactiveCocoa
 class TopicFlowLayout: UICollectionViewFlowLayout {
     
     private var layoutAttributes = [[UICollectionViewLayoutAttributes]]()
+    private var contentSize = CGSizeZero
     
     var secondaryItemHeight: CGFloat = 100.0 {
         didSet {
@@ -30,10 +31,14 @@ class TopicFlowLayout: UICollectionViewFlowLayout {
         if let collectionView = self.collectionView {
             if let dataSource = collectionView.dataSource {
                 if let delegate = collectionView.delegate as? UICollectionViewDelegateFlowLayout {
-                    var origin = CGPoint(x: self.sectionInset.left, y: self.sectionInset.top)
+                    var origin = CGPointZero
                     
                     for s in 0..<(dataSource.numberOfSectionsInCollectionView?(collectionView) ?? 0) {
                         let numberOfItems = dataSource.collectionView(collectionView, numberOfItemsInSection: s)
+                        let sectionInset = delegate.collectionView?(collectionView, layout: self, insetForSectionAtIndex: s) ?? self.sectionInset
+                        
+                        origin.x += sectionInset.left
+                        origin.y += sectionInset.top
                         
                         var layoutAttributes = [UICollectionViewLayoutAttributes]()
                         let numberOfSecondaryItems = numberOfItems-1
@@ -55,23 +60,22 @@ class TopicFlowLayout: UICollectionViewFlowLayout {
                                 }
                                 else {
                                     frame = CGRect(origin: origin, size: secondaryItemSize)
-                                    
-                                    if i == numberOfItems-1 {
-                                        origin = CGPoint(x: self.sectionInset.left, y: frame.maxY+self.sectionInset.bottom+self.sectionInset.top)
-                                    }
-                                    else {
-                                        origin.x = frame.maxX+self.minimumInteritemSpacing
-                                    }
+                                    origin.x = frame.maxX+self.minimumInteritemSpacing
                                 }
                                 
                                 let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: NSIndexPath(forItem: i, inSection: s))
                                 attributes.frame = frame
                                 
                                 layoutAttributes.append(attributes)
+                                
+                                if i == numberOfItems-1 {
+                                    origin = CGPoint(x: sectionInset.left, y: frame.maxY+sectionInset.bottom)
+                                }
                             }
                         }
                         
                         self.layoutAttributes.append(layoutAttributes)
+                        self.contentSize = CGSize(width: collectionView.frame.width, height: origin.y)
                     }
                 }
             }
@@ -83,13 +87,7 @@ class TopicFlowLayout: UICollectionViewFlowLayout {
     }
     
     override func collectionViewContentSize() -> CGSize {
-        let rect = self.layoutAttributes.reduce(CGRectZero) { memo, section in
-            return section.reduce(memo) { memo, attributes in
-                return CGRectUnion(memo, attributes.frame)
-            }
-        }
-        
-        return rect.size
+        return self.contentSize
     }
     
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
