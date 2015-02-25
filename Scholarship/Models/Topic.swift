@@ -84,6 +84,13 @@ struct Topic {
             return paragraph
         }()
         
-        return Topic(headerImageName: "Interests", title: NSLocalizedString("Interests", comment: "Interests"), paragraphs: [programmingParagraph, snowboardingParagraph])
+        let mediaParagraph: Paragraph = {
+            var paragraph = Paragraph(title: NSLocalizedString("Books and Movies", comment: "Books and Movies"),
+                text: NSLocalizedString("When I'm not on the slope or coding you'll most likely find me reading or watching a movie. While I read nonfiction books too, I prefer novels written by Stieg Larsson or Jo Nesbø or any other thriller that keeps me on the edge of my seat.", comment: "Media Text"))
+            
+            return paragraph
+        }()
+        
+        return Topic(headerImageName: "Interests", title: NSLocalizedString("Interests", comment: "Interests"), paragraphs: [programmingParagraph, snowboardingParagraph, mediaParagraph])
     }
 }
