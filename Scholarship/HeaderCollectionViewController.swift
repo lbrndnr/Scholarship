@@ -78,8 +78,10 @@ class HeaderCollectionViewController: UICollectionViewController {
         
         self.view.addSubview(self.dismissButton)
         constrain(self.view, self.headerView, self.dismissButton) { view, headerView, dismissButton in
-            dismissButton.right == view.right-30
-            dismissButton.top == headerView.bottom+20
+            dismissButton.width == 44
+            dismissButton.height == 44
+            dismissButton.right == view.right-20
+            dismissButton.top == headerView.bottom+10
         }
     }
     
