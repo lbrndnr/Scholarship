@@ -30,7 +30,6 @@
 		49D8D4811A8BA69C00ACAB4B /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D8D4801A8BA69C00ACAB4B /* TopicViewController.swift */; };
 		49D9DD6E1A972C17001FBDCA /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492F61A8A2E2200ECCCA6 /* Style.swift */; };
 		49D9DD6F1A972C17001FBDCA /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D233C61A8B734400E7BAE0 /* Extension.swift */; };
-		49D9DD701A972C17001FBDCA /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DAC2B81A8C9984004BBBC0 /* Topic.swift */; };
 		49D9DD721A972C17001FBDCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D91B81A850A62009730D7 /* AppDelegate.swift */; };
 		49D9DD731A972C17001FBDCA /* HeaderCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CAF2AA1A8E112C00C2B7CC /* HeaderCollectionViewController.swift */; };
 		49D9DD741A972C17001FBDCA /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 497E7C401A90EBC200717AA3 /* UIImage+ImageEffects.m */; };
@@ -45,7 +44,10 @@
 		49D9DD7F1A972D91001FBDCA /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492D91DA1A8515B5009730D7 /* ReactiveCocoa.framework */; };
 		49D9DD811A972D91001FBDCA /* JTSImageViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D9DD801A972D91001FBDCA /* JTSImageViewController.framework */; };
 		49D9DD821A972DAB001FBDCA /* JTSImageViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D9DD801A972D91001FBDCA /* JTSImageViewController.framework */; };
-		49DAC2B91A8C9984004BBBC0 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DAC2B81A8C9984004BBBC0 /* Topic.swift */; };
+		49E2FBC81A9DD01D002AB4B6 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E2FBC71A9DD01D002AB4B6 /* Topic.swift */; };
+		49E2FBC91A9DD01D002AB4B6 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E2FBC71A9DD01D002AB4B6 /* Topic.swift */; };
+		49E2FBCB1A9DD026002AB4B6 /* Paragraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E2FBCA1A9DD026002AB4B6 /* Paragraph.swift */; };
+		49E2FBCC1A9DD026002AB4B6 /* Paragraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E2FBCA1A9DD026002AB4B6 /* Paragraph.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,7 +89,8 @@
 		49D4E2E11A9C709300FCB089 /* Crimson-Typing.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Crimson-Typing.mp4"; sourceTree = "<group>"; };
 		49D8D4801A8BA69C00ACAB4B /* TopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicViewController.swift; sourceTree = "<group>"; };
 		49D9DD801A972D91001FBDCA /* JTSImageViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JTSImageViewController.framework; path = ../Carthage/Build/iOS/JTSImageViewController.framework; sourceTree = "<group>"; };
-		49DAC2B81A8C9984004BBBC0 /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		49E2FBC71A9DD01D002AB4B6 /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		49E2FBCA1A9DD026002AB4B6 /* Paragraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paragraph.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +143,7 @@
 			children = (
 				49D492F61A8A2E2200ECCCA6 /* Style.swift */,
 				49D233C61A8B734400E7BAE0 /* Extension.swift */,
-				49DAC2B81A8C9984004BBBC0 /* Topic.swift */,
+				49E2FBC61A9DD01D002AB4B6 /* Models */,
 				492D91B81A850A62009730D7 /* AppDelegate.swift */,
 				49CAF2AA1A8E112C00C2B7CC /* HeaderCollectionViewController.swift */,
 				499988341A97A4E20011CE49 /* WebViewController.swift */,
@@ -214,6 +217,15 @@
 				4948093D1A8DF37800EFA1BB /* TopicImageCell.swift */,
 			);
 			path = TopicViewController;
+			sourceTree = "<group>";
+		};
+		49E2FBC61A9DD01D002AB4B6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				49E2FBC71A9DD01D002AB4B6 /* Topic.swift */,
+				49E2FBCA1A9DD026002AB4B6 /* Paragraph.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,11 +372,12 @@
 				497E7C421A90EBC200717AA3 /* UIImage+ImageEffects.m in Sources */,
 				492D91B91A850A62009730D7 /* AppDelegate.swift in Sources */,
 				49D233C71A8B734400E7BAE0 /* Extension.swift in Sources */,
+				49E2FBCB1A9DD026002AB4B6 /* Paragraph.swift in Sources */,
 				49186E781A866D0F006A602A /* TopicButton.swift in Sources */,
 				4948093E1A8DF37800EFA1BB /* TopicImageCell.swift in Sources */,
 				4948093C1A8DE84700EFA1BB /* TopicParagraphCell.swift in Sources */,
-				49DAC2B91A8C9984004BBBC0 /* Topic.swift in Sources */,
 				49D492F71A8A2E2200ECCCA6 /* Style.swift in Sources */,
+				49E2FBC81A9DD01D002AB4B6 /* Topic.swift in Sources */,
 				49D8D4811A8BA69C00ACAB4B /* TopicViewController.swift in Sources */,
 				499988351A97A4E20011CE49 /* WebViewController.swift in Sources */,
 				49CAF2AB1A8E112C00C2B7CC /* HeaderCollectionViewController.swift in Sources */,
@@ -381,7 +394,6 @@
 				49D9DD731A972C17001FBDCA /* HeaderCollectionViewController.swift in Sources */,
 				49D9DD721A972C17001FBDCA /* AppDelegate.swift in Sources */,
 				49D9DD6F1A972C17001FBDCA /* Extension.swift in Sources */,
-				49D9DD701A972C17001FBDCA /* Topic.swift in Sources */,
 				492D91CF1A850A62009730D7 /* ScholarshipTests.swift in Sources */,
 				49D9DD761A972C17001FBDCA /* TopicButton.swift in Sources */,
 				49D9DD6E1A972C17001FBDCA /* Style.swift in Sources */,
@@ -389,7 +401,9 @@
 				49D9DD781A972C17001FBDCA /* TopicFlowLayout.swift in Sources */,
 				49D9DD791A972C17001FBDCA /* TopicParagraphCell.swift in Sources */,
 				499988361A97A4E20011CE49 /* WebViewController.swift in Sources */,
+				49E2FBCC1A9DD026002AB4B6 /* Paragraph.swift in Sources */,
 				49D9DD771A972C17001FBDCA /* TopicViewController.swift in Sources */,
+				49E2FBC91A9DD01D002AB4B6 /* Topic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

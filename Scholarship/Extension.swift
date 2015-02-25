@@ -46,7 +46,7 @@ extension CGRect {
 
 // MARK: - Topic.Source
 
-extension Topic.Source {
+extension Source {
     
     var name: String {
         switch self {
