@@ -15,6 +15,7 @@ class TopicButton: UIButton {
     var topic: Topic? {
         didSet {
             self.setTitle(self.topic?.title, forState: .Normal)
+            self.reloadBlurredBackgroundImage()
         }
     }
     
@@ -43,19 +44,25 @@ class TopicButton: UIButton {
         }
         
         self.rac_valuesForKeyPath("frame", observer: self).subscribeNext { _ in
-            if let headerImage = self.topic?.headerImage {
-                var image = UIImage(image: headerImage, scaledToSize: self.frame.size)
-                if var image = image {
-                    image = image.applyLightEffect()
-                    
-                    self.setBackgroundImage(image, forState: .Normal)
-                }
-            }
+            self.reloadBlurredBackgroundImage()
         }
     }
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Blurring
+    
+    func reloadBlurredBackgroundImage() {
+        if let headerImage = self.topic?.headerImage {
+            var image = UIImage(image: headerImage, scaledToSize: self.frame.size)
+            if var image = image {
+                image = image.blurredImageWithRadius(20.0, iterations: 1, tintColor: nil).applyLightEffect()
+                
+                self.setBackgroundImage(image, forState: .Normal)
+            }
+        }
     }
     
     // MARK: -
