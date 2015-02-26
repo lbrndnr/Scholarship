@@ -17,6 +17,7 @@ class TopicParagraphCell: UICollectionViewCell {
     let button: UIButton = {
         let button = UIButton.buttonWithType(.System) as UIButton
         button.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
+        button.titleLabel?.font = UIFont.boldSystemFontOfSize(UIFont.systemFontSize())
         
         return button
     }()
