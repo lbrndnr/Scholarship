@@ -7,4 +7,4 @@ This is an iPad app that I use as a resume to apply for scholarships.
 3. Open `Scholarship.xcodeproj` and run the app
 
 ## Contact
-Mention me on [Twitter](https://twitter.com/larcus94) or visit my [website](http://laurinbrandner.ch).
+Mention me on [twitter](https://twitter.com/larcus94) or visit my [website](http://laurinbrandner.ch).
