@@ -41,7 +41,7 @@ class WelcomeViewController: UIViewController {
         let title = NSLocalizedString("Hi There!\n", comment: "Introduction Title")
         let attributedTitle = attributedStringWithText(title, color: UIColor(white: 0.0, alpha: 0.8), font: UIFont.lightHelveticaNeueWithSize(36.0), lineSpacing: 30.0)
         
-        let text = NSLocalizedString("My name is Laurin Brandner. I’m a 20-year-old developer living in Switzerland.\n \nTap on the topics below to learn more about me.", comment: "Introduction Text")
+        let text = NSLocalizedString("My name is Laurin Brandner. I’m a 20 year old developer living in Switzerland.\n \nTap on the topics below to learn more about me.", comment: "Introduction Text")
         let attributedText = attributedStringWithText(text, color: UIColor(white: 0.0, alpha: 0.7), font: UIFont.lightHelveticaNeueWithSize(18.0), lineSpacing: 8.0)
         
         label.attributedText = attributedTitle+attributedText
