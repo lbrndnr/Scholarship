@@ -44,7 +44,7 @@ class HeaderCollectionViewController: UICollectionViewController {
     }()
     
     lazy var dismissButton: UIButton = {
-        let button = UIButton.buttonWithType(.System) as UIButton
+        let button = UIButton.buttonWithType(.System) as! UIButton
         button.setTitle(NSLocalizedString("Back", comment: "Back"), forState: .Normal)
         button.titleLabel?.font = UIFont.boldSystemFontOfSize(UIFont.labelFontSize())
         

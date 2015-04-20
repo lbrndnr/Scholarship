@@ -21,7 +21,7 @@ class TopicButton: UIButton {
     
     // MARK: - Initialization
     
-    override init() {
+    init() {
         super.init(frame: CGRectZero)
         
         self.adjustsImageWhenHighlighted = false

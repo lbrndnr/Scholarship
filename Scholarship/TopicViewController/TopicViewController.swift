@@ -35,7 +35,7 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
         self.title = topic.title
     }
 
-    required override init(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -75,13 +75,13 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
         let paragraph = self.topic.paragraphs[indexPath.section]
         
         if indexPath.item == 0 {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(paragraphCellIdentifier, forIndexPath: indexPath) as TopicParagraphCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(paragraphCellIdentifier, forIndexPath: indexPath) as! TopicParagraphCell
             self.configureParagraphCell(cell, paragraph: paragraph)
             
             return cell
         }
         else {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(imageCellIdentifier, forIndexPath: indexPath) as TopicImageCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(imageCellIdentifier, forIndexPath: indexPath) as! TopicImageCell
             cell.imageView.image = paragraph.images?[indexPath.item-1].0
             
             return cell
@@ -127,7 +127,7 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
         
         let delayTime = dispatch_time(DISPATCH_TIME_NOW,  Int64(0.03 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
-            let cell = collectionView.cellForItemAtIndexPath(indexPath) as TopicImageCell
+            let cell = collectionView.cellForItemAtIndexPath(indexPath) as! TopicImageCell
             let paragraph = self.topic.paragraphs[indexPath.section]
             
             let imageInfo: JTSMediaInfo = {

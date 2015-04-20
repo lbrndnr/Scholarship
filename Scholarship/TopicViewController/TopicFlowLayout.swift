@@ -91,7 +91,7 @@ class TopicFlowLayout: UICollectionViewFlowLayout {
     }
     
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
-        let allAttributes = self.layoutAttributes.reduce([], +)
+        let allAttributes = self.layoutAttributes.reduce([], combine: +)
         
         return allAttributes.filter { attributes in
             CGRectIntersectsRect(rect, attributes.frame)
