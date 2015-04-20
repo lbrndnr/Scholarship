@@ -105,6 +105,4 @@ class TopicParagraphCell: UICollectionViewCell {
         self.textLabel.preferredMaxLayoutWidth = width
     }
     
-    // MARK: -
-    
 }

@@ -59,21 +59,18 @@ class HeaderCollectionViewController: UICollectionViewController {
         self.view.addSubview(self.headerView)
         
         self.headerView.addSubview(self.headerImageView)
-        // Swift bug
         constrain(self.headerView, self.headerImageView) { headerView, headerImageView in
-            headerImageView.edges == headerView.edges; return
+            headerImageView.edges == headerView.edges
         }
         
         self.headerView.addSubview(self.blurredHeaderImageView)
-        // Swift bug
         constrain(self.headerView, self.blurredHeaderImageView) { headerView, blurredHeaderImageView in
-            blurredHeaderImageView.edges == headerView.edges; return
+            blurredHeaderImageView.edges == headerView.edges
         }
         
         self.headerView.addSubview(self.titleLabel)
-        // Swift bug
         constrain(self.headerView, self.titleLabel) { headerView, titleLabel in
-            titleLabel.edges == headerView.edges; return
+            titleLabel.edges == headerView.edges
         }
         
         self.view.addSubview(self.dismissButton)
@@ -121,9 +118,8 @@ class HeaderCollectionViewController: UICollectionViewController {
             self.titleLabel.text = self.title
         }
         
-        // Swift bug
         self.dismissButton.rac_signalForControlEvents(.TouchUpInside).subscribeNext { _ in
-            self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil); return
+            self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         }
     }
     
@@ -132,7 +128,5 @@ class HeaderCollectionViewController: UICollectionViewController {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
-    
-    // MARK: -
 
 }

@@ -153,8 +153,6 @@ class WelcomeViewController: UIViewController {
             }
         }
     }
-    
-    // MARK: -
 
 }
 

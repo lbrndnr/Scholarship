@@ -38,9 +38,8 @@ class TopicImageCell: UICollectionViewCell {
         self.layer.masksToBounds = true
         
         self.contentView.addSubview(self.imageView)
-        // Swift bug
         constrain(self.contentView, self.imageView) { view, imageView in
-            imageView.edges == view.edges; return
+            imageView.edges == view.edges
         }
         
         self.rac_valuesForKeyPath("highlighted", observer: self).subscribeNext { _ in
@@ -49,7 +48,5 @@ class TopicImageCell: UICollectionViewCell {
             }, completion: nil)
         }
     }
-    
-    // MARK: -
     
 }

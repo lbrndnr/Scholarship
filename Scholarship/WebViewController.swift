@@ -24,13 +24,9 @@ class WebViewController: UIViewController {
         super.loadView()
         
         self.view.addSubview(self.webView)
-        
-        // Swift bug
         constrain(self.view, self.webView) { view, webView in
-            webView.edges == view.edges; return
+            webView.edges == view.edges
         }
     }
-    
-    // MARK: -
     
 }

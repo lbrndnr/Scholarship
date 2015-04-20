@@ -224,6 +224,4 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
         }
     }
     
-    // MARK: -
-    
 }

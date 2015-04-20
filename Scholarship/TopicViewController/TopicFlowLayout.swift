@@ -102,7 +102,4 @@ class TopicFlowLayout: UICollectionViewFlowLayout {
         return self.layoutAttributes[indexPath.section][indexPath.item]
     }
     
-    // MARK: -
-    
-    
 }
