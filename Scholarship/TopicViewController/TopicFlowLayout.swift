@@ -27,57 +27,54 @@ class TopicFlowLayout: UICollectionViewFlowLayout {
         
         self.layoutAttributes.removeAll(keepCapacity: false)
         
-        // Swift 1.2 improvements
-        if let collectionView = self.collectionView {
-            if let dataSource = collectionView.dataSource {
-                if let delegate = collectionView.delegate as? UICollectionViewDelegateFlowLayout {
-                    var origin = CGPointZero
+        if let collectionView = self.collectionView,
+            dataSource = collectionView.dataSource,
+            delegate = collectionView.delegate as? UICollectionViewDelegateFlowLayout {
+            var origin = CGPointZero
+            
+            for s in 0..<(dataSource.numberOfSectionsInCollectionView?(collectionView) ?? 0) {
+                let numberOfItems = dataSource.collectionView(collectionView, numberOfItemsInSection: s)
+                let sectionInset = delegate.collectionView?(collectionView, layout: self, insetForSectionAtIndex: s) ?? self.sectionInset
+                
+                origin.x += sectionInset.left
+                origin.y += sectionInset.top
+                
+                var layoutAttributes = [UICollectionViewLayoutAttributes]()
+                let numberOfSecondaryItems = numberOfItems-1
+                
+                if numberOfItems > 0 {
+                    let mainItemSize = delegate.collectionView?(collectionView, layout: self, sizeForItemAtIndexPath: NSIndexPath(forItem: 0, inSection: s)) ?? CGSizeZero
+                    let secondaryItemSize: CGSize = {
+                        let spacing = CGFloat(numberOfSecondaryItems-1)*self.minimumInteritemSpacing
+                        let width = (mainItemSize.width-spacing)/CGFloat(numberOfSecondaryItems)
+                        
+                        return CGSize(width: width, height: self.secondaryItemHeight)
+                        }()
                     
-                    for s in 0..<(dataSource.numberOfSectionsInCollectionView?(collectionView) ?? 0) {
-                        let numberOfItems = dataSource.collectionView(collectionView, numberOfItemsInSection: s)
-                        let sectionInset = delegate.collectionView?(collectionView, layout: self, insetForSectionAtIndex: s) ?? self.sectionInset
-                        
-                        origin.x += sectionInset.left
-                        origin.y += sectionInset.top
-                        
-                        var layoutAttributes = [UICollectionViewLayoutAttributes]()
-                        let numberOfSecondaryItems = numberOfItems-1
-                        
-                        if numberOfItems > 0 {
-                            let mainItemSize = delegate.collectionView?(collectionView, layout: self, sizeForItemAtIndexPath: NSIndexPath(forItem: 0, inSection: s)) ?? CGSizeZero
-                            let secondaryItemSize: CGSize = {
-                                let spacing = CGFloat(numberOfSecondaryItems-1)*self.minimumInteritemSpacing
-                                let width = (mainItemSize.width-spacing)/CGFloat(numberOfSecondaryItems)
-                                
-                                return CGSize(width: width, height: self.secondaryItemHeight)
-                            }()
-                            
-                            for i in 0..<numberOfItems {
-                                var frame = CGRectZero
-                                if i == 0 {
-                                    frame = CGRect(center: CGPoint(x: collectionView.bounds.midX, y: mainItemSize.height/2.0+origin.y), size: mainItemSize)
-                                    origin = CGPoint(x: frame.minX, y: frame.maxY+self.minimumLineSpacing)
-                                }
-                                else {
-                                    frame = CGRect(origin: origin, size: secondaryItemSize)
-                                    origin.x = frame.maxX+self.minimumInteritemSpacing
-                                }
-                                
-                                let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: NSIndexPath(forItem: i, inSection: s))
-                                attributes.frame = frame
-                                
-                                layoutAttributes.append(attributes)
-                                
-                                if i == numberOfItems-1 {
-                                    origin = CGPoint(x: sectionInset.left, y: frame.maxY+sectionInset.bottom)
-                                }
-                            }
+                    for i in 0..<numberOfItems {
+                        var frame = CGRectZero
+                        if i == 0 {
+                            frame = CGRect(center: CGPoint(x: collectionView.bounds.midX, y: mainItemSize.height/2.0+origin.y), size: mainItemSize)
+                            origin = CGPoint(x: frame.minX, y: frame.maxY+self.minimumLineSpacing)
                         }
-                        
-                        self.layoutAttributes.append(layoutAttributes)
-                        self.contentSize = CGSize(width: collectionView.frame.width, height: origin.y)
+                        else {
+                            frame = CGRect(origin: origin, size: secondaryItemSize)
+                            origin.x = frame.maxX+self.minimumInteritemSpacing
+                        }
+                            
+                        let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: NSIndexPath(forItem: i, inSection: s))
+                        attributes.frame = frame
+                            
+                        layoutAttributes.append(attributes)
+                            
+                        if i == numberOfItems-1 {
+                            origin = CGPoint(x: sectionInset.left, y: frame.maxY+sectionInset.bottom)
+                        }
                     }
                 }
+                    
+                self.layoutAttributes.append(layoutAttributes)
+                self.contentSize = CGSize(width: collectionView.frame.width, height: origin.y)
             }
         }
     }
