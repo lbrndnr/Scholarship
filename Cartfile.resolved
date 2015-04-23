@@ -1,4 +1,4 @@
 github "robb/Cartography" "0.5.0"
-github "larcus94/JTSImageViewController" "1.4.1"
+github "larcus94/JTSImageViewController" "66a566890b7827645e9b3a5dd607af5325896704"
 github "LlamaKit/LlamaKit" "v0.6.0"
-github "ReactiveCocoa/ReactiveCocoa" "267a4767401e83b3c2d19fd6497a226d72b5d5ea"
+github "ReactiveCocoa/ReactiveCocoa" "04bac6771ab3cc62ecb495db0a4623c0b6f4e572"

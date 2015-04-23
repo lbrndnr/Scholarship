@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		49186E761A8655E5006A602A /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49186E751A8655E5006A602A /* Launch Screen.xib */; };
 		49186E781A866D0F006A602A /* TopicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49186E771A866D0F006A602A /* TopicButton.swift */; };
-		491D2C8C1A9751BA0050FEB8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491D2C8B1A9751BA0050FEB8 /* StoreKit.framework */; };
 		492D91B91A850A62009730D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D91B81A850A62009730D7 /* AppDelegate.swift */; };
 		492D91BB1A850A62009730D7 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D91BA1A850A62009730D7 /* WelcomeViewController.swift */; };
 		492D91C01A850A62009730D7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 492D91BF1A850A62009730D7 /* Images.xcassets */; };
@@ -65,7 +64,6 @@
 /* Begin PBXFileReference section */
 		49186E751A8655E5006A602A /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		49186E771A866D0F006A602A /* TopicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicButton.swift; sourceTree = "<group>"; };
-		491D2C8B1A9751BA0050FEB8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		492D91B31A850A62009730D7 /* Scholarship.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scholarship.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		492D91B71A850A62009730D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		492D91B81A850A62009730D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,7 +99,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				491D2C8C1A9751BA0050FEB8 /* StoreKit.framework in Frameworks */,
 				49D9DD821A972DAB001FBDCA /* JTSImageViewController.framework in Frameworks */,
 				492D91DB1A8515B5009730D7 /* Cartography.framework in Frameworks */,
 				492D91DC1A8515B5009730D7 /* LlamaKit.framework in Frameworks */,
@@ -193,7 +190,6 @@
 		492D91DF1A85180E009730D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				491D2C8B1A9751BA0050FEB8 /* StoreKit.framework */,
 				49D9DD801A972D91001FBDCA /* JTSImageViewController.framework */,
 				49CAF2AC1A8E15BB00C2B7CC /* CoreImage.framework */,
 				492D91D81A8515B5009730D7 /* Cartography.framework */,
@@ -283,6 +279,12 @@
 				TargetAttributes = {
 					492D91B21A850A62009730D7 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 5953RHWYWT;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					492D91C71A850A62009730D7 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -506,6 +508,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -515,6 +519,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Scholarship;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Scholarship/Scholarship-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 2;
@@ -526,6 +531,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -535,6 +542,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Scholarship;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Scholarship/Scholarship-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
