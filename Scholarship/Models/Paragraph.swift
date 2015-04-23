@@ -9,7 +9,7 @@
 import Foundation
 
 enum Source {
-    case AppStore(String)
+    case Website(NSURL)
     case GitHub(NSURL)
 }
 

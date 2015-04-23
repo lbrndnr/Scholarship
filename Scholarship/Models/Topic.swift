@@ -38,8 +38,10 @@ struct Topic {
         let crimsonParagraph: Paragraph = {
             var paragraph = Paragraph(title: "Crimson",
                                        text: NSLocalizedString("Crimson is an iOS keyboard extension I developed in 2014. It shows suggestions above the keys the user is likey to tap next. Swiping up on a key inserts the suggestion. It learns new words as the user types and adapts to the general writing style too. The native design is refined and improved with delightful animations and a clearer shift key. Additionally, the spacebar splits to make it easy to insert a comma or period.", comment: "Crimson Text"))
-            paragraph.source = .AppStore("918925779")
             paragraph.mainImage = UIImage(named: "Crimson-Icon")
+            if let URL = NSURL(string: "https://crimsonkeyboard.com") {
+                paragraph.source = .Website(URL)
+            }
             
             paragraph.images = [(UIImage(named: "Crimson-Video-Thumbnail")!, NSBundle.mainBundle().URLForResource("Crimson-Video", withExtension: "mp4")),
                           (UIImage(named: "Crimson-Banner-1")!, nil),

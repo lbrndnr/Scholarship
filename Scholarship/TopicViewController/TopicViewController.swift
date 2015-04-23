@@ -8,13 +8,12 @@
 
 import UIKit
 import ReactiveCocoa
-import StoreKit
 import Cartography
 
 private let paragraphCellIdentifier = "ParagraphCell"
 private let imageCellIdentifier = "ImageCell"
 
-class TopicViewController: HeaderCollectionViewController, UICollectionViewDelegateFlowLayout, SKStoreProductViewControllerDelegate {
+class TopicViewController: HeaderCollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let topic: Topic
     
@@ -147,12 +146,6 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
         }
     }
     
-    // MARK: - SKStoreProductViewControllerDelegate
-
-    func productViewControllerDidFinish(viewController: SKStoreProductViewController!) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     // MARK: - Other Methods
     
     func configureParagraphCell(cell: TopicParagraphCell, paragraph: Paragraph) {
@@ -168,55 +161,49 @@ class TopicViewController: HeaderCollectionViewController, UICollectionViewDeleg
             cell.button.hidden = false
             cell.button.setTitle(source.name, forState: .Normal)
             
+            let sourceURL: NSURL
             switch source {
+            case .Website(let URL):
+                sourceURL = URL
             case .GitHub(let URL):
-                cell.button.rac_command = RACCommand(signalBlock: { _ in
-                    let controller  = WebViewController()
-                    controller.title = source.name
-                    controller.webView.loadRequest(NSURLRequest(URL: URL))
-                    
-                    controller.navigationItem.rightBarButtonItem = {
-                        let item = UIBarButtonItem(title: NSLocalizedString("Open in Safari", comment: "Open in Safari"), style: .Plain, target: nil, action: nil)
-                        item.rac_command = RACCommand(signalBlock: { _ in
-                            UIApplication.sharedApplication().openURL(URL)
-                            self.dismissViewControllerAnimated(true, completion: nil)
-                            
-                            return RACSignal.empty()
-                        })
-                        
-                        return item
-                    }()
-                    
-                    controller.navigationItem.leftBarButtonItem = {
-                        let item = UIBarButtonItem(barButtonSystemItem: .Cancel, target: nil, action: nil)
-                        item.rac_command = RACCommand(signalBlock: { _ in
-                            self.dismissViewControllerAnimated(true, completion: nil)
-                            
-                            return RACSignal.empty()
-                        })
-                        
-                        return item
-                    }()
-                    
-                    let navigationController = UINavigationController(rootViewController: controller)
-                    navigationController.modalPresentationStyle = .FormSheet
-                    
-                    self.presentViewController(navigationController, animated: true, completion: nil)
-                    
-                    return RACSignal.empty()
-                })
-                
-            case .AppStore(let identifier):
-                cell.button.rac_command = RACCommand(signalBlock: { _ in
-                    let parameters = [SKStoreProductParameterITunesItemIdentifier : identifier]
-                    let controller = SKStoreProductViewController()
-                    controller.delegate = self
-                    controller.loadProductWithParameters(parameters, completionBlock: nil)
-                    self.presentViewController(controller, animated: true, completion: nil)
-                    
-                    return RACSignal.empty()
-                })
+                sourceURL = URL
             }
+            
+            cell.button.rac_command = RACCommand(signalBlock: { _ in
+                let controller  = WebViewController()
+                controller.title = source.name
+                controller.webView.loadRequest(NSURLRequest(URL: sourceURL))
+                
+                controller.navigationItem.rightBarButtonItem = {
+                    let item = UIBarButtonItem(title: NSLocalizedString("Open in Safari", comment: "Open in Safari"), style: .Plain, target: nil, action: nil)
+                    item.rac_command = RACCommand(signalBlock: { _ in
+                        UIApplication.sharedApplication().openURL(sourceURL)
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                        
+                        return RACSignal.empty()
+                    })
+                    
+                    return item
+                    }()
+                
+                controller.navigationItem.leftBarButtonItem = {
+                    let item = UIBarButtonItem(barButtonSystemItem: .Cancel, target: nil, action: nil)
+                    item.rac_command = RACCommand(signalBlock: { _ in
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                        
+                        return RACSignal.empty()
+                    })
+                    
+                    return item
+                    }()
+                
+                let navigationController = UINavigationController(rootViewController: controller)
+                navigationController.modalPresentationStyle = .FormSheet
+                
+                self.presentViewController(navigationController, animated: true, completion: nil)
+                
+                return RACSignal.empty()
+            })
         }
         else {
             cell.button.hidden = true

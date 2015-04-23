@@ -52,8 +52,8 @@ extension Source {
         switch self {
         case .GitHub:
             return NSLocalizedString("GitHub", comment: "GitHub")
-        case .AppStore:
-            return NSLocalizedString("Store", comment: "Store")
+        case .Website:
+            return NSLocalizedString("Website", comment: "Website")
         }
     }
     
