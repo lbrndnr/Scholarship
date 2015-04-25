@@ -12,7 +12,6 @@
 		492D91B91A850A62009730D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D91B81A850A62009730D7 /* AppDelegate.swift */; };
 		492D91BB1A850A62009730D7 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D91BA1A850A62009730D7 /* WelcomeViewController.swift */; };
 		492D91C01A850A62009730D7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 492D91BF1A850A62009730D7 /* Images.xcassets */; };
-		492D91CF1A850A62009730D7 /* ScholarshipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D91CE1A850A62009730D7 /* ScholarshipTests.swift */; };
 		492D91DB1A8515B5009730D7 /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492D91D81A8515B5009730D7 /* Cartography.framework */; };
 		492D91DC1A8515B5009730D7 /* LlamaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492D91D91A8515B5009730D7 /* LlamaKit.framework */; };
 		492D91DD1A8515B5009730D7 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492D91DA1A8515B5009730D7 /* ReactiveCocoa.framework */; };
@@ -20,46 +19,17 @@
 		4948093E1A8DF37800EFA1BB /* TopicImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4948093D1A8DF37800EFA1BB /* TopicImageCell.swift */; };
 		497E7C421A90EBC200717AA3 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 497E7C401A90EBC200717AA3 /* UIImage+ImageEffects.m */; };
 		499988351A97A4E20011CE49 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499988341A97A4E20011CE49 /* WebViewController.swift */; };
-		499988361A97A4E20011CE49 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499988341A97A4E20011CE49 /* WebViewController.swift */; };
 		499A7D091A8CE7BE00490F98 /* TopicFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A7D081A8CE7BE00490F98 /* TopicFlowLayout.swift */; };
 		49CAF2AB1A8E112C00C2B7CC /* HeaderCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CAF2AA1A8E112C00C2B7CC /* HeaderCollectionViewController.swift */; };
 		49D233C71A8B734400E7BAE0 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D233C61A8B734400E7BAE0 /* Extension.swift */; };
 		49D492F71A8A2E2200ECCCA6 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492F61A8A2E2200ECCCA6 /* Style.swift */; };
 		49D4E2E41A9C7B3D00FCB089 /* Crimson-Video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 49D4E2E11A9C709300FCB089 /* Crimson-Video.mp4 */; };
 		49D8D4811A8BA69C00ACAB4B /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D8D4801A8BA69C00ACAB4B /* TopicViewController.swift */; };
-		49D9DD6E1A972C17001FBDCA /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D492F61A8A2E2200ECCCA6 /* Style.swift */; };
-		49D9DD6F1A972C17001FBDCA /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D233C61A8B734400E7BAE0 /* Extension.swift */; };
-		49D9DD721A972C17001FBDCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D91B81A850A62009730D7 /* AppDelegate.swift */; };
-		49D9DD731A972C17001FBDCA /* HeaderCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CAF2AA1A8E112C00C2B7CC /* HeaderCollectionViewController.swift */; };
-		49D9DD741A972C17001FBDCA /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 497E7C401A90EBC200717AA3 /* UIImage+ImageEffects.m */; };
-		49D9DD751A972C17001FBDCA /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D91BA1A850A62009730D7 /* WelcomeViewController.swift */; };
-		49D9DD761A972C17001FBDCA /* TopicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49186E771A866D0F006A602A /* TopicButton.swift */; };
-		49D9DD771A972C17001FBDCA /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D8D4801A8BA69C00ACAB4B /* TopicViewController.swift */; };
-		49D9DD781A972C17001FBDCA /* TopicFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A7D081A8CE7BE00490F98 /* TopicFlowLayout.swift */; };
-		49D9DD791A972C17001FBDCA /* TopicParagraphCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4948093B1A8DE84700EFA1BB /* TopicParagraphCell.swift */; };
-		49D9DD7A1A972C17001FBDCA /* TopicImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4948093D1A8DF37800EFA1BB /* TopicImageCell.swift */; };
-		49D9DD7D1A972D91001FBDCA /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492D91D81A8515B5009730D7 /* Cartography.framework */; };
-		49D9DD7E1A972D91001FBDCA /* LlamaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492D91D91A8515B5009730D7 /* LlamaKit.framework */; };
-		49D9DD7F1A972D91001FBDCA /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492D91DA1A8515B5009730D7 /* ReactiveCocoa.framework */; };
-		49D9DD811A972D91001FBDCA /* JTSImageViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D9DD801A972D91001FBDCA /* JTSImageViewController.framework */; };
 		49D9DD821A972DAB001FBDCA /* JTSImageViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D9DD801A972D91001FBDCA /* JTSImageViewController.framework */; };
 		49E2FBC81A9DD01D002AB4B6 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E2FBC71A9DD01D002AB4B6 /* Topic.swift */; };
-		49E2FBC91A9DD01D002AB4B6 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E2FBC71A9DD01D002AB4B6 /* Topic.swift */; };
 		49E2FBCB1A9DD026002AB4B6 /* Paragraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E2FBCA1A9DD026002AB4B6 /* Paragraph.swift */; };
-		49E2FBCC1A9DD026002AB4B6 /* Paragraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E2FBCA1A9DD026002AB4B6 /* Paragraph.swift */; };
 		49E2FBCE1A9DE0BC002AB4B6 /* Whistles-Video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 49E2FBCD1A9DE0BC002AB4B6 /* Whistles-Video.mp4 */; };
-		49E2FBCF1A9DE0BC002AB4B6 /* Whistles-Video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 49E2FBCD1A9DE0BC002AB4B6 /* Whistles-Video.mp4 */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		492D91C91A850A62009730D7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 492D91AB1A850A62009730D7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 492D91B21A850A62009730D7;
-			remoteInfo = Scholarship;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		49186E751A8655E5006A602A /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
@@ -69,9 +39,6 @@
 		492D91B81A850A62009730D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		492D91BA1A850A62009730D7 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		492D91BF1A850A62009730D7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		492D91C81A850A62009730D7 /* ScholarshipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScholarshipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		492D91CD1A850A62009730D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		492D91CE1A850A62009730D7 /* ScholarshipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScholarshipTests.swift; sourceTree = "<group>"; };
 		492D91D81A8515B5009730D7 /* Cartography.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cartography.framework; path = ../Carthage/Build/iOS/Cartography.framework; sourceTree = "<group>"; };
 		492D91D91A8515B5009730D7 /* LlamaKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LlamaKit.framework; path = ../Carthage/Build/iOS/LlamaKit.framework; sourceTree = "<group>"; };
 		492D91DA1A8515B5009730D7 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = ../Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
@@ -106,17 +73,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		492D91C51A850A62009730D7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				49D9DD811A972D91001FBDCA /* JTSImageViewController.framework in Frameworks */,
-				49D9DD7D1A972D91001FBDCA /* Cartography.framework in Frameworks */,
-				49D9DD7E1A972D91001FBDCA /* LlamaKit.framework in Frameworks */,
-				49D9DD7F1A972D91001FBDCA /* ReactiveCocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -124,7 +80,6 @@
 			isa = PBXGroup;
 			children = (
 				492D91B51A850A62009730D7 /* Scholarship */,
-				492D91CB1A850A62009730D7 /* ScholarshipTests */,
 				492D91B41A850A62009730D7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -133,7 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				492D91B31A850A62009730D7 /* Scholarship.app */,
-				492D91C81A850A62009730D7 /* ScholarshipTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -166,23 +120,6 @@
 				49D4E2E11A9C709300FCB089 /* Crimson-Video.mp4 */,
 				492D91B71A850A62009730D7 /* Info.plist */,
 				497E7C431A90EBF600717AA3 /* Scholarship-Bridging-Header.h */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		492D91CB1A850A62009730D7 /* ScholarshipTests */ = {
-			isa = PBXGroup;
-			children = (
-				492D91CE1A850A62009730D7 /* ScholarshipTests.swift */,
-				492D91CC1A850A62009730D7 /* Supporting Files */,
-			);
-			path = ScholarshipTests;
-			sourceTree = "<group>";
-		};
-		492D91CC1A850A62009730D7 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				492D91CD1A850A62009730D7 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -249,25 +186,6 @@
 			productReference = 492D91B31A850A62009730D7 /* Scholarship.app */;
 			productType = "com.apple.product-type.application";
 		};
-		492D91C71A850A62009730D7 /* ScholarshipTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 492D91D51A850A62009730D7 /* Build configuration list for PBXNativeTarget "ScholarshipTests" */;
-			buildPhases = (
-				492D91C41A850A62009730D7 /* Sources */,
-				492D91C51A850A62009730D7 /* Frameworks */,
-				492D91C61A850A62009730D7 /* Resources */,
-				49D9DD7C1A972D4A001FBDCA /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				492D91CA1A850A62009730D7 /* PBXTargetDependency */,
-			);
-			name = ScholarshipTests;
-			productName = ScholarshipTests;
-			productReference = 492D91C81A850A62009730D7 /* ScholarshipTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -286,10 +204,6 @@
 							};
 						};
 					};
-					492D91C71A850A62009730D7 = {
-						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = 492D91B21A850A62009730D7;
-					};
 				};
 			};
 			buildConfigurationList = 492D91AE1A850A62009730D7 /* Build configuration list for PBXProject "Scholarship" */;
@@ -306,7 +220,6 @@
 			projectRoot = "";
 			targets = (
 				492D91B21A850A62009730D7 /* Scholarship */,
-				492D91C71A850A62009730D7 /* ScholarshipTests */,
 			);
 		};
 /* End PBXProject section */
@@ -320,14 +233,6 @@
 				492D91C01A850A62009730D7 /* Images.xcassets in Resources */,
 				49186E761A8655E5006A602A /* Launch Screen.xib in Resources */,
 				49D4E2E41A9C7B3D00FCB089 /* Crimson-Video.mp4 in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		492D91C61A850A62009730D7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				49E2FBCF1A9DE0BC002AB4B6 /* Whistles-Video.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,23 +251,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/JTSImageViewController.framework",
 			);
 			name = "Run Script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-		49D9DD7C1A972D4A001FBDCA /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/LlamaKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Cartography.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/JTSImageViewController.framework",
-			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,37 +281,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		492D91C41A850A62009730D7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				49D9DD751A972C17001FBDCA /* WelcomeViewController.swift in Sources */,
-				49D9DD741A972C17001FBDCA /* UIImage+ImageEffects.m in Sources */,
-				49D9DD731A972C17001FBDCA /* HeaderCollectionViewController.swift in Sources */,
-				49D9DD721A972C17001FBDCA /* AppDelegate.swift in Sources */,
-				49D9DD6F1A972C17001FBDCA /* Extension.swift in Sources */,
-				492D91CF1A850A62009730D7 /* ScholarshipTests.swift in Sources */,
-				49D9DD761A972C17001FBDCA /* TopicButton.swift in Sources */,
-				49D9DD6E1A972C17001FBDCA /* Style.swift in Sources */,
-				49D9DD7A1A972C17001FBDCA /* TopicImageCell.swift in Sources */,
-				49D9DD781A972C17001FBDCA /* TopicFlowLayout.swift in Sources */,
-				49D9DD791A972C17001FBDCA /* TopicParagraphCell.swift in Sources */,
-				499988361A97A4E20011CE49 /* WebViewController.swift in Sources */,
-				49E2FBCC1A9DD026002AB4B6 /* Paragraph.swift in Sources */,
-				49D9DD771A972C17001FBDCA /* TopicViewController.swift in Sources */,
-				49E2FBC91A9DD01D002AB4B6 /* Topic.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		492D91CA1A850A62009730D7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 492D91B21A850A62009730D7 /* Scholarship */;
-			targetProxy = 492D91C91A850A62009730D7 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		492D91D01A850A62009730D7 /* Debug */ = {
@@ -548,44 +406,6 @@
 			};
 			name = Release;
 		};
-		492D91D61A850A62009730D7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ScholarshipTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Scholarship/Scholarship-Bridging-Header.h";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scholarship.app/Scholarship";
-			};
-			name = Debug;
-		};
-		492D91D71A850A62009730D7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = ScholarshipTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Scholarship/Scholarship-Bridging-Header.h";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scholarship.app/Scholarship";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -603,15 +423,6 @@
 			buildConfigurations = (
 				492D91D31A850A62009730D7 /* Debug */,
 				492D91D41A850A62009730D7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		492D91D51A850A62009730D7 /* Build configuration list for PBXNativeTarget "ScholarshipTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				492D91D61A850A62009730D7 /* Debug */,
-				492D91D71A850A62009730D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
