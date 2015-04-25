@@ -144,7 +144,7 @@ class WelcomeViewController: UIViewController {
                 let centerY = self.avatarButton.frame.maxY+(bounds.maxY-self.avatarButton.frame.maxY)/2
                 
                 return CGPoint(x: centerX, y: centerY)
-                }()
+            }()
             
             for button in self.topicButtons {
                 button.frame = CGRect(center: center, size: size)

@@ -45,9 +45,7 @@ class TopicButton: UIButton {
     func reloadBlurredBackgroundImage() {
         if let headerImage = self.topic?.headerImage {
             var image = UIImage(image: headerImage, scaledToSize: self.frame.size)
-            if var image = image {
-                image = image.blurredImageWithRadius(20.0, iterations: 1, tintColor: nil).applyLightEffect()
-                
+            if let image = image?.blurredImageWithRadius(20.0, iterations: 1, tintColor: nil).applyLightEffect() {
                 self.setBackgroundImage(image, forState: .Normal)
             }
         }
