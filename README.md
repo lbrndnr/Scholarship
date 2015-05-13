@@ -1,10 +1,9 @@
 # Scholarship
-This is an iPad app that I use as a resume to apply for scholarships.
+This is an iPad app that I use as a resume to apply for scholarship conferences. I won both the WWDC and UIKonf with it. I wrote this in February when ReactiveCocoa wasn't supporing Swift yet, so the code is not particularly beautiful. Feel free to use the source code but please don't use the app as it is.
 
-## Compilation
-1. Install [Carthage](https://github.com/Carthage/Carthage)
-2. Run `carthage bootstrap`
-3. Open `Scholarship.xcodeproj` and run the app
+![demo](Screenshots/1.png)
+![demo](Screenshots/2.png)
+![demo](Screenshots/3.png)
 
 ## Contact
 Mention me on [twitter](https://twitter.com/larcus94) or visit my [website](http://laurinbrandner.ch).
