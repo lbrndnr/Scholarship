@@ -6,4 +6,4 @@ This is an iPad app that I use as a resume to apply for scholarship conferences.
 ![demo](Screenshots/3.png)
 
 ## Contact
-Mention me on [twitter](https://twitter.com/larcus94) or visit my [website](http://laurinbrandner.ch).
+Mention me on [twitter](https://twitter.com/lbrndnr) or visit my [website](http://laurinbrandner.ch).
